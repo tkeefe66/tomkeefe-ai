@@ -26,4 +26,5 @@ export type SiteContent = {
   about: { bio: string };
   skills: SkillCategory[];
   contact: ContactLink[];
+  notFound: { headline: string; line: string; cta: string };
 };

@@ -26,6 +26,14 @@ const archivo = Archivo({
 export const metadata: Metadata = {
   title: "Tom Keefe — GTM Engineer",
   description: site.tagline,
+  metadataBase: new URL("https://tomkeefe.ai"),
+  openGraph: {
+    title: "Tom Keefe — GTM Engineer",
+    description: site.tagline,
+    url: "https://tomkeefe.ai",
+    siteName: "Tom Keefe",
+    type: "website",
+  },
 };
 
 export default function RootLayout({

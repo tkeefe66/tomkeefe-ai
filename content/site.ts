@@ -24,4 +24,9 @@ export const site: SiteContent = {
     { label: "Email", href: "#", comingSoon: true },
     { label: "GitHub", href: "#", comingSoon: true },
   ],
+  notFound: {
+    headline: "404",
+    line: "This page doesn't exist. The systems do.",
+    cta: "Back to home",
+  },
 };
