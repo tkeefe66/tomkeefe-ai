@@ -3,7 +3,8 @@ import { site } from "@/content/site";
 export default function About() {
   return (
     <section id="about" className="border-b border-border px-5 py-24 sm:px-8 sm:py-32">
-      <h2 className="mb-12 font-display text-3xl font-black uppercase tracking-tight text-ink sm:mb-16 sm:text-5xl">
+      <h2 className="mb-12 flex items-center gap-4 font-display text-3xl font-black uppercase tracking-tight text-ink sm:mb-16 sm:gap-5 sm:text-5xl">
+        <span className="h-[0.55em] w-[0.55em] shrink-0 bg-accent-vivid" aria-hidden="true" />
         About
       </h2>
       <div className="grid gap-10 sm:gap-16 md:grid-cols-[1.1fr_1fr] md:items-start">

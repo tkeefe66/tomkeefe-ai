@@ -23,7 +23,7 @@ export default function Nav() {
             <li key={s.href}>
               <Link
                 href={s.href}
-                className="font-body text-xs font-semibold uppercase tracking-wide text-muted transition-colors hover:text-accent sm:text-sm"
+                className="font-body text-xs font-semibold uppercase tracking-wide text-muted decoration-accent-vivid decoration-2 underline-offset-4 transition-colors hover:text-accent hover:underline sm:text-sm"
               >
                 {s.label}
               </Link>

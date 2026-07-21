@@ -14,7 +14,7 @@ A single-page personal portfolio for Tom Keefe (Director of GTM Experts, Demandb
 
 ## Brand Personality
 
-Confident, direct, a little edge. Declarative sentences, numbers-forward. Not corporate-polished, not startup-cute — closer to a builder's manifesto than a resume. Visual system: bold and high-contrast (near-black background, off-white type, exactly one electric accent color), oversized display numerals, tight grid, generous vertical rhythm.
+Confident, direct, a little edge. Declarative sentences, numbers-forward. Not corporate-polished, not startup-cute — closer to a builder's manifesto than a resume. Visual system: light and punchy (near-white background, near-black ink type, exactly one vivid accent hue used generously — oversized stat numerals, badge fills, section-header markers, nav hover, principle numbers, link underlines), oversized display numerals, tight grid, generous vertical rhythm.
 
 ## Anti-references
 
@@ -30,4 +30,4 @@ Must not look like a default Tailwind/shadcn template, a generic SaaS marketing 
 
 ## Accessibility & Inclusion
 
-WCAG AA minimum: body text ≥4.5:1 contrast against the near-black background, large/display text ≥3:1. Full keyboard navigation for nav anchors and contact links. Respect `prefers-reduced-motion` for any scroll/entrance animation. No content conveyed by color alone (status badges pair color with text label).
+WCAG AA minimum: body text ≥4.5:1 contrast against the light background, large/display text ≥3:1. The accent hue is carried at two lightnesses — an accessible shade for text/links/nav, a saturated "vivid" shade reserved for large display type (≥24px, or bold ≥18.66px), solid badge fills paired with dark ink text, and decorative markers — so small accent-colored text never drops below 4.5:1. Full keyboard navigation for nav anchors and contact links. Respect `prefers-reduced-motion` for any scroll/entrance animation. No content conveyed by color alone (status badges pair color with text label).

@@ -2,13 +2,13 @@ import { projects } from "@/content/projects";
 import type { ProjectStatus } from "@/content/types";
 
 const statusStyles: Record<ProjectStatus, string> = {
-  Live: "border-accent/60 text-accent",
+  Live: "border-transparent bg-accent-vivid text-ink",
   "In development": "border-ink/30 text-ink/80",
   Internal: "border-muted/40 text-muted",
 };
 
 const statusDot: Record<ProjectStatus, string> = {
-  Live: "bg-accent",
+  Live: "bg-ink",
   "In development": "bg-ink/60",
   Internal: "bg-muted/60",
 };
@@ -16,7 +16,8 @@ const statusDot: Record<ProjectStatus, string> = {
 export default function Projects() {
   return (
     <section id="projects" className="border-b border-border bg-surface/40 px-5 py-24 sm:px-8 sm:py-32">
-      <h2 className="mb-12 font-display text-3xl font-black uppercase tracking-tight text-ink sm:mb-16 sm:text-5xl">
+      <h2 className="mb-12 flex items-center gap-4 font-display text-3xl font-black uppercase tracking-tight text-ink sm:mb-16 sm:gap-5 sm:text-5xl">
+        <span className="h-[0.55em] w-[0.55em] shrink-0 bg-accent-vivid" aria-hidden="true" />
         Projects
       </h2>
       <div className="grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2">
@@ -56,7 +57,7 @@ export default function Projects() {
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-body text-sm font-semibold text-accent transition-colors hover:text-ink"
+                className="font-body text-sm font-semibold text-accent underline decoration-accent-vivid decoration-2 underline-offset-4 transition-colors hover:text-ink"
               >
                 {project.link.replace(/^https?:\/\//, "")} ↗
               </a>

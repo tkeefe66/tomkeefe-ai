@@ -1,20 +1,29 @@
 @import "tailwindcss";
 
 /*
-  Design tokens (OKLCH). Bold & high-contrast: near-black surface, off-white
-  type, exactly one electric accent (a signal-green/teal used only as text,
-  border, or glow — never as a filled background behind text, since accent
-  at this lightness/chroma fails contrast both against ink and against bg
-  when text sits directly on a solid accent fill).
+  Design tokens (OKLCH). Light & punchy: near-white surface, near-black
+  ink, exactly one accent hue (signal green, hue ~163-165) carried at two
+  lightnesses:
+    --accent        the accessible shade — default for text, links, nav
+                     hover, badge outlines. 7.0:1 on --bg, safe at any size.
+    --accent-vivid   the saturated shade — for large display type (stat
+                     numerals, principle numbers, ≥24px or bold ≥18.66px),
+                     solid badge fills (paired with --ink text, 5.1:1),
+                     section-header markers, selection, and focus rings.
+                     3.5:1 on --bg — meets the 3:1 large-text/non-text floor
+                     but is NOT used as small text on its own.
+  Ratios verified against sRGB conversion of these exact OKLCH values; see
+  .superpowers/sdd/recolor-report.md for the full contrast table.
 */
 :root {
-  --bg: oklch(0.09 0 0);
-  --surface: oklch(0.15 0.014 168);
-  --ink: oklch(0.96 0 0);
-  --muted: oklch(0.64 0.01 95);
-  --accent: oklch(0.76 0.19 168);
-  --border: oklch(1 0 0 / 12%);
-  --border-strong: oklch(1 0 0 / 22%);
+  --bg: oklch(0.985 0.004 165);
+  --surface: oklch(0.96 0.012 165);
+  --ink: oklch(0.19 0.014 165);
+  --muted: oklch(0.42 0.02 165);
+  --accent: oklch(0.42 0.15 163);
+  --accent-vivid: oklch(0.58 0.19 163);
+  --border: oklch(0.19 0.014 165 / 10%);
+  --border-strong: oklch(0.19 0.014 165 / 22%);
 }
 
 @theme inline {
@@ -23,6 +32,7 @@
   --color-ink: var(--ink);
   --color-muted: var(--muted);
   --color-accent: var(--accent);
+  --color-accent-vivid: var(--accent-vivid);
   --color-border: var(--border);
   --color-border-strong: var(--border-strong);
   --font-display: var(--font-big-shoulders);
@@ -43,13 +53,13 @@ section[id] {
 }
 
 ::selection {
-  background: var(--accent);
-  color: var(--bg);
+  background: var(--accent-vivid);
+  color: var(--ink);
 }
 
 a:focus-visible,
 button:focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--accent-vivid);
   outline-offset: 3px;
   border-radius: 2px;
 }

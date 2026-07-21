@@ -17,7 +17,7 @@ export default function StatBanner() {
               className={`font-display text-[clamp(2rem,6vw,3.75rem)] font-black leading-none tabular-nums ${
                 stat.placeholder
                   ? "border-b-2 border-dashed border-muted/70 pb-1 text-muted"
-                  : "text-ink"
+                  : "text-accent-vivid"
               }`}
             >
               {stat.value}

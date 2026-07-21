@@ -17,7 +17,7 @@ export default function Hero() {
       <a
         href="#principles"
         aria-label="Scroll to principles"
-        className="animate-rise-in absolute bottom-10 left-5 flex h-10 w-10 items-center justify-center rounded-full border border-border-strong text-accent transition-colors hover:border-accent sm:left-8"
+        className="animate-rise-in absolute bottom-10 left-5 flex h-10 w-10 items-center justify-center rounded-full border border-border-strong text-accent-vivid transition-colors hover:border-accent-vivid sm:left-8"
         style={{ animationDelay: "260ms" }}
       >
         <span className="animate-drift flex">

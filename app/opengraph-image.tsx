@@ -6,8 +6,8 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 // Hex approximations of the OKLCH design tokens in app/globals.css:
-// --bg oklch(0.09 0 0) -> #171717, --ink oklch(0.96 0 0) -> #f5f5f5,
-// --accent oklch(0.76 0.19 168) -> #39e6ac, --muted oklch(0.64 0.01 95) -> #a3a09a
+// --bg oklch(0.985 0.004 165) -> #f8fbf9, --ink oklch(0.19 0.014 165) -> #0e1612,
+// --accent-vivid oklch(0.58 0.19 163) -> #009a58, --muted oklch(0.42 0.02 165) -> #43514a
 export default async function Image() {
   return new ImageResponse(
     (
@@ -19,7 +19,7 @@ export default async function Image() {
           flexDirection: "column",
           alignItems: "flex-start",
           justifyContent: "center",
-          backgroundColor: "#171717",
+          backgroundColor: "#f8fbf9",
           padding: "80px",
           fontFamily: "Arial, Helvetica, sans-serif",
         }}
@@ -27,22 +27,38 @@ export default async function Image() {
         <div
           style={{
             display: "flex",
-            fontSize: 32,
-            fontWeight: 700,
-            letterSpacing: 4,
-            textTransform: "uppercase",
-            color: "#39e6ac",
+            alignItems: "center",
             marginBottom: 24,
           }}
         >
-          {site.credential}
+          <div
+            style={{
+              display: "flex",
+              width: 20,
+              height: 20,
+              backgroundColor: "#009a58",
+              marginRight: 16,
+            }}
+          />
+          <div
+            style={{
+              display: "flex",
+              fontSize: 32,
+              fontWeight: 700,
+              letterSpacing: 4,
+              textTransform: "uppercase",
+              color: "#009a58",
+            }}
+          >
+            {site.credential}
+          </div>
         </div>
         <div
           style={{
             display: "flex",
             fontSize: 96,
             fontWeight: 800,
-            color: "#f5f5f5",
+            color: "#0e1612",
             lineHeight: 1.05,
             marginBottom: 32,
           }}
@@ -54,7 +70,7 @@ export default async function Image() {
             display: "flex",
             fontSize: 40,
             fontWeight: 500,
-            color: "#a3a09a",
+            color: "#43514a",
             maxWidth: 900,
           }}
         >
