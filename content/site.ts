@@ -11,7 +11,7 @@ export const site: SiteContent = {
   ],
   credential: "Director of GTM Experts @ Demandbase",
   about: {
-    bio: "GTM engineer and ops builder. I spend my days making go-to-market teams faster with systems, data, and AI agents — and my nights building apps for the things I care about. [PLACEHOLDER BIO — replace with Tom's real bio.]",
+    bio: "Player-coach GTM systems leader with 13+ years building the technical backbone of B2B revenue engines. Architects automation, internal tooling, and revenue data infrastructure that connect Sales, SDR, Marketing, and CS into a single operating system. Customer Zero by instinct — operates the GTM product daily, invents the workflows customers later adopt, and feeds that operating knowledge back into the product org. Currently building AI-driven workflows in Claude.",
   },
   skills: [
     { title: "GTM Automation", items: ["Workflow design", "Process automation", "Playbook systems"] },
@@ -20,9 +20,9 @@ export const site: SiteContent = {
     { title: "RevOps Tooling", items: ["CRM systems", "Routing & territories", "Reporting"] },
   ],
   contact: [
-    { label: "LinkedIn", href: "#", comingSoon: true },
-    { label: "Email", href: "#", comingSoon: true },
-    { label: "GitHub", href: "#", comingSoon: true },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/tomkeefesmc" },
+    { label: "Email", href: "mailto:tkeefe66@gmail.com" },
+    { label: "GitHub", href: "https://github.com/tkeefe66" },
   ],
   notFound: {
     headline: "404",
