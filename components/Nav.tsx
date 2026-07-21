@@ -13,7 +13,7 @@ export default function Nav() {
     <header className="sticky top-0 z-20 border-b border-border bg-bg/85 backdrop-blur-md">
       <nav className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2 px-5 py-4 sm:px-8">
         <Link
-          href="#"
+          href="/"
           className="shrink-0 font-display text-lg font-extrabold uppercase tracking-tight text-ink transition-colors hover:text-accent"
         >
           {site.name}
