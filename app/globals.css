@@ -1,26 +1,94 @@
 @import "tailwindcss";
 
+/*
+  Design tokens (OKLCH). Bold & high-contrast: near-black surface, off-white
+  type, exactly one electric accent (a signal-green/teal used only as text,
+  border, or glow — never as a filled background behind text, since accent
+  at this lightness/chroma fails contrast both against ink and against bg
+  when text sits directly on a solid accent fill).
+*/
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: oklch(0.09 0 0);
+  --surface: oklch(0.15 0.014 168);
+  --ink: oklch(0.96 0 0);
+  --muted: oklch(0.64 0.01 95);
+  --accent: oklch(0.76 0.19 168);
+  --border: oklch(1 0 0 / 12%);
+  --border-strong: oklch(1 0 0 / 22%);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --font-display: var(--font-big-shoulders);
+  --font-body: var(--font-archivo);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+section[id] {
+  scroll-margin-top: 5.5rem;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.85rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(0.4rem);
+  }
+}
+
+.animate-rise-in {
+  animation: rise-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-drift {
+  animation: drift 2.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-rise-in,
+  .animate-drift {
+    animation: none !important;
+  }
 }
