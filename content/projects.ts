@@ -31,5 +31,6 @@ export const projects: Project[] = [
     description: "tomkeefe.ai — designed, written, and deployed by AI agents under my direction.",
     stack: ["Next.js", "TypeScript", "Tailwind", "Railway"],
     status: "Live",
+    flagship: true,
   },
 ];

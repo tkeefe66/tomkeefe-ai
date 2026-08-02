@@ -1,0 +1,48 @@
+/* Color tokens — light ground by default, dark via [data-theme="dark"].
+   Semantic roles first; tonal ramps below are fixed across themes. */
+:root {
+  --color-bg: #f3f2f2;
+  --color-surface: #eae9e9;
+  --color-text: #201e1d;
+  --color-accent: #ec3013;
+  --color-accent-strong: #dd2b0f;   /* hover */
+  --color-accent-pressed: #ae1800;  /* active */
+  --color-accent-readable: #ae1800; /* accent for paragraph-size text */
+  --color-on-accent: #f3f2f2;
+  --color-divider: color-mix(in srgb, var(--color-text) 40%, transparent);
+  --color-muted: color-mix(in srgb, var(--color-text) 55%, transparent);
+
+  /* Tonal ramps — OKLCH-derived, shared lightness scale */
+  --color-neutral-100: #f8f4f4; --color-neutral-200: #eae7e7;
+  --color-neutral-300: #d7d3d3; --color-neutral-400: #bab6b6;
+  --color-neutral-500: #9b9797; --color-neutral-600: #7d7979;
+  --color-neutral-700: #605d5d; --color-neutral-800: #444141;
+  --color-neutral-900: #2d2b2b;
+
+  --color-accent-100: #fff2ef; --color-accent-200: #ffe0d9;
+  --color-accent-300: #ffc4b8; --color-accent-400: #ff9783;
+  --color-accent-500: #ff563c; --color-accent-600: #dd2b0f;
+  --color-accent-700: #ae1800; --color-accent-800: #7c1405;
+  --color-accent-900: #4d170e;
+
+  /* Tag/tint pairings */
+  --tint-accent-bg: var(--color-accent-100);
+  --tint-accent-fg: var(--color-accent-800);
+  --tint-neutral-bg: var(--color-neutral-100);
+  --tint-neutral-fg: var(--color-neutral-800);
+}
+
+[data-theme="dark"] {
+  --color-bg: #201e1d;
+  --color-surface: #2d2b2b;
+  --color-text: #f3f2f2;
+  --color-accent: #ff563c;          /* one step lighter on the dark ground */
+  --color-accent-strong: #ff9783;   /* hover */
+  --color-accent-pressed: #ffc4b8;  /* active */
+  --color-accent-readable: #ff9783;
+  --color-on-accent: #201e1d;
+  --tint-accent-bg: #4d170e;
+  --tint-accent-fg: #ffc4b8;
+  --tint-neutral-bg: #2d2b2b;
+  --tint-neutral-fg: #d7d3d3;
+}

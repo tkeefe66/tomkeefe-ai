@@ -1,0 +1,107 @@
+/* Component layer — plain CSS on plain HTML. Flush-left labels, 0 radius. */
+
+/* — buttons — */
+.btn {
+  display: inline-flex; align-items: center; justify-content: flex-start; gap: 6px;
+  cursor: pointer; text-decoration: none;
+  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  font-size: 14px; line-height: 1.2; color: var(--color-text); text-align: left;
+  background: transparent; border: 1px solid transparent;
+  padding: var(--space-2) calc(var(--space-3) * 1.2);
+  border-radius: var(--radius-md);
+}
+.btn svg { display: block; }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.btn-primary { background: var(--color-accent); color: var(--color-on-accent); }
+.btn-primary:hover { background: var(--color-accent-strong); }
+.btn-primary:active { background: var(--color-accent-pressed); }
+.btn-secondary { border-color: var(--color-divider); }
+.btn-secondary:hover { background: color-mix(in srgb, var(--color-text) 7%, transparent); }
+.btn-secondary:active { background: color-mix(in srgb, var(--color-text) 14%, transparent); }
+.btn-ghost { color: var(--color-accent-readable); padding-inline: var(--space-1); }
+.btn-ghost:hover { background: color-mix(in srgb, var(--color-accent) 10%, transparent); }
+.btn-ghost:active { background: color-mix(in srgb, var(--color-accent) 18%, transparent); }
+.btn-icon { width: 36px; height: 36px; padding: 0; justify-content: center; }
+.btn-block { width: 100%; margin-top: var(--space-2); justify-content: flex-start; }
+
+/* — tags / status labels — */
+.tag {
+  display: inline-flex; align-items: center; gap: 5px; font-size: var(--text-caption);
+  letter-spacing: 0.02em; padding: 3px 10px; border-radius: var(--radius-sm);
+}
+.tag-accent { background: var(--tint-accent-bg); color: var(--tint-accent-fg); }
+.tag-neutral { background: var(--tint-neutral-bg); color: var(--tint-neutral-fg); }
+.tag-outline { border: 1px solid var(--color-accent); color: var(--color-accent-readable); }
+/* project status vocabulary */
+.tag-live::before, .tag-draft::before {
+  content: ""; width: 6px; height: 6px; flex: none;
+}
+.tag-live { background: var(--tint-accent-bg); color: var(--tint-accent-fg); }
+.tag-live::before { background: var(--color-accent); }
+.tag-draft { background: var(--tint-neutral-bg); color: var(--tint-neutral-fg); }
+.tag-draft::before { border: 1px solid currentColor; }
+
+/* — forms — */
+.field > label { display: block; font-size: 12px; margin-bottom: 5px; color: color-mix(in srgb, var(--color-text) 70%, transparent); }
+.input {
+  width: 100%; min-height: 36px; padding: 6px 10px; font: inherit;
+  font-size: 14px; color: var(--color-text); caret-color: var(--color-accent);
+  background: var(--color-surface);
+  border: 1px solid var(--color-divider); border-radius: var(--radius-md);
+}
+.input:hover { border-color: color-mix(in srgb, var(--color-text) 45%, transparent); }
+.input:focus-visible { border-color: var(--color-accent); outline-offset: 0; }
+textarea.input { min-height: 90px; resize: vertical; }
+
+/* — cards — */
+.card {
+  display: flex; flex-direction: column; gap: var(--space-2);
+  padding: var(--space-4); border-radius: var(--radius-md); background: var(--color-surface);
+}
+.card-kicker { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent-readable); }
+.card-title { font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 17px; line-height: 1.2; }
+.card-body { margin: 0; font-size: var(--text-small); opacity: 0.8; flex: 1; }
+.card-meta { display: flex; align-items: center; gap: 6px; font-size: var(--text-caption); color: var(--color-muted); }
+.elev-sm { box-shadow: var(--shadow-sm); }
+.elev-md { box-shadow: var(--shadow-md); }
+.elev-lg { box-shadow: var(--shadow-lg); }
+
+/* — stat block (homepage counters) — */
+.stat { display: flex; flex-direction: column; gap: var(--space-1); }
+.stat-value {
+  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  font-size: 56px; line-height: var(--leading-tight); letter-spacing: -0.02em;
+}
+.stat-value sup { font-size: 0.45em; color: var(--color-accent-readable); }
+.stat-label { font-size: var(--text-caption); letter-spacing: var(--tracking-kicker); text-transform: uppercase; color: var(--color-muted); }
+
+/* — section header (kicker + rule + title) — */
+.section-head { border-top: var(--rule-strong) solid var(--color-divider); padding-top: var(--space-3); margin-bottom: var(--space-6); display: flex; align-items: baseline; gap: var(--space-4); }
+.section-head h2 { margin: 0; }
+.section-head .kicker { margin-left: auto; }
+
+/* — principle row (numbered aphorism list) — */
+.principle { display: grid; grid-template-columns: 64px 1fr auto; gap: var(--space-4); align-items: baseline; padding: var(--space-4) 0; border-bottom: var(--rule-thin) solid var(--color-divider); }
+.principle-num { font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: var(--text-h4); color: var(--color-accent-readable); }
+.principle-text { font-family: var(--font-heading); font-weight: 600; font-size: var(--text-h4); line-height: 1.3; margin: 0; }
+
+/* — navigation — */
+.nav { display: flex; align-items: center; gap: var(--space-4); padding: var(--space-3) var(--space-4); border-bottom: var(--rule-strong) solid var(--color-divider); }
+.nav-brand { font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 18px; margin-right: auto; color: inherit; text-decoration: none; }
+.nav-brand em { font-style: normal; color: var(--color-accent); }
+.nav a { color: inherit; text-decoration: none; font-size: 14px; }
+.nav a:hover, .nav a[aria-current='page'] { color: var(--color-accent); }
+
+/* — tables — */
+.table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.table th { text-align: left; font-size: var(--text-caption); letter-spacing: 0.08em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 60%, transparent); padding: var(--space-2); border-bottom: var(--rule-strong) solid var(--color-divider); }
+.table td { padding: var(--space-2); border-bottom: var(--rule-thin) solid var(--color-divider); }
+.table tbody tr:hover { background: color-mix(in srgb, var(--color-text) 4%, transparent); }
+
+/* — poster statement (red field close/banner) — */
+.poster { background: var(--color-accent); color: #f3f2f2; padding: var(--space-12) var(--space-6); }
+.poster h2, .poster h1 { color: inherit; }
+.poster a { color: inherit; }
+/* ink alternative — near-black field, accent reserved for hover */
+.poster-ink { background: var(--color-neutral-900); }
+.poster-ink a:hover { color: var(--color-accent-400); }

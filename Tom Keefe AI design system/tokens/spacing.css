@@ -1,0 +1,21 @@
+/* Spacing + shape. Radius is 0 everywhere on purpose — do not round corners. */
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-24: 96px;
+
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+
+  --rule-strong: 2px; /* section dividers, nav underline, table heads */
+  --rule-thin: 1px;   /* row rules, input borders */
+  --page-max: 1120px;
+  --page-pad: var(--space-6);
+}

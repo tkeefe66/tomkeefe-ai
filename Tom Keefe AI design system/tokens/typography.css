@@ -1,0 +1,22 @@
+/* Type tokens — one family, three weights. Density 1.0. */
+:root {
+  --font-heading: "Archivo", system-ui, sans-serif;
+  --font-body: "Archivo", system-ui, sans-serif;
+  --font-heading-weight: 800;
+
+  --text-display: 64px;   /* hero statement */
+  --text-h1: 42px;
+  --text-h2: 32px;
+  --text-h3: 25px;
+  --text-h4: 20px;
+  --text-body: 15px;
+  --text-small: 13px;
+  --text-caption: 11px;
+  --text-kicker: 11px;    /* uppercase, 0.1em tracking */
+
+  --leading-tight: 1.05;
+  --leading-heading: 1.12;
+  --leading-body: 1.55;
+  --tracking-heading: -0.015em;
+  --tracking-kicker: 0.1em;
+}

@@ -1,6 +1,9 @@
 export default function Footer() {
   return (
-    <footer className="mt-auto flex flex-col items-center justify-between gap-2 px-5 py-8 font-body text-xs text-muted sm:flex-row sm:px-8 sm:text-sm">
+    <footer
+      className="page mt-auto flex w-full flex-wrap items-center justify-between gap-2 py-4"
+      style={{ fontSize: "var(--text-caption)", color: "var(--color-muted)" }}
+    >
       <span>© 2026 Tom Keefe</span>
       <span>Built by AI agents, directed by a human.</span>
     </footer>

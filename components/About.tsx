@@ -1,30 +1,46 @@
+import Image from "next/image";
 import { site } from "@/content/site";
 
 export default function About() {
   return (
-    <section id="about" className="border-b border-border px-5 py-24 sm:px-8 sm:py-32">
-      <h2 className="mb-12 flex items-center gap-4 font-display text-3xl font-black uppercase tracking-tight text-ink sm:mb-16 sm:gap-5 sm:text-5xl">
-        <span className="h-[0.55em] w-[0.55em] shrink-0 bg-accent-vivid" aria-hidden="true" />
-        About
-      </h2>
-      <div className="grid gap-10 sm:gap-16 md:grid-cols-[1.1fr_1fr] md:items-start">
-        <p className="max-w-[65ch] text-pretty font-body text-lg font-medium leading-relaxed text-ink/90 sm:text-xl">
+    <section id="about" className="page pb-16">
+      <div className="section-head">
+        <h2>About</h2>
+      </div>
+      <div className="grid items-start gap-8 md:grid-cols-[1.2fr_1fr]">
+        <p
+          className="max-w-[52ch]"
+          style={{ fontSize: "var(--text-h4)", lineHeight: 1.45 }}
+        >
           {site.about.bio}
         </p>
-        <div className="grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2">
-          {site.skills.map((category) => (
-            <div key={category.title}>
-              <h3 className="mb-3 font-display text-sm font-bold uppercase tracking-wide text-accent sm:text-base">
-                {category.title}
-              </h3>
-              <ul className="flex flex-col gap-1.5 font-body text-sm text-muted sm:text-base">
-                {category.items.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
+        <figure>
+          <div className="grayscale-photo relative h-[260px]">
+            <Image
+              src="/about-photo.jpg"
+              alt="Modernist house among rhododendrons — placeholder photograph"
+              fill
+              sizes="(min-width: 768px) 40vw, 100vw"
+              className="object-cover"
+            />
+          </div>
+          <figcaption>
+            Placeholder photograph — photography prints black &amp; white.
+          </figcaption>
+        </figure>
+      </div>
+      <div
+        className="mt-8 grid gap-6 pt-6 sm:grid-cols-2 lg:grid-cols-4"
+        style={{ borderTop: "var(--rule-thin) solid var(--color-divider)" }}
+      >
+        {site.skills.map((category) => (
+          <div key={category.title}>
+            <h6 className="mb-2">{category.title}</h6>
+            <p className="text-muted" style={{ fontSize: "var(--text-small)" }}>
+              {category.items.join(" · ")}
+            </p>
+          </div>
+        ))}
       </div>
     </section>
   );

@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Design-system reference folder (not app code):
+    "Tom Keefe AI design system/**",
   ]),
 ]);
 

@@ -23,6 +23,8 @@ export type SiteContent = {
   tagline: string;
   taglineAlternates: string[];
   credential: string;
+  subline: string;
+  contactHeadline: string;
   about: { bio: string };
   skills: SkillCategory[];
   contact: ContactLink[];

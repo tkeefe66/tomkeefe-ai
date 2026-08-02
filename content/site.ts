@@ -10,6 +10,9 @@ export const site: SiteContent = {
     "I build the systems that make GTM teams move faster.",
   ],
   credential: "Director of GTM Experts @ Demandbase",
+  subline:
+    "Automation, internal tooling, and revenue data infrastructure for B2B teams.",
+  contactHeadline: "Let's wire something together.",
   about: {
     bio: "Player-coach GTM systems leader with 13+ years building the technical backbone of B2B revenue engines. Architects automation, internal tooling, and revenue data infrastructure that connect Sales, SDR, Marketing, and CS into a single operating system. Customer Zero by instinct — operates the GTM product daily, invents the workflows customers later adopt, and feeds that operating knowledge back into the product org. Currently building AI-driven workflows in Claude.",
   },

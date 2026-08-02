@@ -1,65 +1,45 @@
 import { projects } from "@/content/projects";
 import type { ProjectStatus } from "@/content/types";
 
-const statusStyles: Record<ProjectStatus, string> = {
-  Live: "border-transparent bg-accent-vivid text-ink",
-  "In development": "border-ink/30 text-ink/80",
-  Internal: "border-muted/40 text-muted",
-};
-
-const statusDot: Record<ProjectStatus, string> = {
-  Live: "bg-ink",
-  "In development": "bg-ink/60",
-  Internal: "bg-muted/60",
+const statusTag: Record<ProjectStatus, string> = {
+  Live: "tag-live",
+  "In development": "tag-draft",
+  Internal: "tag-neutral",
 };
 
 export default function Projects() {
   return (
-    <section id="projects" className="border-b border-border bg-surface/40 px-5 py-24 sm:px-8 sm:py-32">
-      <h2 className="mb-12 flex items-center gap-4 font-display text-3xl font-black uppercase tracking-tight text-ink sm:mb-16 sm:gap-5 sm:text-5xl">
-        <span className="h-[0.55em] w-[0.55em] shrink-0 bg-accent-vivid" aria-hidden="true" />
-        Projects
-      </h2>
-      <div className="grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2">
-        {projects.map((project) => (
+    <section id="projects" className="page pb-16">
+      <div className="section-head">
+        <h2>Projects</h2>
+      </div>
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {projects.map((project, i) => (
           <article
             key={project.name}
-            className={`flex flex-col gap-5 border border-border bg-surface p-6 transition-colors hover:border-border-strong sm:p-8 ${
-              project.flagship ? "md:col-span-2" : ""
-            }`}
+            className={`card ${project.flagship ? "sm:col-span-2" : ""}`}
           >
-            <div className="flex flex-wrap items-start justify-between gap-3">
-              <h3 className="font-display text-2xl font-bold uppercase tracking-tight text-ink sm:text-3xl">
-                {project.name}
-              </h3>
-              <span
-                className={`flex shrink-0 items-center gap-1.5 rounded-full border px-2.5 py-1 font-body text-[10px] font-semibold uppercase tracking-widest ${statusStyles[project.status]}`}
-              >
-                <span className={`h-1.5 w-1.5 rounded-full ${statusDot[project.status]}`} aria-hidden="true" />
+            <div className="flex items-center gap-2">
+              <span className="card-kicker flex-1">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <span className={`tag ${statusTag[project.status]}`}>
                 {project.status}
               </span>
             </div>
-            <p className="max-w-[65ch] font-body text-sm font-medium leading-relaxed text-muted sm:text-base">
-              {project.description}
-            </p>
-            <div className="mt-auto flex flex-wrap gap-2 pt-2">
-              {project.stack.map((tech) => (
-                <span
-                  key={tech}
-                  className="rounded border border-border px-2 py-1 font-body text-[11px] font-semibold uppercase tracking-wide text-ink/70"
-                >
+            <h3 className="card-title">{project.name}</h3>
+            <p className="card-body">{project.description}</p>
+            <div className="card-meta">
+              {project.stack.map((tech, t) => (
+                <span key={tech}>
                   {tech}
+                  {t < project.stack.length - 1 && " ·"}
                 </span>
               ))}
             </div>
             {project.link && (
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-body text-sm font-semibold text-accent underline decoration-accent-vivid decoration-2 underline-offset-4 transition-colors hover:text-ink"
-              >
-                {project.link.replace(/^https?:\/\//, "")} ↗
+              <a href={project.link} target="_blank" rel="noopener noreferrer">
+                {project.link.replace(/^https?:\/\//, "")} →
               </a>
             )}
           </article>

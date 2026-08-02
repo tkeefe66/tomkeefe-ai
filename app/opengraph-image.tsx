@@ -5,9 +5,9 @@ export const alt = "Tom Keefe — GTM Engineer";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-// Hex approximations of the OKLCH design tokens in app/globals.css:
-// --bg oklch(0.985 0.004 165) -> #f8fbf9, --ink oklch(0.19 0.014 165) -> #0e1612,
-// --accent-vivid oklch(0.58 0.19 163) -> #009a58, --muted oklch(0.42 0.02 165) -> #43514a
+// Design-system tokens (see app/globals.css):
+// --color-bg #f3f2f2, --color-text #201e1d, --color-accent #ec3013,
+// --color-accent-readable #ae1800, --color-neutral-700 #605d5d
 export default async function Image() {
   return new ImageResponse(
     (
@@ -19,7 +19,7 @@ export default async function Image() {
           flexDirection: "column",
           alignItems: "flex-start",
           justifyContent: "center",
-          backgroundColor: "#f8fbf9",
+          backgroundColor: "#f3f2f2",
           padding: "80px",
           fontFamily: "Arial, Helvetica, sans-serif",
         }}
@@ -36,18 +36,18 @@ export default async function Image() {
               display: "flex",
               width: 20,
               height: 20,
-              backgroundColor: "#009a58",
+              backgroundColor: "#ec3013",
               marginRight: 16,
             }}
           />
           <div
             style={{
               display: "flex",
-              fontSize: 32,
-              fontWeight: 700,
+              fontSize: 28,
+              fontWeight: 600,
               letterSpacing: 4,
               textTransform: "uppercase",
-              color: "#009a58",
+              color: "#ae1800",
             }}
           >
             {site.credential}
@@ -58,19 +58,21 @@ export default async function Image() {
             display: "flex",
             fontSize: 96,
             fontWeight: 800,
-            color: "#0e1612",
+            color: "#201e1d",
             lineHeight: 1.05,
+            letterSpacing: -2,
             marginBottom: 32,
           }}
         >
           {site.name}
+          <span style={{ color: "#ec3013" }}>.</span>
         </div>
         <div
           style={{
             display: "flex",
             fontSize: 40,
-            fontWeight: 500,
-            color: "#43514a",
+            fontWeight: 400,
+            color: "#605d5d",
             maxWidth: 900,
           }}
         >

@@ -1,0 +1,131 @@
+<!-- @dsCard group="Website" viewport="1280x860" subtitle="Redesigned tomkeefe.ai homepage — light/dark" name="Homepage" -->
+<!-- @startingPoint section="Website" subtitle="The full homepage, light/dark toggle" viewport="1280x860" -->
+<!DOCTYPE html>
+<html lang="en" id="top">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tom Keefe — GTM Engineer</title>
+<link rel="stylesheet" href="../../styles.css">
+<script src="./image-slot.js"></script>
+<script>try{if(localStorage.getItem('tk-theme')==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}</script>
+</head>
+<body>
+<nav class="nav" style="position:sticky;top:0;background:var(--color-bg);z-index:10;">
+  <a class="nav-brand" href="#top">Tom Keefe</a>
+  <a href="#principles">Principles</a>
+  <a href="#projects">Projects</a>
+  <a href="#about">About</a>
+  <a href="#contact">Contact</a>
+  <button class="btn btn-secondary" id="theme-toggle" style="padding:4px 10px;font-size:12px;">Dark</button>
+</nav>
+
+<header class="page" style="padding-top:var(--space-24);padding-bottom:var(--space-16);">
+  <h1 style="font-size:var(--text-display);line-height:var(--leading-tight);letter-spacing:-0.02em;margin:0 0 var(--space-6);">GTM runs on systems.<br>I build them<span>.</span></h1>
+  <p class="text-muted" style="font-size:var(--text-h4);max-width:44ch;">Director of GTM Experts @ Demandbase. Automation, internal tooling, and revenue data infrastructure for B2B teams.</p>
+  <div style="display:flex;gap:var(--space-3);margin-top:var(--space-6);">
+    <a class="btn btn-primary" href="#projects">View projects</a>
+    <a class="btn btn-secondary" href="#contact">Get in touch</a>
+  </div>
+</header>
+
+<section class="page" style="padding-bottom:var(--space-16);">
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-6);border-top:var(--rule-strong) solid var(--color-divider);padding-top:var(--space-6);">
+    <div class="stat"><div class="stat-value">120<sup>+</sup></div><div class="stat-label">Workflows automated</div></div>
+    <div class="stat" style="border-left:var(--rule-thin) solid var(--color-divider);padding-left:var(--space-6);"><div class="stat-value">30</div><div class="stat-label">Hrs/week automated away</div></div>
+    <div class="stat" style="border-left:var(--rule-thin) solid var(--color-divider);padding-left:var(--space-6);"><div class="stat-value">14</div><div class="stat-label">Apps shipped</div></div>
+    <div class="stat" style="border-left:var(--rule-thin) solid var(--color-divider);padding-left:var(--space-6);"><div class="stat-value">13</div><div class="stat-label">Years in GTM</div></div>
+  </div>
+</section>
+
+<section class="page" id="principles" style="padding-bottom:var(--space-16);">
+  <div class="section-head"><h2>Principles</h2></div>
+  <div>
+    <div class="principle"><span class="principle-num">01</span><p class="principle-text">Most GTM problems aren't strategy problems. They're plumbing problems nobody wants to own.</p><span class="tag tag-draft">Draft</span></div>
+    <div class="principle"><span class="principle-num">02</span><p class="principle-text">Buying another tool isn't a strategy. Wiring together the ones you have is.</p><span class="tag tag-draft">Draft</span></div>
+    <div class="principle"><span class="principle-num">03</span><p class="principle-text">If your team does it manually every week, that's not a process. It's a hostage situation.</p><span class="tag tag-draft">Draft</span></div>
+    <div class="principle"><span class="principle-num">04</span><p class="principle-text">Speed to answer beats depth of analysis. A directionally right number today moves the deal.</p><span class="tag tag-draft">Draft</span></div>
+    <div class="principle" style="border-bottom:0;"><span class="principle-num">05</span><p class="principle-text">Every recurring report should become an automation. Every automation should have an owner.</p><span class="tag tag-draft">Draft</span></div>
+  </div>
+</section>
+
+<section class="page" id="projects" style="padding-bottom:var(--space-16);">
+  <div class="section-head"><h2>Projects</h2></div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-4);">
+    <div class="card">
+      <div style="display:flex;align-items:center;gap:8px;"><span class="card-kicker" style="flex:1;">01</span><span class="tag tag-neutral">Internal</span></div>
+      <div class="card-title">B2B News Source</div>
+      <p class="card-body">AI-curated B2B news and account-signal digest for GTM teams. [PLACEHOLDER — confirm description]</p>
+      <div class="card-meta"><span>TBC</span></div>
+    </div>
+    <div class="card">
+      <div style="display:flex;align-items:center;gap:8px;"><span class="card-kicker" style="flex:1;">02</span><span class="tag tag-draft">In development</span></div>
+      <div class="card-title">Outdoors &amp; Photography Assistant</div>
+      <p class="card-body">Personal AI assistant for planning outdoor trips and photography — conditions, locations, timing. [PLACEHOLDER — confirm description]</p>
+      <div class="card-meta"><span>TBC</span></div>
+    </div>
+    <div class="card">
+      <div style="display:flex;align-items:center;gap:8px;"><span class="card-kicker" style="flex:1;">03</span><span class="tag tag-draft">In development</span></div>
+      <div class="card-title">Sleeper Dynasty Analyzer</div>
+      <p class="card-body">Analytics for Sleeper dynasty fantasy football leagues — trades, roster value, draft capital. [PLACEHOLDER — confirm description]</p>
+      <div class="card-meta"><span>TBC</span></div>
+    </div>
+    <div class="card">
+      <div style="display:flex;align-items:center;gap:8px;"><span class="card-kicker" style="flex:1;">04</span><span class="tag tag-draft">In development</span></div>
+      <div class="card-title">Life Focus Tracker</div>
+      <p class="card-body">Personal focus and goals tracker. [PLACEHOLDER — confirm description]</p>
+      <div class="card-meta"><span>TBC</span></div>
+    </div>
+    <div class="card" style="grid-column:span 2;">
+      <div style="display:flex;align-items:center;gap:8px;"><span class="card-kicker" style="flex:1;">05</span><span class="tag tag-live">Live</span></div>
+      <div class="card-title">This Site</div>
+      <p class="card-body">tomkeefe.ai — designed, written, and deployed by AI agents under my direction.</p>
+      <div class="card-meta"><span>Next.js ·</span><span>TypeScript ·</span><span>Tailwind ·</span><span>Railway</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="about" style="padding-bottom:var(--space-16);">
+  <div class="section-head"><h2>About</h2></div>
+  <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:var(--space-8);align-items:start;">
+    <p style="font-size:var(--text-h4);line-height:1.45;max-width:52ch;">Player-coach GTM systems leader with 13+ years building the technical backbone of B2B revenue engines. Architects automation, internal tooling, and revenue data infrastructure that connect Sales, SDR, Marketing, and CS into a single operating system. Customer Zero by instinct. Currently building AI-driven workflows in Claude.</p>
+    <figure><div class="grayscale" style="height:260px;"><image-slot id="about-photo" shape="rect" placeholder="Drop a tech photo — prints B&W"></image-slot></div><figcaption>Drop in a photograph — it prints black &amp; white</figcaption></figure>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-6);margin-top:var(--space-8);border-top:var(--rule-thin) solid var(--color-divider);padding-top:var(--space-6);">
+    <div><h6>GTM Automation</h6><p class="text-muted" style="font-size:var(--text-small);">Workflow design · Process automation · Playbook systems</p></div>
+    <div><h6>Data &amp; Enrichment</h6><p class="text-muted" style="font-size:var(--text-small);">Account data · Signal pipelines · SQL</p></div>
+    <div><h6>AI Agents</h6><p class="text-muted" style="font-size:var(--text-small);">Claude Code · Agent workflows · LLM integrations</p></div>
+    <div><h6>RevOps Tooling</h6><p class="text-muted" style="font-size:var(--text-small);">CRM systems · Routing &amp; territories · Reporting</p></div>
+  </div>
+</section>
+
+<section id="contact" class="poster poster-ink">
+  <div class="page">
+    <h2 style="font-size:48px;letter-spacing:-0.02em;max-width:20ch;margin:0 0 var(--space-6);">Let's wire something together.</h2>
+    <div style="display:flex;gap:var(--space-6);font-family:var(--font-heading);font-weight:800;font-size:18px;">
+      <a href="https://www.linkedin.com/in/tomkeefesmc" style="text-decoration:none;">LinkedIn →</a>
+      <a href="mailto:tkeefe66@gmail.com" style="text-decoration:none;">Email →</a>
+      <a href="https://github.com/tkeefe66" style="text-decoration:none;">GitHub →</a>
+    </div>
+  </div>
+</section>
+
+<footer class="page" style="display:flex;justify-content:space-between;padding-top:var(--space-4);padding-bottom:var(--space-4);font-size:var(--text-caption);color:var(--color-muted);">
+  <span>© 2026 Tom Keefe</span>
+  <span>Built by AI agents, directed by a human.</span>
+</footer>
+
+<script>
+const btn = document.getElementById('theme-toggle');
+function sync(){ const dark = document.documentElement.getAttribute('data-theme')==='dark'; btn.textContent = dark ? 'Light' : 'Dark'; }
+btn.addEventListener('click', () => {
+  const dark = document.documentElement.getAttribute('data-theme')==='dark';
+  if (dark) document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme','dark');
+  try{ localStorage.setItem('tk-theme', dark ? 'light' : 'dark'); }catch(e){}
+  sync();
+});
+sync();
+</script>
+</body>
+</html>
