@@ -1,32 +1,72 @@
-export type Stat = { value: string; label: string; placeholder: boolean };
-
-export type Principle = { text: string; draft: boolean };
-
-export type ProjectStatus = "Live" | "In development" | "Internal";
-
-export type Project = {
-  name: string;
-  description: string;
-  stack: string[];
-  status: ProjectStatus;
-  link?: string;
-  flagship?: boolean;
-};
-
-export type SkillCategory = { title: string; items: string[] };
-
-export type ContactLink = { label: string; href: string; comingSoon?: boolean };
+export type LedgerRow = { label: string; value: string };
+export type SiteLink = { label: "EMAIL" | "LINKEDIN" | "GITHUB"; href: string };
 
 export type SiteContent = {
   name: string;
   domain: string;
+  /** One-line description used in <title>/meta. */
   tagline: string;
-  taglineAlternates: string[];
-  credential: string;
-  subline: string;
+  mastheadVariant: "ledger" | "column";
+  masthead: {
+    lead: string;
+    ledger: LedgerRow[];
+    column: { headline: string; support: string; facts: string[] };
+  };
+  techStrip: string[];
+  links: SiteLink[];
   contactHeadline: string;
-  about: { bio: string };
-  skills: SkillCategory[];
-  contact: ContactLink[];
+  footer: { left: string; right: string };
   notFound: { headline: string; line: string; cta: string };
+};
+
+export type RangeContent = {
+  headline: string;
+  subhead: string;
+  paragraph: string;
+  altitudes: { label: string; text: string }[];
+};
+
+export type Principle = { text: string };
+
+export type ProjectRow = {
+  name: string;
+  description: string;
+  /** Present = row links to /projects/<slug> and shows READ →. */
+  slug?: string;
+  /** Inert rows only. */
+  status?: "IN PROGRESS" | "LIVE";
+};
+
+export type ProjectSection = {
+  heading: string;
+  body: string;
+  /** Renders in --faint: outcome placeholder awaiting a real metric. */
+  pending?: boolean;
+};
+
+export type ProjectFigure = {
+  src: string;
+  alt: string;
+  caption: string;
+  /** Fixed plate height in px. */
+  height: number;
+  /** true = image at 190% width (crop pattern); false = 100% width. */
+  wide: boolean;
+  /** Natural image dimensions for next/image. */
+  width: number;
+  naturalHeight: number;
+};
+
+export type ProjectDetail = {
+  slug: string;
+  number: string;
+  title: string;
+  menuSubtitle: string;
+  premise: string;
+  sections: ProjectSection[];
+  facts: LedgerRow[];
+  figures: ProjectFigure[];
+  /** Inventory only: paragraph beside FIG. 02. */
+  digestNote?: string;
+  next: { slug: string; label: string };
 };

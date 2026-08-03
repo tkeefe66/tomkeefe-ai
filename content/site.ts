@@ -3,33 +3,43 @@ import type { SiteContent } from "./types";
 export const site: SiteContent = {
   name: "Tom Keefe",
   domain: "tomkeefe.ai",
-  tagline: "GTM runs on systems. I build them.",
-  // Alternates Tom can swap in:
-  taglineAlternates: [
-    "I automate the work GTM teams shouldn't do by hand.",
-    "I build the systems that make GTM teams move faster.",
-  ],
-  credential: "Director of GTM Experts @ Demandbase",
-  subline:
-    "Automation, internal tooling, and revenue data infrastructure for B2B teams.",
-  contactHeadline: "Let's wire something together.",
-  about: {
-    bio: "Player-coach GTM systems leader with 13+ years building the technical backbone of B2B revenue engines. Architects automation, internal tooling, and revenue data infrastructure that connect Sales, SDR, Marketing, and CS into a single operating system. Customer Zero by instinct — operates the GTM product daily, invents the workflows customers later adopt, and feeds that operating knowledge back into the product org. Currently building AI-driven workflows in Claude.",
+  tagline:
+    "I build the systems that carry go-to-market — the automation, the data model, and the tooling underneath the number.",
+  // Ledger is the shipped masthead; Column is the approved backup. Flip to
+  // "column" to compare — do not delete either variant.
+  mastheadVariant: "ledger",
+  masthead: {
+    lead: "I build the systems that carry go-to-market — the automation, the data model, and the tooling underneath the number.",
+    ledger: [
+      { label: "ROLE", value: "Director, GTM Experts" },
+      { label: "COMPANY", value: "Demandbase" },
+      { label: "FIELD", value: "MOps · RevOps · GTM" },
+      { label: "YEARS", value: "13" },
+      { label: "STATUS", value: "Open to conversation" },
+    ],
+    column: {
+      headline: "Every GTM team is running on systems somebody had to build.",
+      support:
+        "Usually badly, usually undocumented, usually by whoever was closest. For thirteen years that person has been me — and I've made a career of turning that improvisation into infrastructure.",
+      facts: ["DIRECTOR", "GTM EXPERTS", "DEMANDBASE", "13 YEARS IN GTM"],
+    },
   },
-  skills: [
-    { title: "GTM Automation", items: ["Workflow design", "Process automation", "Playbook systems"] },
-    { title: "Data & Enrichment", items: ["Account data", "Signal pipelines", "SQL"] },
-    { title: "AI Agents", items: ["Claude Code", "Agent workflows", "LLM integrations"] },
-    { title: "RevOps Tooling", items: ["CRM systems", "Routing & territories", "Reporting"] },
+  // Unconfirmed by Tom — inferred from the old site (design README §Outstanding 3).
+  techStrip: [
+    "Salesforce", "Marketo", "Demandbase", "HubSpot", "Outreach", "Snowflake",
+    "SQL", "dbt", "Claude Code", "Next.js", "TypeScript", "Railway", "REST APIs",
   ],
-  contact: [
-    { label: "LinkedIn", href: "https://www.linkedin.com/in/tomkeefesmc" },
-    { label: "Email", href: "mailto:tkeefe66@gmail.com" },
-    { label: "GitHub", href: "https://github.com/tkeefe66" },
+  links: [
+    { label: "EMAIL", href: "mailto:tkeefe66@gmail.com" },
+    { label: "LINKEDIN", href: "https://www.linkedin.com/in/tomkeefesmc" },
+    { label: "GITHUB", href: "https://github.com/tkeefe66" },
   ],
+  contactHeadline:
+    "If something in your stack is held together by a Friday afternoon, let's talk.",
+  footer: { left: "© 2026 TOM KEEFE", right: "DIRECTED BY A HUMAN. BUILT WITH AGENTS." },
   notFound: {
     headline: "404",
     line: "This page doesn't exist. The systems do.",
-    cta: "Back to home",
+    cta: "← BACK TO HOME",
   },
 };
