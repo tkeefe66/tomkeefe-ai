@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  html { -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+  body { margin: 0; font-family: Onest, system-ui, sans-serif; letter-spacing: -0.011em;
+    --bg: #FFFFFF; --ink: #0B0D10; --body: #3B424C; --muted: #6B7280; --faint: #9AA1AC; --hair: #E4E6EA; --sunk: #F7F8F9;
+    --acc: #1D3A63; --accHover: #152C4C; --accInk: #FFFFFF; --tint: #E8EDF4; --tintEdge: #D0DAE8; --accDeep: #152C4B; --accSoft: #A6BCD8;
+    background: var(--bg); color: var(--ink); transition: background 220ms, color 220ms; }
+  * { box-sizing: border-box; }
+  a { color: var(--ink); text-decoration: none; }
+  a:hover { color: var(--acc); }
+  ::selection { background: var(--acc); color: #FFFFFF; }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+</style>
+</helmet>
+
+<div style="{{ rootStyle }}">
+
+<div style="position: fixed; bottom: 20px; right: 20px; z-index: 90; display: flex; gap: 6px; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.08em;">
+  <div style="display: flex; gap: 2px; padding: 3px; border: 1px solid var(--hair); background: var(--bg); border-radius: 999px;">
+    <button onClick="{{ showLedger }}" style="{{ tabLedger }}">LEDGER</button>
+    <button onClick="{{ showColumn }}" style="{{ tabColumn }}">COLUMN</button>
+  </div>
+  <button onClick="{{ toggleTheme }}" style="{{ themeBtn }}">{{ themeLabel }}</button>
+</div>
+
+<nav style="position: sticky; top: 0; z-index: 80; background: var(--accDeep); color: #FFFFFF;">
+  <div style="max-width: 1180px; margin: 0 auto; padding: 0 44px; height: 56px; display: flex; align-items: center; justify-content: space-between; gap: 24px;">
+    <a href="#top" onClick="{{ goHome }}" style="font-size: 15px; font-weight: 600; letter-spacing: -0.022em; color: #FFFFFF;">Tom Keefe</a>
+    <div style="display: flex; align-items: center; gap: 4px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.08em;">
+      <a href="#range" onClick="{{ jumpRange }}" style="padding: 8px 12px; border-radius: 3px; color: rgba(255,255,255,0.74);" style-hover="color: #FFFFFF; background: rgba(255,255,255,0.09);">OVERVIEW</a>
+      <div onMouseEnter="{{ openMenu }}" onMouseLeave="{{ closeMenu }}" style="position: relative;">
+        <a href="#projects" onClick="{{ jumpProjects }}" style="{{ projectsTrigger }}">PROJECTS <span style="color: var(--accSoft);">▾</span></a>
+        <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+        <div style="position: absolute; top: 100%; right: 0; min-width: 268px; background: var(--bg); border: 1px solid var(--hair); border-radius: 4px; padding: 6px; box-shadow: 0 12px 28px rgba(0,0,0,0.14);">
+          <a href="#top" onClick="{{ openMartech }}" style="display: block; padding: 10px 12px; border-radius: 3px; color: var(--ink);" style-hover="background: var(--tint); color: var(--acc);">
+            <span style="display: block; font-family: Onest, sans-serif; font-size: 14px; font-weight: 600; letter-spacing: -0.02em;">B2B MarTech Intel</span>
+            <span style="display: block; margin-top: 2px; font-size: 10.5px; letter-spacing: 0.06em; color: var(--faint);">MARKET INTELLIGENCE · INTERNAL</span>
+          </a>
+          <a href="#top" onClick="{{ openInventory }}" style="display: block; padding: 10px 12px; border-radius: 3px; color: var(--ink);" style-hover="background: var(--tint); color: var(--acc);">
+            <span style="display: block; font-family: Onest, sans-serif; font-size: 14px; font-weight: 600; letter-spacing: -0.02em;">Inventory</span>
+            <span style="display: block; margin-top: 2px; font-size: 10.5px; letter-spacing: 0.06em; color: var(--faint);">LEDGER + DIGEST · LIVE</span>
+          </a>
+          <div style="height: 1px; background: var(--hair); margin: 5px 12px;"></div>
+          <a href="#projects" onClick="{{ jumpProjects }}" style="display: block; padding: 9px 12px; border-radius: 3px; font-size: 10.5px; letter-spacing: 0.08em; color: var(--muted);" style-hover="background: var(--tint); color: var(--acc);">ALL PROJECTS →</a>
+        </div>
+        </sc-if>
+      </div>
+      <a href="#principles" onClick="{{ jumpPrinciples }}" style="padding: 8px 12px; border-radius: 3px; color: rgba(255,255,255,0.74);" style-hover="color: #FFFFFF; background: rgba(255,255,255,0.09);">PRINCIPLES</a>
+      <a href="#contact" onClick="{{ jumpContact }}" style="padding: 8px 12px; border-radius: 3px; color: rgba(255,255,255,0.74);" style-hover="color: #FFFFFF; background: rgba(255,255,255,0.09);">CONTACT</a>
+      <a href="mailto:tkeefe66@gmail.com" style="margin-left: 8px; padding: 8px 14px; background: #FFFFFF; color: var(--accDeep); border-radius: 3px; font-weight: 500;">EMAIL</a>
+    </div>
+  </div>
+</nav>
+
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+<div>
+
+  <sc-if value="{{ isLedger }}" hint-placeholder-val="{{ true }}">
+  <header style="background: var(--accDeep); color: #FFFFFF;">
+    <div style="max-width: 1180px; margin: 0 auto; padding: 76px 44px 52px; display: grid; grid-template-columns: minmax(0,1fr) 360px; gap: 56px; align-items: start;">
+      <div>
+        <h1 style="margin: 0; font-size: clamp(48px, 6.6vw, 80px); font-weight: 700; letter-spacing: -0.052em; line-height: 0.92; color: #FFFFFF;">Tom Keefe</h1>
+        <p style="margin: 22px 0 0; font-size: 20px; line-height: 1.5; color: rgba(255,255,255,0.80); max-width: 34ch; text-wrap: pretty;">I build the systems that carry go-to-market — the automation, the data model, and the tooling underneath the number.</p>
+      </div>
+      <div style="border-top: 1px solid rgba(255,255,255,0.5);">
+        <div style="display: flex; justify-content: space-between; gap: 16px; padding: 11px 0; border-bottom: 1px solid rgba(255,255,255,0.16); font-family: 'IBM Plex Mono', monospace; font-size: 11.5px;"><span style="color: rgba(255,255,255,0.6);">ROLE</span><span>Director, GTM Experts</span></div>
+        <div style="display: flex; justify-content: space-between; gap: 16px; padding: 11px 0; border-bottom: 1px solid rgba(255,255,255,0.16); font-family: 'IBM Plex Mono', monospace; font-size: 11.5px;"><span style="color: rgba(255,255,255,0.6);">COMPANY</span><span>Demandbase</span></div>
+        <div style="display: flex; justify-content: space-between; gap: 16px; padding: 11px 0; border-bottom: 1px solid rgba(255,255,255,0.16); font-family: 'IBM Plex Mono', monospace; font-size: 11.5px;"><span style="color: rgba(255,255,255,0.6);">FIELD</span><span>MOps · RevOps · GTM</span></div>
+        <div style="display: flex; justify-content: space-between; gap: 16px; padding: 11px 0; border-bottom: 1px solid rgba(255,255,255,0.16); font-family: 'IBM Plex Mono', monospace; font-size: 11.5px;"><span style="color: rgba(255,255,255,0.6);">YEARS</span><span>13</span></div>
+        <div style="display: flex; justify-content: space-between; gap: 16px; padding: 11px 0; font-family: 'IBM Plex Mono', monospace; font-size: 11.5px;"><span style="color: rgba(255,255,255,0.6);">STATUS</span><span>Open to conversation</span></div>
+        <div style="margin-top: 22px; display: flex; gap: 8px; flex-wrap: wrap;">
+          <a href="mailto:tkeefe66@gmail.com" style="padding: 10px 16px; background: #FFFFFF; color: var(--accDeep); border: 1px solid #FFFFFF; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.06em;" style-hover="background: transparent; color: #FFFFFF;">EMAIL</a>
+          <a href="https://www.linkedin.com/in/tomkeefesmc" style="padding: 10px 16px; border: 1px solid rgba(255,255,255,0.36); border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.82);" style-hover="border-color: #FFFFFF; color: #FFFFFF;">LINKEDIN</a>
+          <a href="https://github.com/tkeefe66" style="padding: 10px 16px; border: 1px solid rgba(255,255,255,0.36); border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.82);" style-hover="border-color: #FFFFFF; color: #FFFFFF;">GITHUB</a>
+        </div>
+      </div>
+    </div>
+  </header>
+  </sc-if>
+
+  <sc-if value="{{ isColumn }}" hint-placeholder-val="{{ false }}">
+  <header style="background: var(--accDeep); color: #FFFFFF;">
+    <div style="max-width: 1180px; margin: 0 auto; padding: 68px 44px 60px; display: grid; grid-template-columns: 230px minmax(0,1fr); gap: 0;">
+      <div style="padding-right: 30px;">
+        <div style="font-size: 30px; font-weight: 700; letter-spacing: -0.045em; line-height: 1.0; color: #FFFFFF;">Tom<br />Keefe</div>
+        <div style="margin-top: 16px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; line-height: 1.95; color: rgba(255,255,255,0.6);">DIRECTOR<br />GTM EXPERTS<br />DEMANDBASE<br />13 YEARS IN GTM</div>
+        <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 7px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em;">
+          <a href="mailto:tkeefe66@gmail.com" style="color: rgba(255,255,255,0.72);" style-hover="color: #FFFFFF;">EMAIL →</a>
+          <a href="https://www.linkedin.com/in/tomkeefesmc" style="color: rgba(255,255,255,0.72);" style-hover="color: #FFFFFF;">LINKEDIN →</a>
+          <a href="https://github.com/tkeefe66" style="color: rgba(255,255,255,0.72);" style-hover="color: #FFFFFF;">GITHUB →</a>
+        </div>
+      </div>
+      <div style="border-left: 1px solid rgba(255,255,255,0.5); padding-left: 40px;">
+        <h1 style="margin: 0; font-size: clamp(34px, 4.4vw, 52px); font-weight: 600; letter-spacing: -0.038em; line-height: 1.06; max-width: 20ch; text-wrap: balance; color: #FFFFFF;">Every GTM team is running on systems somebody had to build.</h1>
+        <p style="margin: 22px 0 0; font-size: 18px; line-height: 1.55; color: rgba(255,255,255,0.78); max-width: 54ch; text-wrap: pretty;">Usually badly, usually undocumented, usually by whoever was closest. For thirteen years that person has been me — and I've made a career of turning that improvisation into infrastructure.</p>
+      </div>
+    </div>
+  </header>
+  </sc-if>
+
+  <div style="background: var(--accDeep); color: #FFFFFF;">
+    <div style="max-width: 1180px; margin: 0 auto; padding: 0 44px;">
+      <div style="display: flex; align-items: center; gap: 22px; padding: 17px 0 19px; border-top: 1px solid rgba(255,255,255,0.16);">
+        <span style="flex: 0 0 auto; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.12em; color: rgba(255,255,255,0.5);">BUILT ACROSS</span>
+        <div style="flex: 1 1 auto; min-width: 0; overflow: hidden; mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);">
+          <div style="display: flex; align-items: center; gap: 22px; width: max-content; animation: marquee 46s linear infinite;" style-hover="animation-play-state: paused;">
+            <span style="font-size: 14.5px; color: rgba(255,255,255,0.78); white-space: nowrap;">Salesforce</span><span style="width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,0.3); flex: 0 0 auto;"></span><span style="font-size: 14.5px; color: rgba(255,255,255,0.78); white-space: nowrap;">Marketo</span><span style="width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,0.3); flex: 0 0 auto;"></span><span style="font-size: 14.5px; color: rgba(255,255,255,0.78); white-space: nowrap;">Demandbase</span><span style="width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,0.3); flex: 0 0 auto;"></span><span style="font-size: 14.5px; color: rgba(255,255,255,0.78); white-space: nowrap;">HubSpot</span><span style="width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,0.3); flex: 0 0 auto;"></span><span style="font-size: 14.5px; color: rgba(255,255,255,0.78); white-space: nowrap;">Outreach</span><span style="width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,0.3); flex: 0 0 auto;"></span><span style="font-size: 14.5px; color: rgba(255,255,255,0.78); white-space: nowrap;">Snowflake</span><span style="width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,0.3); flex: 0 0 auto;"></span><span style="font-size: 14.5px; color: rgba(255,255,255,0.78); white-space: nowrap;">SQL</span><span style="width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,0.3); flex: 0 0 auto;"></span><span style="font-size: 14.5px; color: rgba(255,255,255,0.78); white-space: nowrap;">dbt</span><span style="width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,0.3); flex: 0 0 auto;"></span><span style="font-size: 14.5px; color: rgba(255,255,255,0.78); white-space: nowrap;">Claude Code</span><span style="width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,0.3); flex: 0 0 auto;"></span><span style="font-size: 14.5px; color: rgba(255,255,255,0.78); white-space: nowrap;">Next.js</span><span style="width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,0.3); flex: 0 0 auto;"></span><span style="font-size: 14.5px; color: rgba(255,255,255,0.78); white-space: nowrap;">TypeScript</span><span style="width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,0.3); flex: 0 0 auto;"></span><span style="font-size: 14.5px; color: rgba(255,255,255,0.78); white-space: nowrap;">Railway</span><span style="width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,0.3); flex: 0 0 auto;"></span><span style="font-size: 14.5px; color: rgba(255,255,255,0.78); white-space: nowrap;">REST APIs</span><span style="width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,0.3); flex: 0 0 auto;"></span>
+            <span style="font-size: 14.5px; color: rgba(255,255,255,0.78); white-space: nowrap;">Salesforce</span><span style="width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,0.3); flex: 0 0 auto;"></span><span style="font-size: 14.5px; color: rgba(255,255,255,0.78); white-space: nowrap;">Marketo</span><span style="width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,0.3); flex: 0 0 auto;"></span><span style="font-size: 14.5px; color: rgba(255,255,255,0.78); white-space: nowrap;">Demandbase</span><span style="width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,0.3); flex: 0 0 auto;"></span><span style="font-size: 14.5px; color: rgba(255,255,255,0.78); white-space: nowrap;">HubSpot</span><span style="width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,0.3); flex: 0 0 auto;"></span><span style="font-size: 14.5px; color: rgba(255,255,255,0.78); white-space: nowrap;">Outreach</span><span style="width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,0.3); flex: 0 0 auto;"></span><span style="font-size: 14.5px; color: rgba(255,255,255,0.78); white-space: nowrap;">Snowflake</span><span style="width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,0.3); flex: 0 0 auto;"></span><span style="font-size: 14.5px; color: rgba(255,255,255,0.78); white-space: nowrap;">SQL</span><span style="width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,0.3); flex: 0 0 auto;"></span><span style="font-size: 14.5px; color: rgba(255,255,255,0.78); white-space: nowrap;">dbt</span><span style="width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,0.3); flex: 0 0 auto;"></span><span style="font-size: 14.5px; color: rgba(255,255,255,0.78); white-space: nowrap;">Claude Code</span><span style="width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,0.3); flex: 0 0 auto;"></span><span style="font-size: 14.5px; color: rgba(255,255,255,0.78); white-space: nowrap;">Next.js</span><span style="width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,0.3); flex: 0 0 auto;"></span><span style="font-size: 14.5px; color: rgba(255,255,255,0.78); white-space: nowrap;">TypeScript</span><span style="width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,0.3); flex: 0 0 auto;"></span><span style="font-size: 14.5px; color: rgba(255,255,255,0.78); white-space: nowrap;">Railway</span><span style="width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,0.3); flex: 0 0 auto;"></span><span style="font-size: 14.5px; color: rgba(255,255,255,0.78); white-space: nowrap;">REST APIs</span><span style="width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,0.3); flex: 0 0 auto;"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main style="max-width: 1180px; margin: 0 auto; padding: 0 44px;">
+
+    <section id="range" style="padding-top: 48px;">
+      <h2 style="margin: 0; font-size: clamp(30px, 3.8vw, 46px); font-weight: 600; letter-spacing: -0.036em; line-height: 1.06; max-width: 20ch; text-wrap: balance;">Boardroom to production query.</h2>
+      <p style="margin: 16px 0 0; font-size: 18px; line-height: 1.55; color: var(--muted); max-width: 44ch; text-wrap: pretty;">Most people cover one altitude. The work happens between them.</p>
+      <p style="margin: 24px 0 34px; font-size: 16px; line-height: 1.6; color: var(--body); max-width: 66ch; text-wrap: pretty;">I've led marketing operations, architected revenue data, and now run a team of GTM Experts at Demandbase — product evangelists who operate the platform daily and feed what they learn back into the roadmap. Customer Zero by instinct: if I'm going to recommend a workflow, I've already run it on myself.</p>
+      <div style="border-top: 1px solid var(--ink);">
+        <div style="display: flex; gap: 26px; align-items: baseline; padding: 15px 0; border-bottom: 1px solid var(--hair);"><span style="flex: 0 0 118px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: var(--acc);">C-SUITE</span><span style="font-size: 16px; line-height: 1.5; min-width: 0;">Revenue narrative, GTM operating model, and where the number actually comes from.</span></div>
+        <div style="display: flex; gap: 26px; align-items: baseline; padding: 15px 0; border-bottom: 1px solid var(--hair);"><span style="flex: 0 0 118px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: var(--acc);">LEADERSHIP</span><span style="font-size: 16px; line-height: 1.5; min-width: 0;">Coverage math, headcount-to-pipeline, and the handoffs between teams.</span></div>
+        <div style="display: flex; gap: 26px; align-items: baseline; padding: 15px 0; border-bottom: 1px solid var(--hair);"><span style="flex: 0 0 118px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: var(--acc);">PROGRAM</span><span style="font-size: 16px; line-height: 1.5; min-width: 0;">Playbooks, routing, territory design, lifecycle definitions.</span></div>
+        <div style="display: flex; gap: 26px; align-items: baseline; padding: 15px 0; border-bottom: 1px solid var(--hair);"><span style="flex: 0 0 118px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: var(--acc);">SYSTEM</span><span style="font-size: 16px; line-height: 1.5; min-width: 0;">CRM architecture, enrichment pipelines, the data model underneath it all.</span></div>
+        <div style="display: flex; gap: 26px; align-items: baseline; padding: 15px 0;"><span style="flex: 0 0 118px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: var(--acc);">MACHINE</span><span style="font-size: 16px; line-height: 1.5; min-width: 0;">SQL, APIs, Claude Code, agent workflows that keep running without me.</span></div>
+      </div>
+    </section>
+
+    <section id="projects" style="margin-top: 44px;">
+      <div style="padding-top: 8px;">
+        <h2 style="margin: 0; font-size: clamp(30px, 3.8vw, 46px); font-weight: 600; letter-spacing: -0.036em; line-height: 1.06; max-width: 22ch; text-wrap: balance;">Things I built instead of waiting for a vendor.</h2>
+        <p style="margin: 16px 0 0; font-size: 18px; line-height: 1.55; color: var(--muted); max-width: 52ch; text-wrap: pretty;">Two are running today. Read either one for the problem, the build and what it cost.</p>
+      </div>
+      <div style="margin-top: 26px; border-top: 1px solid var(--ink);">
+        <a href="#projects" onClick="{{ openMartech }}" style="display: block; padding: 20px 0; border-bottom: 1px solid var(--hair); transition: padding 160ms;" style-hover="padding-left: 10px;">
+          <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 24px;">
+            <span style="font-size: 21px; font-weight: 600; letter-spacing: -0.03em;">B2B MarTech Intel</span>
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.08em; color: var(--acc); white-space: nowrap;">READ →</span>
+          </div>
+          <p style="margin: 7px 0 0; font-size: 15px; line-height: 1.5; color: var(--muted); max-width: 68ch;">Market intelligence for the GTM org — 63,731 articles ingested, categorised and tagged, with briefings, trend analysis and drafting tools on top.</p>
+        </a>
+        <a href="#projects" onClick="{{ openInventory }}" style="display: block; padding: 20px 0; border-bottom: 1px solid var(--hair); transition: padding 160ms;" style-hover="padding-left: 10px;">
+          <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 24px;">
+            <span style="font-size: 21px; font-weight: 600; letter-spacing: -0.03em;">Inventory</span>
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.08em; color: var(--acc); white-space: nowrap;">READ →</span>
+          </div>
+          <p style="margin: 7px 0 0; font-size: 15px; line-height: 1.5; color: var(--muted); max-width: 68ch;">Every purchase parsed from receipts and email into one queryable ledger, with a daily digest that reads a week as behaviour.</p>
+        </a>
+        <div style="display: block; padding: 20px 0; border-bottom: 1px solid var(--hair);">
+          <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 24px;">
+            <span style="font-size: 21px; font-weight: 600; letter-spacing: -0.03em; color: var(--muted);">Dynasty Analyzer</span>
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.08em; color: var(--faint); white-space: nowrap;">IN PROGRESS</span>
+          </div>
+          <p style="margin: 7px 0 0; font-size: 15px; line-height: 1.5; color: var(--muted); max-width: 68ch;">Trade, roster-value and draft-capital analytics for Sleeper dynasty leagues.</p>
+        </div>
+        <div style="display: block; padding: 20px 0; border-bottom: 1px solid var(--hair);">
+          <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 24px;">
+            <span style="font-size: 21px; font-weight: 600; letter-spacing: -0.03em; color: var(--muted);">Field Assistant</span>
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.08em; color: var(--faint); white-space: nowrap;">IN PROGRESS</span>
+          </div>
+          <p style="margin: 7px 0 0; font-size: 15px; line-height: 1.5; color: var(--muted); max-width: 68ch;">Trip and photography planner — conditions, light, locations, timing.</p>
+        </div>
+        <div style="display: block; padding: 20px 0;">
+          <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 24px;">
+            <span style="font-size: 21px; font-weight: 600; letter-spacing: -0.03em; color: var(--muted);">tomkeefe.ai</span>
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.08em; color: var(--faint); white-space: nowrap;">LIVE</span>
+          </div>
+          <p style="margin: 7px 0 0; font-size: 15px; line-height: 1.5; color: var(--muted); max-width: 68ch;">This site — designed, written and deployed by AI agents under my direction.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="principles" style="margin-top: 44px; padding-bottom: 8px;">
+      <div style="padding-top: 8px;">
+        <h2 style="margin: 0; font-size: clamp(30px, 3.8vw, 46px); font-weight: 600; letter-spacing: -0.036em; line-height: 1.06; max-width: 22ch; text-wrap: balance;">Five opinions, held firmly.</h2>
+        <p style="margin: 16px 0 34px; font-size: 18px; line-height: 1.55; color: var(--muted); max-width: 52ch; text-wrap: pretty;">Earned the expensive way. Disagreement welcome — bring the data.</p>
+      </div>
+      <div>
+        <div style="display: flex; gap: 24px; align-items: flex-start; padding: 24px 0; border-bottom: 1px solid var(--hair);">
+          <span style="flex: 0 0 30px; font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: var(--acc); padding-top: 9px;">01</span>
+          <p style="margin: 0; font-size: 26px; font-weight: 500; line-height: 1.28; letter-spacing: -0.028em; max-width: 32ch; text-wrap: pretty;">Most GTM problems aren't strategy problems. They're plumbing problems nobody wants to own.</p>
+        </div>
+        <div style="display: flex; gap: 24px; align-items: flex-start; padding: 24px 0; border-bottom: 1px solid var(--hair);">
+          <span style="flex: 0 0 30px; font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: var(--acc); padding-top: 9px;">02</span>
+          <p style="margin: 0; font-size: 26px; font-weight: 500; line-height: 1.28; letter-spacing: -0.028em; max-width: 32ch; text-wrap: pretty;">Buying another tool isn't a strategy. Wiring together the ones you have is.</p>
+        </div>
+        <div style="display: flex; gap: 24px; align-items: flex-start; padding: 24px 0; border-bottom: 1px solid var(--hair);">
+          <span style="flex: 0 0 30px; font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: var(--acc); padding-top: 9px;">03</span>
+          <p style="margin: 0; font-size: 26px; font-weight: 500; line-height: 1.28; letter-spacing: -0.028em; max-width: 32ch; text-wrap: pretty;">If your team does it manually every week, that's not a process. It's a hostage situation.</p>
+        </div>
+        <div style="display: flex; gap: 24px; align-items: flex-start; padding: 24px 0; border-bottom: 1px solid var(--hair);">
+          <span style="flex: 0 0 30px; font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: var(--acc); padding-top: 9px;">04</span>
+          <p style="margin: 0; font-size: 26px; font-weight: 500; line-height: 1.28; letter-spacing: -0.028em; max-width: 32ch; text-wrap: pretty;">Build vs. buy is dead. It's build vs. wait.</p>
+        </div>
+        <div style="display: flex; gap: 24px; align-items: flex-start; padding: 24px 0;">
+          <span style="flex: 0 0 30px; font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: var(--acc); padding-top: 9px;">05</span>
+          <p style="margin: 0; font-size: 26px; font-weight: 500; line-height: 1.28; letter-spacing: -0.028em; max-width: 32ch; text-wrap: pretty;">AI doesn't replace ops people. Ops people who build with AI replace vendor stacks.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <section id="contact" style="margin-top: 56px; background: var(--accDeep); color: #FFFFFF;">
+    <div style="max-width: 1180px; margin: 0 auto; padding: 64px 44px 26px;">
+      <h2 style="margin: 0; font-size: clamp(30px, 4.4vw, 52px); font-weight: 600; letter-spacing: -0.038em; line-height: 1.06; max-width: 22ch; text-wrap: balance; color: #FFFFFF;">If something in your stack is held together by a Friday afternoon, let's talk.</h2>
+      <div style="margin-top: 28px; display: flex; gap: 8px; flex-wrap: wrap;">
+        <a href="mailto:tkeefe66@gmail.com" style="padding: 11px 18px; background: #FFFFFF; color: var(--accDeep); border: 1px solid #FFFFFF; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.06em;" style-hover="background: transparent; color: #FFFFFF;">EMAIL</a>
+        <a href="https://www.linkedin.com/in/tomkeefesmc" style="padding: 11px 18px; border: 1px solid rgba(255,255,255,0.36); border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.82);" style-hover="border-color: #FFFFFF; color: #FFFFFF;">LINKEDIN</a>
+        <a href="https://github.com/tkeefe66" style="padding: 11px 18px; border: 1px solid rgba(255,255,255,0.36); border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.82);" style-hover="border-color: #FFFFFF; color: #FFFFFF;">GITHUB</a>
+      </div>
+      <div style="margin-top: 60px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.18); display: flex; justify-content: space-between; gap: 20px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.06em; color: rgba(255,255,255,0.55);">
+        <span>© 2026 TOM KEEFE</span>
+        <span>DIRECTED BY A HUMAN. BUILT WITH AGENTS.</span>
+      </div>
+    </div>
+  </section>
+
+</div>
+</sc-if>
+
+<sc-if value="{{ isMartech }}" hint-placeholder-val="{{ false }}">
+<div>
+  <header style="background: var(--accDeep); color: #FFFFFF;">
+    <div style="max-width: 1180px; margin: 0 auto; padding: 22px 44px; display: flex; align-items: center; justify-content: space-between; gap: 20px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.08em;">
+      <a href="#top" onClick="{{ goHome }}" style="color: rgba(255,255,255,0.75);" style-hover="color: #FFFFFF;">← TOM KEEFE</a>
+      <span style="color: var(--accSoft);">PROJECT 01</span>
+    </div>
+    <div style="max-width: 1180px; margin: 0 auto; padding: 34px 44px 56px; border-top: 1px solid rgba(255,255,255,0.16);">
+      <h1 style="margin: 0; font-size: clamp(38px, 5.4vw, 64px); font-weight: 700; letter-spacing: -0.045em; line-height: 0.98; color: #FFFFFF;">B2B MarTech Intel</h1>
+      <p style="margin: 18px 0 0; font-size: 20px; line-height: 1.5; color: rgba(255,255,255,0.8); max-width: 46ch; text-wrap: pretty;">A market-intelligence system for a go-to-market organisation, built so the field stops guessing what changed this week.</p>
+    </div>
+  </header>
+  <main style="max-width: 1180px; margin: 0 auto; padding: 46px 44px 0;">
+    <div style="display: grid; grid-template-columns: minmax(0,1fr) minmax(260px,340px); gap: 48px; align-items: start;">
+      <div>
+        <h2 style="margin: 0; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; font-family: 'IBM Plex Mono', monospace; color: var(--acc);">THE PROBLEM</h2>
+        <p style="margin: 12px 0 0; font-size: 16.5px; line-height: 1.6; color: var(--body); max-width: 64ch; text-wrap: pretty;">Market and account signal lived in a dozen places — newsletters, alerts, analyst notes, someone's bookmarks. By the time it reached a seller it was stale, and nobody owned the job of curating it.</p>
+        <h2 style="margin: 32px 0 0; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; font-family: 'IBM Plex Mono', monospace; color: var(--acc);">WHAT I BUILT</h2>
+        <p style="margin: 12px 0 0; font-size: 16.5px; line-height: 1.6; color: var(--body); max-width: 64ch; text-wrap: pretty;">A continuous ingest across news, GTM tech and AI sources that categorises and tags every article, tracks named companies, and refreshes every twelve minutes. On top of the same corpus sit the things people actually asked for: briefings, trend analysis, an AI analyst, and drafting tools for thought leadership and field enablement.</p>
+        <h2 style="margin: 32px 0 0; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; font-family: 'IBM Plex Mono', monospace; color: var(--acc);">WHAT CHANGED</h2>
+        <p style="margin: 12px 0 0; font-size: 16.5px; line-height: 1.6; color: var(--faint); max-width: 64ch;">[Outcome pending — the number you want to lead with goes here.]</p>
+      </div>
+      <div style="border-top: 1px solid var(--ink);">
+        <div style="display: flex; justify-content: space-between; gap: 20px; padding: 10px 0; border-bottom: 1px solid var(--hair); font-family: 'IBM Plex Mono', monospace; font-size: 11.5px;"><span style="color: var(--muted);">ROLE</span><span style="text-align: right;">Built and operated</span></div>
+        <div style="display: flex; justify-content: space-between; gap: 20px; padding: 10px 0; border-bottom: 1px solid var(--hair); font-family: 'IBM Plex Mono', monospace; font-size: 11.5px;"><span style="color: var(--muted);">STACK</span><span style="text-align: right;">Next.js · Claude · RSS</span></div>
+        <div style="display: flex; justify-content: space-between; gap: 20px; padding: 10px 0; border-bottom: 1px solid var(--hair); font-family: 'IBM Plex Mono', monospace; font-size: 11.5px;"><span style="color: var(--muted);">CORPUS</span><span style="text-align: right;">63,731 articles</span></div>
+        <div style="display: flex; justify-content: space-between; gap: 20px; padding: 10px 0; border-bottom: 1px solid var(--hair); font-family: 'IBM Plex Mono', monospace; font-size: 11.5px;"><span style="color: var(--muted);">REFRESH</span><span style="text-align: right;">Every 12 minutes</span></div>
+        <div style="display: flex; justify-content: space-between; gap: 20px; padding: 10px 0; font-family: 'IBM Plex Mono', monospace; font-size: 11.5px;"><span style="color: var(--muted);">STATUS</span><span style="text-align: right;">Internal</span></div>
+      </div>
+    </div>
+    <div style="margin-top: 44px;">
+      <div style="position: relative; border: 1px solid var(--hair); overflow: hidden; height: 520px;">
+        <img src="assets/martech-intel.png" alt="B2B MarTech Intel news feed" style="display: block; width: 190%; max-width: none;" />
+        <div style="position: absolute; left: 0; right: 0; bottom: 0; height: 96px; background: linear-gradient(to bottom, transparent, var(--bg));"></div>
+      </div>
+      <div style="margin-top: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.06em; color: var(--acc);">FIG. 01 — NEWS FEED. CATEGORY, SOURCE AND TAG FILTERS ACROSS THE FULL CORPUS.</div>
+    </div>
+    <div style="margin-top: 56px; padding: 20px 0 56px; border-top: 1px solid var(--hair); display: flex; justify-content: space-between; gap: 20px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.08em;">
+      <a href="#top" onClick="{{ goHome }}" style="color: var(--muted);" style-hover="color: var(--acc);">← ALL PROJECTS</a>
+      <a href="#top" onClick="{{ openInventory }}" style="color: var(--muted);" style-hover="color: var(--acc);">NEXT — INVENTORY →</a>
+    </div>
+  </main>
+</div>
+</sc-if>
+
+<sc-if value="{{ isInventory }}" hint-placeholder-val="{{ false }}">
+<div>
+  <header style="background: var(--accDeep); color: #FFFFFF;">
+    <div style="max-width: 1180px; margin: 0 auto; padding: 22px 44px; display: flex; align-items: center; justify-content: space-between; gap: 20px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.08em;">
+      <a href="#top" onClick="{{ goHome }}" style="color: rgba(255,255,255,0.75);" style-hover="color: #FFFFFF;">← TOM KEEFE</a>
+      <span style="color: var(--accSoft);">PROJECT 02</span>
+    </div>
+    <div style="max-width: 1180px; margin: 0 auto; padding: 34px 44px 56px; border-top: 1px solid rgba(255,255,255,0.16);">
+      <h1 style="margin: 0; font-size: clamp(38px, 5.4vw, 64px); font-weight: 700; letter-spacing: -0.045em; line-height: 0.98; color: #FFFFFF;">Inventory</h1>
+      <p style="margin: 18px 0 0; font-size: 20px; line-height: 1.5; color: rgba(255,255,255,0.8); max-width: 46ch; text-wrap: pretty;">The same discipline I apply to a revenue stack, pointed at my own household: parse everything, categorise it once, query it forever.</p>
+    </div>
+  </header>
+  <main style="max-width: 1180px; margin: 0 auto; padding: 46px 44px 0;">
+    <div style="display: grid; grid-template-columns: minmax(0,1fr) minmax(260px,340px); gap: 48px; align-items: start;">
+      <div>
+        <h2 style="margin: 0; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; font-family: 'IBM Plex Mono', monospace; color: var(--acc);">THE PROBLEM</h2>
+        <p style="margin: 12px 0 0; font-size: 16.5px; line-height: 1.6; color: var(--body); max-width: 64ch; text-wrap: pretty;">Purchase history is scattered across receipts, order confirmations and card statements, none of which agree on what a thing is. Spending questions that should take a second take an afternoon.</p>
+        <h2 style="margin: 32px 0 0; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; font-family: 'IBM Plex Mono', monospace; color: var(--acc);">WHAT I BUILT</h2>
+        <p style="margin: 12px 0 0; font-size: 16.5px; line-height: 1.6; color: var(--body); max-width: 64ch; text-wrap: pretty;">An agent ingest that parses receipts and email into a single ledger — 491 items with brand, price, category, domain and type resolved automatically, and a review queue for anything it can't place confidently. Spend is tracked against the same month last year, and a daily digest rolls it up by day with behavioural tags rather than merchant names.</p>
+        <h2 style="margin: 32px 0 0; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; font-family: 'IBM Plex Mono', monospace; color: var(--acc);">WHY IT MATTERS AT WORK</h2>
+        <p style="margin: 12px 0 0; font-size: 16.5px; line-height: 1.6; color: var(--body); max-width: 64ch; text-wrap: pretty;">It is a signal pipeline with a different subject: messy inputs, an enrichment layer, a confidence threshold, and a human review queue. Every problem in it is a problem I've solved in a CRM.</p>
+      </div>
+      <div style="border-top: 1px solid var(--ink);">
+        <div style="display: flex; justify-content: space-between; gap: 20px; padding: 10px 0; border-bottom: 1px solid var(--hair); font-family: 'IBM Plex Mono', monospace; font-size: 11.5px;"><span style="color: var(--muted);">ROLE</span><span style="text-align: right;">Designed and built</span></div>
+        <div style="display: flex; justify-content: space-between; gap: 20px; padding: 10px 0; border-bottom: 1px solid var(--hair); font-family: 'IBM Plex Mono', monospace; font-size: 11.5px;"><span style="color: var(--muted);">STACK</span><span style="text-align: right;">Local-first · agent ingest</span></div>
+        <div style="display: flex; justify-content: space-between; gap: 20px; padding: 10px 0; border-bottom: 1px solid var(--hair); font-family: 'IBM Plex Mono', monospace; font-size: 11.5px;"><span style="color: var(--muted);">RECORDS</span><span style="text-align: right;">491 items · 168 active</span></div>
+        <div style="display: flex; justify-content: space-between; gap: 20px; padding: 10px 0; border-bottom: 1px solid var(--hair); font-family: 'IBM Plex Mono', monospace; font-size: 11.5px;"><span style="color: var(--muted);">NEEDS REVIEW</span><span style="text-align: right;">0</span></div>
+        <div style="display: flex; justify-content: space-between; gap: 20px; padding: 10px 0; font-family: 'IBM Plex Mono', monospace; font-size: 11.5px;"><span style="color: var(--muted);">STATUS</span><span style="text-align: right;">Live, personal</span></div>
+      </div>
+    </div>
+    <div style="margin-top: 44px;">
+      <div style="position: relative; border: 1px solid var(--hair); overflow: hidden; height: 480px;">
+        <img src="assets/inventory.png" alt="Inventory items table" style="display: block; width: 190%; max-width: none;" />
+        <div style="position: absolute; left: 0; right: 0; bottom: 0; height: 96px; background: linear-gradient(to bottom, transparent, var(--bg));"></div>
+      </div>
+      <div style="margin-top: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.06em; color: var(--acc);">FIG. 01 — ITEM LEDGER. 491 RECORDS, AUTO-CATEGORISED, 0 AWAITING REVIEW.</div>
+    </div>
+    <div style="margin-top: 38px; display: flex; gap: 26px; align-items: flex-start; flex-wrap: wrap;">
+      <div style="flex: 0 1 460px; min-width: 300px;">
+        <div style="position: relative; border: 1px solid var(--hair); overflow: hidden; height: 360px;">
+          <img src="assets/spend-digest.png" alt="Daily spend digest" style="display: block; width: 100%; max-width: none;" />
+          <div style="position: absolute; left: 0; right: 0; bottom: 0; height: 90px; background: linear-gradient(to bottom, transparent, var(--bg));"></div>
+        </div>
+        <div style="margin-top: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.06em; color: var(--acc);">FIG. 02 — DAILY DIGEST.</div>
+      </div>
+      <p style="flex: 1 1 300px; margin: 0; font-size: 15.5px; line-height: 1.6; color: var(--muted); max-width: 46ch;">Days are tagged by shape — social, delivery, rides, date — so a week reads as behaviour instead of a list of charges. It's the same instinct as a signal feed: the raw event is less useful than the pattern it belongs to.</p>
+    </div>
+    <div style="margin-top: 56px; padding: 20px 0 56px; border-top: 1px solid var(--hair); display: flex; justify-content: space-between; gap: 20px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.08em;">
+      <a href="#top" onClick="{{ goHome }}" style="color: var(--muted);" style-hover="color: var(--acc);">← ALL PROJECTS</a>
+      <a href="#top" onClick="{{ openMartech }}" style="color: var(--muted);" style-hover="color: var(--acc);">NEXT — B2B MARTECH INTEL →</a>
+    </div>
+  </main>
+</div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1180},&quot;accent&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;navy&quot;,&quot;teal&quot;,&quot;oxblood&quot;,&quot;graphite&quot;],&quot;default&quot;:&quot;navy&quot;,&quot;tsType&quot;:&quot;'navy' | 'teal' | 'oxblood' | 'graphite'&quot;,&quot;section&quot;:&quot;Brand&quot;}}">
+class Component extends DCLogic {
+  state = { theme: "light", layout: "ledger", page: "home", menu: false };
+  accents() {
+    return {
+      teal: { name: "Teal",
+        light: { acc: "#12605A", hover: "#0D4A45", tint: "#E7EFED", edge: "#D2E0DC", deep: "#0E4C47", soft: "#9CD3C9" },
+        dark:  { acc: "#4FB3A5", hover: "#6AC7BA", tint: "#19231F", edge: "#2A3B37", deep: "#123F3A", soft: "#8FCABC" } },
+      navy: { name: "Navy",
+        light: { acc: "#1D3A63", hover: "#152C4C", tint: "#E8EDF4", edge: "#D0DAE8", deep: "#152C4B", soft: "#A6BCD8" },
+        dark:  { acc: "#7FA6D9", hover: "#95B8E4", tint: "#161C26", edge: "#26313F", deep: "#1B3050", soft: "#9DBBDD" } },
+      oxblood: { name: "Oxblood",
+        light: { acc: "#8F3324", hover: "#74281B", tint: "#F5E9E5", edge: "#E8D3CC", deep: "#71271B", soft: "#DFAA9C" },
+        dark:  { acc: "#D4705C", hover: "#E28773", tint: "#241815", edge: "#3B2823", deep: "#6B2A1F", soft: "#E0A594" } },
+      graphite: { name: "Graphite",
+        light: { acc: "#31373D", hover: "#1F2429", tint: "#ECEEF0", edge: "#DADEE2", deep: "#22282D", soft: "#AEB6BE" },
+        dark:  { acc: "#B9C0C7", hover: "#CED4DA", tint: "#1A1C1F", edge: "#2B2F33", deep: "#272C31", soft: "#C4CBD2" } }
+    };
+  }
+  themes() {
+    const key = this.props.accent || "navy";
+    const a = this.accents()[key] || this.accents().navy;
+    return {
+      light: { "--bg": "#FFFFFF", "--ink": "#0B0D10", "--body": "#3B424C", "--muted": "#6B7280", "--faint": "#9AA1AC", "--hair": "#E4E6EA", "--sunk": "#F7F8F9",
+               "--acc": a.light.acc, "--accHover": a.light.hover, "--accInk": "#FFFFFF", "--tint": a.light.tint, "--tintEdge": a.light.edge, "--accDeep": a.light.deep, "--accSoft": a.light.soft },
+      dark:  { "--bg": "#101113", "--ink": "#F0F0F0", "--body": "#C4C4C8", "--muted": "#8B8B8E", "--faint": "#5F5F63", "--hair": "#26272B", "--sunk": "#17181A",
+               "--acc": a.dark.acc, "--accHover": a.dark.hover, "--accInk": "#101113", "--tint": a.dark.tint, "--tintEdge": a.dark.edge, "--accDeep": a.dark.deep, "--accSoft": a.dark.soft }
+    };
+  }
+  componentDidMount() {
+    document.body.style.transition = "background 220ms, color 220ms";
+    this.paint();
+  }
+  componentDidUpdate() { this.paint(); }
+  paint() {
+    const t = this.themes()[this.state.theme];
+    Object.keys(t).forEach(k => document.body.style.setProperty(k, t[k]));
+    document.body.style.background = t["--bg"];
+    document.body.style.color = t["--ink"];
+  }
+  tab(active) {
+    return {
+      padding: "6px 13px", border: "none", borderRadius: "999px", cursor: "pointer",
+      fontFamily: "'IBM Plex Mono', monospace", fontSize: "10px", letterSpacing: "0.08em",
+      background: active ? "var(--ink)" : "transparent",
+      color: active ? "var(--bg)" : "var(--muted)",
+      transition: "background 160ms, color 160ms"
+    };
+  }
+  go(page) {
+    return (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState({ page, menu: false }); window.scrollTo(0, 0); };
+  }
+  jump(id) {
+    return (e) => {
+      if (e && e.preventDefault) e.preventDefault();
+      const wasHome = this.state.page === "home";
+      this.setState({ page: "home", menu: false });
+      const scroll = () => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        const y = el.getBoundingClientRect().top + window.pageYOffset - 64;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      };
+      if (wasHome) scroll(); else setTimeout(scroll, 80);
+    };
+  }
+  renderVals() {
+    const dark = this.state.theme === "dark";
+    const page = this.state.page || "home";
+    return {
+      isHome: page === "home",
+      menuOpen: this.state.menu,
+      openMenu: () => this.setState({ menu: true }),
+      closeMenu: () => this.setState({ menu: false }),
+      jumpRange: this.jump("range"),
+      jumpPrinciples: this.jump("principles"),
+      jumpProjects: this.jump("projects"),
+      jumpContact: this.jump("contact"),
+      projectsTrigger: {
+        display: "inline-block", padding: "8px 12px", borderRadius: "3px",
+        color: this.state.menu ? "#FFFFFF" : "rgba(255,255,255,0.74)",
+        background: this.state.menu ? "rgba(255,255,255,0.09)" : "transparent",
+        transition: "background 140ms, color 140ms"
+      },
+      isMartech: page === "martech",
+      isInventory: page === "inventory",
+      goHome: this.go("home"),
+      openMartech: this.go("martech"),
+      openInventory: this.go("inventory"),
+      rootStyle: { ...this.themes()[this.state.theme], background: "var(--bg)", color: "var(--ink)", minHeight: "100vh", transition: "background 220ms, color 220ms" },
+      isLedger: this.state.layout === "ledger",
+      isColumn: this.state.layout === "column",
+      tabLedger: this.tab(this.state.layout === "ledger"),
+      tabColumn: this.tab(this.state.layout === "column"),
+      showLedger: () => this.setState({ layout: "ledger" }),
+      showColumn: () => this.setState({ layout: "column" }),
+      toggleTheme: () => this.setState({ theme: dark ? "light" : "dark" }),
+      themeLabel: dark ? "LIGHT" : "DARK",
+      themeBtn: {
+        padding: "9px 14px", border: "1px solid var(--hair)", borderRadius: "999px", cursor: "pointer",
+        background: "var(--bg)", color: "var(--muted)",
+        fontFamily: "'IBM Plex Mono', monospace", fontSize: "10px", letterSpacing: "0.08em"
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>
