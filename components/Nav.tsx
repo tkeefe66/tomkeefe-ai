@@ -1,29 +1,107 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import { site } from "@/content/site";
+import { projectDetails } from "@/content/projects";
 import ThemeToggle from "@/components/ThemeToggle";
 
-const sections = [
-  { href: "#principles", label: "Principles" },
-  { href: "#projects", label: "Projects" },
-  { href: "#about", label: "About" },
-  { href: "#contact", label: "Contact" },
-];
+const email = site.links.find((l) => l.label === "EMAIL")!;
 
 export default function Nav() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const close = () => setMenuOpen(false);
+
   return (
-    <header className="site-header">
-      <nav className="nav" aria-label="Main">
-        <Link href="/" className="nav-brand">
-          {site.name}
-          <em>.</em>
+    <nav className="band sticky top-0 z-40" aria-label="Main">
+      <div className="container-page flex h-14 items-center justify-between gap-6">
+        <Link
+          href="/"
+          className="text-[15px] font-semibold tracking-[-0.022em] text-white"
+        >
+          Tom Keefe
         </Link>
-        {sections.map((s) => (
-          <Link key={s.href} href={s.href}>
-            {s.label}
+        <div className="flex items-center gap-1">
+          <Link href="/#range" className="nav-link max-sm:hidden">
+            Overview
           </Link>
-        ))}
-        <ThemeToggle />
-      </nav>
-    </header>
+          <div
+            className="relative"
+            onMouseEnter={() => setMenuOpen(true)}
+            onMouseLeave={close}
+            onBlur={(e) => {
+              if (!e.currentTarget.contains(e.relatedTarget)) close();
+            }}
+            onKeyDown={(e) => {
+              if (e.key === "Escape") close();
+            }}
+          >
+            <Link
+              href="/#projects"
+              className="nav-link"
+              aria-expanded={menuOpen}
+              aria-haspopup="true"
+              onFocus={() => setMenuOpen(true)}
+              onClick={close}
+            >
+              Projects <span style={{ color: "var(--acc-soft)" }}>▾</span>
+            </Link>
+            {menuOpen && (
+              <div
+                className="absolute right-0 top-full min-w-[268px] rounded p-1.5"
+                style={{
+                  background: "var(--bg)",
+                  border: "1px solid var(--hair)",
+                  boxShadow: "0 12px 28px rgba(0,0,0,0.14)",
+                }}
+              >
+                {projectDetails.map((p) => (
+                  <Link
+                    key={p.slug}
+                    href={`/projects/${p.slug}`}
+                    onClick={close}
+                    className="block rounded-[3px] px-3 py-2.5 hover:bg-(--tint) hover:text-(--acc)"
+                    style={{ color: "var(--ink)" }}
+                  >
+                    <span className="block text-sm font-semibold tracking-[-0.02em]">
+                      {p.title}
+                    </span>
+                    <span
+                      className="mono mt-0.5 block text-[10.5px] tracking-[0.06em]"
+                      style={{ color: "var(--faint)" }}
+                    >
+                      {p.menuSubtitle}
+                    </span>
+                  </Link>
+                ))}
+                <div className="mx-3 my-1 h-px" style={{ background: "var(--hair)" }} />
+                <Link
+                  href="/#projects"
+                  onClick={close}
+                  className="mono block rounded-[3px] px-3 py-2 text-[10.5px] tracking-[0.08em] hover:bg-(--tint) hover:text-(--acc)"
+                  style={{ color: "var(--muted)" }}
+                >
+                  All projects →
+                </Link>
+              </div>
+            )}
+          </div>
+          <Link href="/#principles" className="nav-link max-sm:hidden">
+            Principles
+          </Link>
+          <Link href="/#contact" className="nav-link max-sm:hidden">
+            Contact
+          </Link>
+          <ThemeToggle />
+          <a
+            href={email.href}
+            className="mono ml-2 rounded-[3px] bg-white px-3.5 py-2 text-[11px] font-medium tracking-[0.08em]"
+            style={{ color: "var(--acc-deep)" }}
+          >
+            Email
+          </a>
+        </div>
+      </div>
+    </nav>
   );
 }
