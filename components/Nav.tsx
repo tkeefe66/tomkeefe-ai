@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { site } from "@/content/site";
 import { projectDetails } from "@/content/projects";
@@ -11,6 +11,17 @@ const email = site.links.find((l) => l.label === "EMAIL")!;
 export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
   const close = () => setMenuOpen(false);
+
+  // Document-level so Escape also closes a hover-opened menu with no
+  // focus inside the wrapper (wrapper onKeyDown never fires in that case).
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMenuOpen(false);
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [menuOpen]);
 
   return (
     <nav className="band sticky top-0 z-40" aria-label="Main">
@@ -31,9 +42,6 @@ export default function Nav() {
             onMouseLeave={close}
             onBlur={(e) => {
               if (!e.currentTarget.contains(e.relatedTarget)) close();
-            }}
-            onKeyDown={(e) => {
-              if (e.key === "Escape") close();
             }}
           >
             <Link
