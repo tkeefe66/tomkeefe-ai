@@ -1,25 +1,34 @@
 import type { Metadata } from "next";
-import { Archivo } from "next/font/google";
+import { Onest, IBM_Plex_Mono } from "next/font/google";
 import { site } from "@/content/site";
 import "./globals.css";
 
-// Archivo is the design system's single family — headings and body,
-// three weights (400/600/800). See "Tom Keefe AI design system/readme.md".
-const archivo = Archivo({
-  variable: "--font-archivo",
+// Onest carries UI and headings; IBM Plex Mono carries labels and metadata
+// (design v2 README §Typography).
+const onest = Onest({
+  variable: "--font-onest",
   subsets: ["latin"],
-  weight: ["400", "600", "800"],
+  display: "swap",
 });
 
-// Applies the persisted theme before first paint to avoid a light flash.
-const themeInit = `try{if(localStorage.getItem('tk-theme')==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}`;
+// Not a variable font — the weight array is REQUIRED (Next 16 font docs).
+const plexMono = IBM_Plex_Mono({
+  variable: "--font-ibm-plex-mono",
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  display: "swap",
+});
+
+// Applies the persisted theme before first paint; falls back to the OS
+// preference when nothing is stored (design README §Interactions).
+const themeInit = `try{var t=localStorage.getItem('tk-theme');if(t==null)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';if(t==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}`;
 
 export const metadata: Metadata = {
-  title: "Tom Keefe — GTM Engineer",
+  title: "Tom Keefe — GTM systems",
   description: site.tagline,
   metadataBase: new URL("https://tomkeefe.ai"),
   openGraph: {
-    title: "Tom Keefe — GTM Engineer",
+    title: "Tom Keefe — GTM systems",
     description: site.tagline,
     url: "https://tomkeefe.ai",
     siteName: "Tom Keefe",
@@ -35,7 +44,8 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${archivo.variable} h-full antialiased`}
+      className={`${onest.variable} ${plexMono.variable} h-full`}
+      data-scroll-behavior="smooth"
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col">

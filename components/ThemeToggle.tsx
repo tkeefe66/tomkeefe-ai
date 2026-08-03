@@ -36,12 +36,12 @@ export default function ThemeToggle() {
   return (
     <button
       type="button"
-      className="btn btn-secondary theme-toggle"
+      className="nav-link cursor-pointer border-0 bg-transparent"
       onClick={toggle}
       aria-pressed={dark}
       aria-label={dark ? "Switch to light theme" : "Switch to dark theme"}
     >
-      {dark ? "Light" : "Dark"}
+      {dark ? "LIGHT" : "DARK"}
     </button>
   );
 }
