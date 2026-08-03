@@ -1,25 +1,23 @@
 import Nav from "@/components/Nav";
-import Hero from "@/components/Hero";
-import StatBanner from "@/components/StatBanner";
+import Masthead from "@/components/Masthead";
+import TechStrip from "@/components/TechStrip";
+import Range from "@/components/Range";
+import ProjectsList from "@/components/ProjectsList";
 import Principles from "@/components/Principles";
-import Projects from "@/components/Projects";
-import About from "@/components/About";
-import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
+import ContactBand from "@/components/ContactBand";
 
 export default function Home() {
   return (
     <>
       <Nav />
-      <main className="flex-1">
-        <Hero />
-        <StatBanner />
+      <Masthead />
+      <TechStrip />
+      <main className="container-page flex-1">
+        <Range />
+        <ProjectsList />
         <Principles />
-        <Projects />
-        <About />
-        <Contact />
       </main>
-      <Footer />
+      <ContactBand />
     </>
   );
 }
