@@ -3,46 +3,65 @@ name: tomkeefe-design
 description: Use when building or styling any UI in this repo — pages, components, prototypes, mocks, OG images, emails — or when choosing colors, type, spacing, imagery treatment, or theme behavior for the tomkeefe.ai brand.
 ---
 
-# tomkeefe.ai design system
+# tomkeefe.ai design system (v2 — "enterprise-document")
 
-Canonical source: `Tom Keefe AI design system/` at the repo root. Read its
-`readme.md` for full rules; `ui_kits/website/index.html` is the reference
-homepage; `guidelines/` holds foundation specimens; `components/` has React
-primitives for prototyping.
+Canonical spec: `website design v2/README.md` at the repo root (the design
+bundle folder on disk is capitalized "Website Design V2" — same folder,
+case-insensitive filesystem).
 
 Production implementation: `app/globals.css` — all tokens (`:root` +
 `[data-theme="dark"]`) and component recipes in `@layer components`:
-`.page`, `.site-header`, `.kicker`, `.btn/.btn-primary/.btn-secondary`,
-`.tag/.tag-live/.tag-draft/.tag-neutral`, `.card*`, `.stat*/.stat-grid`,
-`.section-head`, `.principle*`, `.nav*`, `.poster/.poster-ink`,
-`em.accent` (the red terminal period brand mark), `.grayscale-photo`.
-React components in `components/*.tsx` combine these classes with Tailwind
-layout utilities only (grid/flex/gap/padding).
+`.container-page .band .mono .section-h2 .section-sub .nav-link .band-btn
+.band-btn-ghost .fact-row .row-link .fig-plate .fig-fade .fig-caption
+.marquee-mask .marquee-track`. Content lives in `content/*.ts`, never
+hardcoded in components.
 
 ## Non-negotiables
 
-- Archivo only, weights 400/600/800, loaded via `next/font` in
-  `app/layout.tsx` (never the Google Fonts CDN import).
-- Single accent `#ec3013`, used scarcely. Accent for paragraph-size text is
-  `--color-accent-readable` (#ae1800 light / #ff9783 dark).
-- Radius 0 everywhere. Never round a corner.
-- Rules organize the page: 2px (`--rule-strong`) for section heads/nav,
-  1px (`--rule-thin`) for rows. Flush-left everything.
-- Photography prints black & white via `.grayscale-photo`. No color photos,
-  no illustration, no icon fonts, no emoji. Arrows are `→` or Lucide stroke.
-- Sentence case; UPPERCASE only for kickers, labels, stat captions.
-- Dark theme = `data-theme="dark"` on `<html>`; light is default. Toggle
-  lives in `components/ThemeToggle.tsx`, persisted as `tk-theme`.
-- Motion minimal: state changes are instant color/tint swaps, no fades.
-- Sign-off: "Built by AI agents, directed by a human."
+- Onest (UI/headings) + IBM Plex Mono (labels/metadata, ALWAYS uppercase)
+  loaded via `next/font` in `app/layout.tsx` — never the Google Fonts CDN.
+- Navy accent set: light `--acc #1D3A63`, deep field `#152C4B`; dark
+  `--acc #7FA6D9`, deep `#1B3050`. Alternates (Teal/Oxblood/Graphite) are
+  fully specified in the design README.
+- Colour is structural: exactly two full-bleed `--acc-deep` bands (masthead
+  + tech strip, contact band); `--acc` is type-only everywhere else. No
+  tinted boxes or gradients except `.fig-fade`.
+- Never hard-code a neutral or accent value — CSS vars only. White-on-navy
+  `rgba(255,255,255,…)` is allowed inside `.band`, nowhere else. An earlier
+  bug hard-coded a plate gradient to `#FFFFFF` and produced a white band on
+  a black page in dark mode; a related bug let `.band a { color: inherit }`
+  beat `.band-btn`'s navy text color on specificity, rendering the EMAIL
+  button white-on-white — fixed by scoping to `.band a:not(.band-btn)`.
+  Check both classes of bug (visible bands, invisible text) after any
+  `.band`-adjacent CSS change, in both themes.
+- Radius: 3px buttons/nav, 4px dropdown, 0 plates. No shadows except the
+  nav dropdown.
+- Body copy 16px / 1.6 line-height / -0.011em tracking.
+- Sections use `.section-h2` + `.section-sub` — no mono section labels.
+- Theme: `data-theme="dark"` on `<html>`, persisted as `tk-theme` in
+  localStorage, OS preference as fallback; 220ms transition on toggle.
+- Footer sign-off: "DIRECTED BY A HUMAN. BUILT WITH AGENTS."
 
-## Deviations from the source folder (this repo wins)
+## Figure plates (screenshots)
+
+Never shrink a whole UI to fit. Fixed-height `.fig-plate`, capture the UI
+wide (~190% width) and crop, `.fig-fade` (linear-gradient to `var(--bg)`)
+blends the bottom edge into the page in both themes, mono caption in
+`var(--acc)` below reading `FIG. NN — …`.
+
+## Masthead variant
+
+`site.mastheadVariant` flag: `"ledger"` ships. `"column"` is an approved
+backup — never delete it even though it's unused.
+
+## Deviations from the prototype (this repo wins)
 
 | Source | Here | Why |
 |---|---|---|
-| `--color-muted` 55% ink | 68% ink | WCAG AA 4.5:1 (PRODUCT.md requirement) |
-| `.grayscale` | `.grayscale-photo` | Collides with Tailwind's `grayscale` utility |
-| link `styles.css` | recipes in `app/globals.css` | Tailwind 4 layering |
+| Inline styles | CSS recipe classes + Tailwind utilities | Reuse, `@layer components` |
+| JS scroll offset | `scroll-margin-top: 64px` | Simpler, no JS needed for hash nav under the sticky 56–64px bar |
+| Base dropdown | Focus + Escape handling added | Keyboard accessibility |
+| Hardcoded white `::selection` | `--acc-ink` | Stays readable in dark mode |
 
-Content lives in `content/*.ts`, never hardcoded in components. Draft/
-placeholder states stay visible (`Draft` tags, `[X]` stats) until real.
+The old `Tom Keefe AI design system/` folder is the SUPERSEDED v1
+reference (Archivo, red accent, zero-radius). Do not build against it.

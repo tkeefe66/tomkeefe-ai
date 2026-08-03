@@ -135,7 +135,7 @@
     background: var(--acc-deep);
     color: #ffffff;
   }
-  .band a {
+  .band a:not(.band-btn) {
     color: inherit;
   }
 
