@@ -1,0 +1,33 @@
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 11px;
+  --space-4: 16px;
+  --space-5: 22px;
+  --space-6: 26px;
+  --space-7: 44px;
+  --space-8: 56px;
+  --space-9: 76px;
+
+  /* Layout */
+  --container: 1180px;
+  --gutter: 44px;
+  --section-gap: 44px;
+  --nav-height: 56px;
+  --scroll-offset: 64px;
+
+  /* Rules — only two weights exist */
+  --rule-thin: 1px;
+  --rule-thick: 1.5px;
+
+  /* Radius — deliberately minimal */
+  --radius-button: 3px;
+  --radius-panel: 4px;
+  --radius-pill: 999px;
+
+  /* Motion */
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1); /* @kind other */
+  --dur-hover: 160ms; /* @kind other */
+  --dur-theme: 220ms; /* @kind other */
+  --dur-marquee: 46s; /* @kind other */
+}

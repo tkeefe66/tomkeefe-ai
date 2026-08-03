@@ -1,0 +1,41 @@
+/* Dark mode follows the OS while <html data-theme="auto"> is set — the default
+   markup state. An explicit visitor choice replaces it with "light" or "dark",
+   which is recorded and remembered. Values mirror [data-theme="dark"] in
+   tokens/colors.css — keep the two in sync. */
+
+@media (prefers-color-scheme: dark) {
+  [data-theme="auto"] {
+    --bg: #101113;
+    --ink: #F0F0F0;
+    --body: #C4C4C8;
+    --muted: #8B8B8E;
+    --faint: #82828A;
+    --hair: #26272B;
+    --sunk: #17181A;
+
+    --acc: #7FA6D9;
+    --acc-hover: #95B8E4;
+    --acc-ink: #101113;
+    --acc-deep: #1B3050;
+    --acc-soft: #9DBBDD;
+    --tint: #161C26;
+    --tint-edge: #26313F;
+  }
+}
+
+/* Light-UI screenshots glare on a dark page, so they are dimmed rather than
+   replaced, and restore on hover for reading. A dark capture opts out with
+   FigurePlate capture="dark" — assets/inventory.png is one. */
+[data-theme="dark"] .tk-figure[data-capture="light"] img,
+[data-theme="auto"] .tk-figure[data-capture="light"] img {
+  transition: filter var(--dur-hover) var(--ease);
+}
+[data-theme="dark"] .tk-figure[data-capture="light"] img { filter: brightness(0.82) contrast(1.02); }
+[data-theme="dark"] .tk-figure[data-capture="light"]:hover img { filter: none; }
+@media (prefers-color-scheme: dark) {
+  [data-theme="auto"] .tk-figure[data-capture="light"] img { filter: brightness(0.82) contrast(1.02); }
+  [data-theme="auto"] .tk-figure[data-capture="light"]:hover img { filter: none; }
+}
+
+/* The plate's bottom fade blends to --bg, so it inverts with the theme
+   automatically. Nothing to do — noted so it isn't "fixed". */

@@ -8,7 +8,14 @@ import type { ProjectFigure } from "@/content/types";
 export default function FigurePlate({ figure }: { figure: ProjectFigure }) {
   return (
     <figure className="m-0">
-      <div className="fig-plate" style={{ height: figure.height }}>
+      {/* Height flows through --plate-h so the responsive crop caps in
+          globals.css can shorten it — an inline height could not be
+          overridden by a media query (design v3 README §Responsive). */}
+      <div
+        className="fig-plate"
+        data-capture={figure.capture}
+        style={{ "--plate-h": `${figure.height}px` } as React.CSSProperties}
+      >
         <Image
           src={figure.src}
           alt={figure.alt}

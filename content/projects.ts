@@ -5,13 +5,13 @@ export const projects: ProjectRow[] = [
     name: "B2B MarTech Intel",
     slug: "b2b-martech-intel",
     description:
-      "Market intelligence for the GTM org — 63,731 articles ingested, categorised and tagged, with briefings, trend analysis and drafting tools on top.",
+      "Market intelligence for the GTM org — 63,731 articles ingested, categorized and tagged, with briefings, trend analysis and drafting tools on top.",
   },
   {
     name: "Inventory",
     slug: "inventory",
     description:
-      "Every purchase parsed from receipts and email into one queryable ledger, with a daily digest that reads a week as behaviour.",
+      "Every purchase parsed from receipts and email into one queryable ledger, with a daily digest that reads a week as behavior.",
   },
   {
     name: "Dynasty Analyzer",
@@ -39,7 +39,7 @@ export const projectDetails: ProjectDetail[] = [
     title: "B2B MarTech Intel",
     menuSubtitle: "MARKET INTELLIGENCE · INTERNAL",
     premise:
-      "A market-intelligence system for a go-to-market organisation, built so the field stops guessing what changed this week.",
+      "A market-intelligence system for a go-to-market organization, built so the field stops guessing what changed this week.",
     sections: [
       {
         heading: "THE PROBLEM",
@@ -47,7 +47,7 @@ export const projectDetails: ProjectDetail[] = [
       },
       {
         heading: "WHAT I BUILT",
-        body: "A continuous ingest across news, GTM tech and AI sources that categorises and tags every article, tracks named companies, and refreshes every twelve minutes. On top of the same corpus sit the things people actually asked for: briefings, trend analysis, an AI analyst, and drafting tools for thought leadership and field enablement.",
+        body: "A continuous ingest across news, GTM tech and AI sources that categorizes and tags every article, tracks named companies, and refreshes every twelve minutes. On top of the same corpus sit the things people actually asked for: briefings, trend analysis, an AI analyst, and drafting tools for thought leadership and field enablement.",
       },
       {
         heading: "WHAT CHANGED",
@@ -69,6 +69,7 @@ export const projectDetails: ProjectDetail[] = [
         caption: "FIG. 01 — NEWS FEED. CATEGORY, SOURCE AND TAG FILTERS ACROSS THE FULL CORPUS.",
         height: 520,
         wide: true,
+        capture: "light",
         width: 3292,
         naturalHeight: 1740,
       },
@@ -81,7 +82,7 @@ export const projectDetails: ProjectDetail[] = [
     title: "Inventory",
     menuSubtitle: "LEDGER + DIGEST · LIVE",
     premise:
-      "The same discipline I apply to a revenue stack, pointed at my own household: parse everything, categorise it once, query it forever.",
+      "The same discipline I apply to a revenue stack, pointed at my own household: parse everything, categorize it once, query it forever.",
     sections: [
       {
         heading: "THE PROBLEM",
@@ -89,7 +90,7 @@ export const projectDetails: ProjectDetail[] = [
       },
       {
         heading: "WHAT I BUILT",
-        body: "An agent ingest that parses receipts and email into a single ledger — 491 items with brand, price, category, domain and type resolved automatically, and a review queue for anything it can't place confidently. Spend is tracked against the same month last year, and a daily digest rolls it up by day with behavioural tags rather than merchant names.",
+        body: "An agent ingest that parses receipts and email into a single ledger — 491 items with brand, price, category, domain and type resolved automatically, and a review queue for anything it can't place confidently. Spend is tracked against the same month last year, and a daily digest rolls it up by day with behavioral tags rather than merchant names.",
       },
       {
         heading: "WHY IT MATTERS AT WORK",
@@ -107,9 +108,10 @@ export const projectDetails: ProjectDetail[] = [
       {
         src: "/projects/inventory.png",
         alt: "Inventory items table",
-        caption: "FIG. 01 — ITEM LEDGER. 491 RECORDS, AUTO-CATEGORISED, 0 AWAITING REVIEW.",
+        caption: "FIG. 01 — ITEM LEDGER. 491 RECORDS, AUTO-CATEGORIZED, 0 AWAITING REVIEW.",
         height: 480,
         wide: true,
+        capture: "dark",
         width: 3302,
         naturalHeight: 1760,
       },
@@ -119,12 +121,13 @@ export const projectDetails: ProjectDetail[] = [
         caption: "FIG. 02 — DAILY DIGEST.",
         height: 360,
         wide: false,
+        capture: "light",
         width: 918,
         naturalHeight: 1636,
       },
     ],
     digestNote:
-      "Days are tagged by shape — social, delivery, rides, date — so a week reads as behaviour instead of a list of charges. It's the same instinct as a signal feed: the raw event is less useful than the pattern it belongs to.",
+      "Days are tagged by shape — social, delivery, rides, date — so a week reads as behavior instead of a list of charges. It's the same instinct as a signal feed: the raw event is less useful than the pattern it belongs to.",
     next: { slug: "b2b-martech-intel" },
   },
 ];

@@ -27,6 +27,7 @@ export const metadata: Metadata = {
   title: "Tom Keefe — GTM systems",
   description: site.tagline,
   metadataBase: new URL("https://tomkeefe.ai"),
+  alternates: { canonical: "/" },
   openGraph: {
     title: "Tom Keefe — GTM systems",
     description: site.tagline,
@@ -34,6 +35,7 @@ export const metadata: Metadata = {
     siteName: "Tom Keefe",
     type: "website",
   },
+  twitter: { card: "summary_large_image" },
 };
 
 export default function RootLayout({

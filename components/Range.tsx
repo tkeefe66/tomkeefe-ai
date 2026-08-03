@@ -12,13 +12,13 @@ export default function Range() {
         {range.altitudes.map((a, i) => (
           <div
             key={a.label}
-            className="flex items-baseline gap-[26px] py-[15px]"
+            className="flex items-baseline gap-[26px] py-[15px] max-[700px]:block"
             style={{
               borderBottom: i < range.altitudes.length - 1 ? "1px solid var(--hair)" : undefined,
             }}
           >
             <span
-              className="mono flex-none basis-[118px] text-[11px] tracking-[0.06em]"
+              className="mono flex-none basis-[118px] text-[11px] tracking-[0.06em] max-[700px]:mb-[5px] max-[700px]:block"
               style={{ color: "var(--acc)" }}
             >
               {a.label}

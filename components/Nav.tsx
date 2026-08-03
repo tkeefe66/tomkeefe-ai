@@ -16,19 +16,27 @@ function requireEmailLink(): SiteLink {
 const email = requireEmailLink();
 
 export default function Nav() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const close = () => setMenuOpen(false);
+  // Dropdown opens on hover AND click — hover-only was unusable on touch
+  // (design v3 README §Components — SiteNav).
+  const [dropOpen, setDropOpen] = useState(false);
+  // ≤760px the links leave the bar for a panel behind the MENU button.
+  const [panelOpen, setPanelOpen] = useState(false);
+
+  const closeAll = () => {
+    setDropOpen(false);
+    setPanelOpen(false);
+  };
 
   // Document-level so Escape also closes a hover-opened menu with no
   // focus inside the wrapper (wrapper onKeyDown never fires in that case).
   useEffect(() => {
-    if (!menuOpen) return;
+    if (!dropOpen && !panelOpen) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setMenuOpen(false);
+      if (e.key === "Escape") closeAll();
     };
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
-  }, [menuOpen]);
+  }, [dropOpen, panelOpen]);
 
   return (
     <nav className="band sticky top-0 z-40" aria-label="Main">
@@ -40,72 +48,80 @@ export default function Nav() {
           Tom Keefe
         </Link>
         <div className="flex items-center gap-1">
-          <Link href="/#range" className="nav-link max-sm:hidden">
-            Overview
-          </Link>
-          <div
-            className="relative"
-            onMouseEnter={() => setMenuOpen(true)}
-            onMouseLeave={close}
-            onBlur={(e) => {
-              if (!e.currentTarget.contains(e.relatedTarget)) close();
-            }}
-          >
-            <Link
-              href="/#projects"
-              className="nav-link"
-              aria-expanded={menuOpen}
-              onFocus={() => setMenuOpen(true)}
-              onClick={close}
-            >
-              Projects <span style={{ color: "var(--acc-soft)" }}>▾</span>
+          <div id="site-nav-links" className="nav-links" data-open={panelOpen ? "true" : "false"}>
+            <Link href="/#range" className="nav-link" onClick={closeAll}>
+              Overview
             </Link>
-            {menuOpen && (
-              <div
-                className="absolute right-0 top-full min-w-[268px] rounded p-1.5"
-                style={{
-                  background: "var(--bg)",
-                  border: "1px solid var(--hair)",
-                  boxShadow: "0 12px 28px rgba(0,0,0,0.14)",
-                }}
+            {/* Hover-open only for real mice — touch taps emulate mouseenter,
+                which would open-then-toggle-closed on the same tap. */}
+            <div
+              className="relative max-[760px]:static"
+              onPointerEnter={(e) => {
+                if (e.pointerType === "mouse") setDropOpen(true);
+              }}
+              onPointerLeave={(e) => {
+                if (e.pointerType === "mouse") setDropOpen(false);
+              }}
+              onBlur={(e) => {
+                if (!e.currentTarget.contains(e.relatedTarget)) setDropOpen(false);
+              }}
+            >
+              <button
+                type="button"
+                className="nav-link cursor-pointer border-0 bg-transparent"
+                aria-expanded={dropOpen}
+                aria-haspopup="true"
+                onClick={() => setDropOpen((v) => !v)}
               >
-                {projectDetails.map((p) => (
-                  <Link
-                    key={p.slug}
-                    href={`/projects/${p.slug}`}
-                    onClick={close}
-                    className="block rounded-[3px] px-3 py-2.5 hover:bg-(--tint) hover:text-(--acc)"
-                    style={{ color: "var(--ink)" }}
-                  >
-                    <span className="block text-sm font-semibold tracking-[-0.02em]">
-                      {p.title}
-                    </span>
-                    <span
-                      className="mono mt-0.5 block text-[10.5px] tracking-[0.06em]"
-                      style={{ color: "var(--faint)" }}
-                    >
-                      {p.menuSubtitle}
-                    </span>
-                  </Link>
-                ))}
-                <div className="mx-3 my-1 h-px" style={{ background: "var(--hair)" }} />
-                <Link
-                  href="/#projects"
-                  onClick={close}
-                  className="mono block rounded-[3px] px-3 py-2 text-[10.5px] tracking-[0.08em] hover:bg-(--tint) hover:text-(--acc)"
-                  style={{ color: "var(--muted)" }}
+                Projects <span style={{ color: "var(--acc-soft)" }}>▾</span>
+              </button>
+              {dropOpen && (
+                <div
+                  className="absolute right-0 top-full min-w-[268px] rounded p-1.5 max-[760px]:static max-[760px]:mt-1 max-[760px]:min-w-0"
+                  style={{
+                    background: "var(--bg)",
+                    border: "1px solid var(--hair)",
+                    boxShadow: "0 12px 28px rgba(0,0,0,0.14)",
+                  }}
                 >
-                  All projects →
-                </Link>
-              </div>
-            )}
+                  {projectDetails.map((p) => (
+                    <Link
+                      key={p.slug}
+                      href={`/projects/${p.slug}`}
+                      onClick={closeAll}
+                      className="block rounded-[3px] px-3 py-2.5 hover:bg-(--tint) hover:text-(--acc)"
+                      style={{ color: "var(--ink)" }}
+                    >
+                      <span className="block text-sm font-semibold tracking-[-0.02em]">
+                        {p.title}
+                      </span>
+                      <span
+                        className="mono mt-0.5 block text-[10.5px] tracking-[0.06em]"
+                        style={{ color: "var(--faint)" }}
+                      >
+                        {p.menuSubtitle}
+                      </span>
+                    </Link>
+                  ))}
+                  <div className="mx-3 my-1 h-px" style={{ background: "var(--hair)" }} />
+                  <Link
+                    href="/#projects"
+                    onClick={closeAll}
+                    className="mono block rounded-[3px] px-3 py-2 text-[10.5px] tracking-[0.08em] hover:bg-(--tint) hover:text-(--acc)"
+                    style={{ color: "var(--muted)" }}
+                  >
+                    All projects →
+                  </Link>
+                </div>
+              )}
+            </div>
+            <Link href="/#principles" className="nav-link" onClick={closeAll}>
+              Principles
+            </Link>
+            <Link href="/#contact" className="nav-link" onClick={closeAll}>
+              Contact
+            </Link>
           </div>
-          <Link href="/#principles" className="nav-link max-sm:hidden">
-            Principles
-          </Link>
-          <Link href="/#contact" className="nav-link max-sm:hidden">
-            Contact
-          </Link>
           <ThemeToggle />
           <a
             href={email.href}
@@ -114,6 +130,16 @@ export default function Nav() {
           >
             Email
           </a>
+          <button
+            type="button"
+            className="nav-toggle nav-link ml-1 cursor-pointer bg-transparent"
+            style={{ border: "1px solid rgba(255,255,255,0.36)" }}
+            aria-expanded={panelOpen}
+            aria-controls="site-nav-links"
+            onClick={() => setPanelOpen((v) => !v)}
+          >
+            {panelOpen ? "Close" : "Menu"}
+          </button>
         </div>
       </div>
     </nav>

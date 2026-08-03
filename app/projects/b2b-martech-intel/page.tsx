@@ -7,6 +7,13 @@ const project = getProjectDetail("b2b-martech-intel");
 export const metadata: Metadata = {
   title: `${project.title} — Tom Keefe`,
   description: project.premise,
+  alternates: { canonical: "/projects/b2b-martech-intel" },
+  openGraph: {
+    title: `${project.title} — Tom Keefe`,
+    description: project.premise,
+    url: "/projects/b2b-martech-intel",
+    type: "website",
+  },
 };
 
 export default function Page() {

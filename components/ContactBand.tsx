@@ -2,7 +2,7 @@ import { site } from "@/content/site";
 
 export default function ContactBand() {
   return (
-    <section id="contact" className="band mt-14">
+    <section id="contact" className="band mt-(--space-8)">
       <div className="container-page pb-[26px] pt-16">
         <h2 className="m-0 max-w-[22ch] text-[clamp(30px,4.4vw,52px)] font-semibold leading-[1.06] tracking-[-0.038em] text-white">
           {site.contactHeadline}
@@ -18,7 +18,7 @@ export default function ContactBand() {
             </a>
           ))}
         </div>
-        <footer className="mono mt-15 flex flex-wrap justify-between gap-5 border-t border-white/18 pt-[18px] text-[10.5px] tracking-[0.06em] text-white/55">
+        <footer className="mono mt-15 flex flex-wrap justify-between gap-5 border-t border-white/18 pt-[18px] text-[10.5px] tracking-[0.06em] text-white/55 max-[560px]:flex-col max-[560px]:items-start max-[560px]:gap-2.5">
           <span>{site.footer.left}</span>
           <span>{site.footer.right}</span>
         </footer>

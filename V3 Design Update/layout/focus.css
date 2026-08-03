@@ -1,0 +1,33 @@
+/* Keyboard focus. Nothing in the source design specified one, so this is the
+   system's own addition: a 2px --acc ring at 2px offset, matching nothing else
+   in the vocabulary so it can never be mistaken for a border or a rule.
+   :focus-visible only — mouse clicks never show a ring. */
+
+:where(a, button, [tabindex]):focus-visible {
+  outline: 2px solid var(--acc);
+  outline-offset: 2px;
+  border-radius: var(--radius-button);
+}
+
+/* On a deep color field the accent is the background, so the ring lifts to --acc-soft. */
+.tk-field :where(a, button, [tabindex]):focus-visible {
+  outline-color: var(--acc-soft);
+}
+
+/* Row links animate padding on hover; the ring must not inherit that offset jump. */
+.tk-row-link:focus-visible { outline-offset: 3px; }
+
+/* Skip link — the only way past a sticky nav and a full masthead by keyboard.
+   Hidden until focused, then lands on the deep field like a nav item. */
+.tk-skip {
+  position: absolute; top: 0; left: 0; z-index: 100;
+  transform: translateY(-250%);
+  padding: 10px 16px; margin: 8px;
+  background: var(--bg); color: var(--acc);
+  border: 1px solid var(--acc); border-radius: var(--radius-button);
+  font-family: var(--font-mono); font-size: var(--size-label);
+  letter-spacing: var(--track-label); text-decoration: none;
+  transition: transform var(--dur-hover) var(--ease);
+}
+.tk-skip:focus { transform: translateY(0); }
+.tk-skip:not(:focus) { pointer-events: none; }

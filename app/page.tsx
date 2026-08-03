@@ -9,6 +9,9 @@ import ContactBand from "@/components/ContactBand";
 export default function Home() {
   return (
     <>
+      <a href="#range" className="skip-link">
+        Skip to content
+      </a>
       <Nav />
       <Masthead />
       <TechStrip />

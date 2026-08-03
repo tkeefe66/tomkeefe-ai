@@ -52,6 +52,8 @@ export type ProjectFigure = {
   height: number;
   /** true = image at 190% width (crop pattern); false = 100% width. */
   wide: boolean;
+  /** Light captures are dimmed in dark mode; dark captures opt out. */
+  capture: "light" | "dark";
   /** Natural image dimensions for next/image. */
   width: number;
   naturalHeight: number;
