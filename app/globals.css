@@ -82,7 +82,7 @@
 
   ::selection {
     background: var(--acc);
-    color: #ffffff;
+    color: var(--acc-ink); /* white in light; near-black in dark, where --acc is pale blue */
   }
 
   p {
