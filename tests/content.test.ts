@@ -69,4 +69,10 @@ describe("projects", () => {
     expect(martech.sections.find((s) => s.pending)?.heading).toBe("WHAT CHANGED");
     expect(getProjectDetail("inventory").figures).toHaveLength(2);
   });
+
+  it("every linked row and next-pointer resolves to a detail record", () => {
+    const slugs = new Set(projectDetails.map((d) => d.slug));
+    for (const p of projects.filter((p) => p.slug)) expect(slugs.has(p.slug!)).toBe(true);
+    for (const d of projectDetails) expect(slugs.has(d.next.slug)).toBe(true);
+  });
 });

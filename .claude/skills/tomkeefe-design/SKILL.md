@@ -31,7 +31,10 @@ hardcoded in components.
   bug hard-coded a plate gradient to `#FFFFFF` and produced a white band on
   a black page in dark mode; a related bug let `.band a { color: inherit }`
   beat `.band-btn`'s navy text color on specificity, rendering the EMAIL
-  button white-on-white — fixed by scoping to `.band a:not(.band-btn)`.
+  button white-on-white — fixed with `.band :where(a) { color: inherit }`,
+  which drops the rule's specificity to ~(0,1,0) so `.band-btn`,
+  `.band-btn-ghost`, `.nav-link` and `.nav-link:hover` (each a real class
+  selector) always win, while plain band links still inherit white.
   Check both classes of bug (visible bands, invisible text) after any
   `.band`-adjacent CSS change, in both themes.
 - Radius: 3px buttons/nav, 4px dropdown, 0 plates. No shadows except the
@@ -62,6 +65,11 @@ backup — never delete it even though it's unused.
 | JS scroll offset | `scroll-margin-top: 64px` | Simpler, no JS needed for hash nav under the sticky 56–64px bar |
 | Base dropdown | Focus + Escape handling added | Keyboard accessibility |
 | Hardcoded white `::selection` | `--acc-ink` | Stays readable in dark mode |
+| `--faint` design source (`#9AA1AC` light / `#5F5F63` dark) | `#7C838E` / `#75757A` | Source values failed WCAG AA (2.60:1 / 2.97:1) for the 10.5px status labels and dropdown subtitles that use this token; darkened to pass. This repo wins on contrast — v1 made the same call for its muted token. |
+
+`app/opengraph-image.tsx` and `app/icon.svg` legitimately hard-code brand
+hexes: `next/og` image generation and SVG favicons can't read CSS custom
+properties, so the "CSS vars only" rule above doesn't apply to them.
 
 The old `Tom Keefe AI design system/` folder is the SUPERSEDED v1
 reference (Archivo, red accent, zero-radius). Do not build against it.

@@ -68,5 +68,5 @@ export type ProjectDetail = {
   figures: ProjectFigure[];
   /** Inventory only: paragraph beside FIG. 02. */
   digestNote?: string;
-  next: { slug: string; label: string };
+  next: { slug: string };
 };

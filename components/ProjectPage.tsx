@@ -4,7 +4,11 @@ import ContactBand from "@/components/ContactBand";
 import FigurePlate from "@/components/FigurePlate";
 import { getProjectDetail } from "@/content/projects";
 
-export default function ProjectPage({ slug }: { slug: string }) {
+export default function ProjectPage({
+  slug,
+}: {
+  slug: "b2b-martech-intel" | "inventory";
+}) {
   const project = getProjectDetail(slug);
   const next = getProjectDetail(project.next.slug);
 
@@ -86,7 +90,7 @@ export default function ProjectPage({ slug }: { slug: string }) {
             className="hover:text-(--acc)"
             style={{ color: "var(--muted)" }}
           >
-            {project.next.label}
+            NEXT — {next.title} →
           </Link>
         </div>
       </main>

@@ -73,7 +73,7 @@ export const projectDetails: ProjectDetail[] = [
         naturalHeight: 1740,
       },
     ],
-    next: { slug: "inventory", label: "NEXT — INVENTORY →" },
+    next: { slug: "inventory" },
   },
   {
     slug: "inventory",
@@ -125,7 +125,7 @@ export const projectDetails: ProjectDetail[] = [
     ],
     digestNote:
       "Days are tagged by shape — social, delivery, rides, date — so a week reads as behaviour instead of a list of charges. It's the same instinct as a signal feed: the raw event is less useful than the pattern it belongs to.",
-    next: { slug: "b2b-martech-intel", label: "NEXT — B2B MARTECH INTEL →" },
+    next: { slug: "b2b-martech-intel" },
   },
 ];
 

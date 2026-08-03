@@ -21,7 +21,7 @@
   --ink: #0b0d10;
   --body: #3b424c;
   --muted: #6b7280;
-  --faint: #9aa1ac;
+  --faint: #7c838e; /* darkened from design source (#9AA1AC / #5F5F63) for WCAG AA — repo convention */
   --hair: #e4e6ea;
   --sunk: #f7f8f9;
 
@@ -43,7 +43,7 @@
   --ink: #f0f0f0;
   --body: #c4c4c8;
   --muted: #8b8b8e;
-  --faint: #5f5f63;
+  --faint: #75757a; /* darkened from design source (#9AA1AC / #5F5F63) for WCAG AA — repo convention */
   --hair: #26272b;
   --sunk: #17181a;
 
@@ -135,7 +135,7 @@
     background: var(--acc-deep);
     color: #ffffff;
   }
-  .band a:not(.band-btn, .band-btn-ghost) {
+  .band :where(a) {
     color: inherit;
   }
 

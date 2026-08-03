@@ -3,10 +3,17 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { site } from "@/content/site";
+import type { SiteLink } from "@/content/types";
 import { projectDetails } from "@/content/projects";
 import ThemeToggle from "@/components/ThemeToggle";
 
-const email = site.links.find((l) => l.label === "EMAIL")!;
+function requireEmailLink(): SiteLink {
+  const found = site.links.find((l) => l.label === "EMAIL");
+  if (!found) throw new Error("site.links must include an EMAIL link");
+  return found;
+}
+
+const email = requireEmailLink();
 
 export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -48,7 +55,6 @@ export default function Nav() {
               href="/#projects"
               className="nav-link"
               aria-expanded={menuOpen}
-              aria-haspopup="true"
               onFocus={() => setMenuOpen(true)}
               onClick={close}
             >
