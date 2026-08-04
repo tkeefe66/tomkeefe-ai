@@ -108,8 +108,6 @@ are gone. Footer meta stays `white/55` (v3 says 0.45; fails AA at 10.5px).
 Design project (current brand: Onest/Plex Mono, navy accent — synced
 2026-08-03). It previously held the superseded v1 system (Archivo, red
 accent, zero-radius); if it ever shows those values again, it is stale —
-re-run design-sync before trusting it. Known local leftovers absent
-upstream (pending cleanup — do not build against them): `css/`, `_ds/`,
-`ui_kits/website/` (upstream is `ui_kits/site/`), `tokens/elevation.css`,
-`components/content/`, and assorted v1 files in `components/` and
-`guidelines/` that still show Archivo/red.
+re-run design-sync before trusting it. The v1 leftovers were purged on
+2026-08-03 — the mirror now holds only synced upstream files (binary
+`assets/` are intentionally not mirrored; see design-sync).
