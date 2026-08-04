@@ -1,23 +1,30 @@
-<!-- @dsCard group="Components" viewport="700x260" name="Core — buttons, tags, inputs" -->
-<!DOCTYPE html><html><head><link rel="stylesheet" href="../../styles.css"></head>
-<body style="padding:24px 32px;display:flex;flex-direction:column;gap:20px;">
-<div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
-  <button class="btn btn-primary">View projects</button>
-  <button class="btn btn-secondary">Email</button>
-  <button class="btn btn-ghost">LinkedIn →</button>
-  <button class="btn btn-primary" disabled>Disabled</button>
-  <button class="btn btn-secondary btn-icon" aria-label="Menu">≡</button>
-</div>
-<div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
-  <span class="tag tag-live">Live</span>
-  <span class="tag tag-draft">Draft</span>
-  <span class="tag tag-draft">In development</span>
-  <span class="tag tag-neutral">Internal</span>
-  <span class="tag tag-outline">TBC</span>
-  <span class="tag tag-accent">AI Agents</span>
-</div>
-<div style="display:flex;gap:16px;max-width:520px;">
-  <div class="field" style="flex:1;"><label for="a">Email</label><input class="input" id="a" placeholder="you@company.com"></div>
-  <div class="field" style="flex:1;"><label for="b">Name</label><input class="input" id="b" value="Tom Keefe"></div>
-</div>
-</body></html>
+<!-- @dsCard group="Components" viewport="700x210" subtitle="Button, SectionHeading and StatusLabel across their states." name="Core — buttons, headings, status" -->
+<!doctype html>
+<html><head><meta charset="utf-8" />
+<link rel="stylesheet" href="../../styles.css" />
+<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>body{margin:0;padding:20px;background:var(--bg);color:var(--ink);font-family:var(--font-sans);letter-spacing:var(--track-base)}</style>
+</head><body><div id="root"></div>
+<script type="text/babel">
+const NS = window.TomKeefeDesignSystem_7aaa63 || {};
+const { Button, SectionHeading, StatusLabel } = NS;
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <div style={{display:"grid",gap:"22px"}}>
+    <div style={{display:"flex",gap:"8px",alignItems:"center",flexWrap:"wrap"}}>
+      <Button>EMAIL</Button>
+      <Button variant="secondary">LINKEDIN</Button>
+      <Button variant="disabled">DISABLED</Button>
+      <span style={{background:"var(--acc-deep)",padding:"10px",borderRadius:"3px",display:"flex",gap:"8px"}}>
+        <Button onField>EMAIL</Button><Button variant="secondary" onField>GITHUB</Button>
+      </span>
+    </div>
+    <SectionHeading title="Five opinions, held firmly." subhead="Earned the expensive way. Disagreement welcome — bring the data." />
+    <div style={{display:"flex",gap:"18px"}}>
+      <StatusLabel tone="accent">READ →</StatusLabel><StatusLabel>IN PROGRESS</StatusLabel><StatusLabel tone="muted">LIVE</StatusLabel>
+    </div>
+  </div>
+);
+</script></body></html>

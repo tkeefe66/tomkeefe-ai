@@ -1,22 +1,14 @@
-import * as React from 'react';
-
 /**
- * Action button — solid accent primary, outlined secondary, ghost accent text.
- * Labels are flush left; trailing icon follows the label, never centered gaps.
- * @startingPoint section="Core" subtitle="Primary, secondary and ghost actions" viewport="700x170"
+ * Mono-label action. Primary is a filled accent (or white on a deep field);
+ * secondary is a hairline outline. Never more than one primary per group.
  */
 export interface ButtonProps {
-  /** Visual variant */
-  variant?: 'primary' | 'secondary' | 'ghost' | 'icon';
-  /** Full-width, label flush left */
-  block?: boolean;
-  /** Trailing icon node (Lucide SVG, 16px) */
-  icon?: React.ReactNode;
-  disabled?: boolean;
-  /** Renders an <a> instead of <button> */
+  /** Visual weight. Default "primary". */
+  variant?: "primary" | "secondary" | "disabled";
+  /** Renders as an anchor when set. */
   href?: string;
-  onClick?: () => void;
+  /** Set true when the button sits on an --acc-deep color field. */
+  onField?: boolean;
   children?: React.ReactNode;
-  style?: React.CSSProperties;
 }
 export declare function Button(props: ButtonProps): JSX.Element;

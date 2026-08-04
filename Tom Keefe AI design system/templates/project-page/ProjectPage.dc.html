@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="Project Detail Page" description="Case-study page: deep-field header with project number, prose sections beside a spec table, numbered figure plates, prev/next pager." -->
+<helmet><script src="./ds-base.js"></script><style>html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-sans);letter-spacing:var(--track-base);-webkit-font-smoothing:antialiased}*{box-sizing:border-box}a{color:var(--ink);text-decoration:none}a:hover{color:var(--acc)}</style></helmet>
+<div>
+<x-import component-from-global-scope="TomKeefeDesignSystem_7aaa63.SiteNav" hint-size="100%,56px" brand="Tom Keefe" items="{{ navItems }}" cta="{{ navCta }}"></x-import>
+<header style="background: var(--acc-deep); color: var(--on-field)">
+<div style="max-width: var(--container); margin: 0 auto; padding: 22px var(--gutter); display: flex; align-items: center; justify-content: space-between; gap: 20px; font-family: var(--font-mono); font-size: var(--size-label); letter-spacing: var(--track-label)" class="tk-meta-row">
+<a href="#top" style="color: var(--on-field-strong)">← TOM KEEFE</a>
+<span style="color: var(--acc-soft)">PROJECT 01</span>
+</div>
+<div style="max-width: var(--container); margin: 0 auto; padding: 34px var(--gutter) 56px; border-top: 1px solid var(--on-field-rule)">
+<h1 style="margin: 0; font-size: var(--size-project-title); font-weight: var(--weight-bold); letter-spacing: var(--track-project-title); line-height: 0.98; color: var(--on-field)">B2B MarTech Intel</h1>
+<p style="margin: 18px 0 0; font-size: var(--size-lead); line-height: var(--leading-snug); color: var(--on-field-body); max-width: 46ch; text-wrap: pretty">A market-intelligence system for a go-to-market organization, built so the field stops guessing what changed this week.</p>
+</div>
+</header>
+<main style="max-width: var(--container); margin: 0 auto; padding: 46px var(--gutter) 0">
+<div class="tk-project-grid">
+<div>
+<h2 style="margin: 0; font-family: var(--font-mono); font-size: var(--size-label); font-weight: var(--weight-medium); letter-spacing: var(--track-label-wide); color: var(--acc)">THE PROBLEM</h2>
+<p style="margin: 12px 0 0; font-size: var(--size-body-lg); line-height: var(--leading-body); color: var(--body); max-width: 64ch; text-wrap: pretty">Market and account signal lived in a dozen places — newsletters, alerts, analyst notes, someone's bookmarks. By the time it reached a seller it was stale, and nobody owned the job of curating it.</p>
+<h2 style="margin: 32px 0 0; font-family: var(--font-mono); font-size: var(--size-label); font-weight: var(--weight-medium); letter-spacing: var(--track-label-wide); color: var(--acc)">WHAT I BUILT</h2>
+<p style="margin: 12px 0 0; font-size: var(--size-body-lg); line-height: var(--leading-body); color: var(--body); max-width: 64ch; text-wrap: pretty">A continuous ingest across news, GTM tech and AI sources that categorizes and tags every article, tracks named companies, and refreshes every twelve minutes.</p>
+<h2 style="margin: 32px 0 0; font-family: var(--font-mono); font-size: var(--size-label); font-weight: var(--weight-medium); letter-spacing: var(--track-label-wide); color: var(--acc)">WHAT CHANGED</h2>
+<p style="margin: 12px 0 0; font-size: var(--size-body-lg); line-height: var(--leading-body); color: var(--faint); max-width: 64ch">[Outcome pending — the number you want to lead with goes here.]</p>
+</div>
+<x-import component-from-global-scope="TomKeefeDesignSystem_7aaa63.FactTable" hint-size="100%,180px" rows="{{ specRows }}"></x-import>
+</div>
+<div style="margin-top: var(--section-gap)">
+<x-import component-from-global-scope="TomKeefeDesignSystem_7aaa63.FigurePlate" hint-size="100%,520px" src="../../assets/martech-intel.png" alt="B2B MarTech Intel news feed" height="{{ figHeight }}" zoom="{{ figZoom }}" caption="FIG. 01 — NEWS FEED. CATEGORY, SOURCE AND TAG FILTERS ACROSS THE FULL CORPUS."></x-import>
+</div>
+<div class="tk-meta-row" style="margin-top: 56px; padding: 20px 0 56px; border-top: 1px solid var(--hair); display: flex; justify-content: space-between; gap: 20px; font-family: var(--font-mono); font-size: var(--size-label); letter-spacing: var(--track-label)">
+<a href="#top" style="color: var(--muted)">← ALL PROJECTS</a>
+<a href="#top" style="color: var(--muted)">NEXT — INVENTORY →</a>
+</div>
+</main>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      figHeight: 520,
+      figZoom: 190,
+      navItems: [
+        { label: "OVERVIEW", href: "#" },
+        { label: "PRINCIPLES", href: "#" },
+        { label: "CONTACT", href: "#" }
+      ],
+      navCta: { label: "EMAIL", href: "mailto:tkeefe66@gmail.com" },
+      specRows: [
+        { label: "ROLE", value: "Built and operated" },
+        { label: "STACK", value: "Next.js · Claude · RSS" },
+        { label: "CORPUS", value: "63,731 articles" },
+        { label: "REFRESH", value: "Every 12 minutes" },
+        { label: "STATUS", value: "Internal" }
+      ]
+    };
+  }
+}
+
+</script>
+</body>
+</html>

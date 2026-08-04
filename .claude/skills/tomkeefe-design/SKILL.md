@@ -5,10 +5,21 @@ description: Use when building or styling any UI in this repo — pages, compone
 
 # tomkeefe.ai design system (v2 "enterprise-document" + v3 update)
 
+**Upstream source of truth:** the Claude Design project **"Tomkeefe.ai
+Design System"** (`7aaa6306-3233-44e8-a733-0a8c1324f756`) — brand/design
+decisions are made there, not in this repo. Its synced local mirror is
+`Tom Keefe AI design system/` at the repo root; refresh it with the
+design-sync skill (pull-only) when specs may have drifted. If a repo-side
+design decision should become canonical, it belongs upstream in Claude
+Design.
+
 Canonical specs, in order: `V3 Design Update/README.md` (responsive, dark
 mode, focus, project pages, assets — the spec of record for anything it
-covers) over `website design v2/README.md` (the base system; folder on disk
-is capitalized "Website Design V2" — case-insensitive filesystem).
+covers; identical to the mirror's `design_handoff_site_update/README.md`)
+over `website design v2/README.md` (the base system; folder on disk
+is capitalized "Website Design V2" — case-insensitive filesystem). On any
+conflict, the freshly-synced mirror wins — it reflects the latest upstream
+edits.
 
 Production implementation: `app/globals.css` — all tokens (`:root` +
 `[data-theme="dark"]`), layout-rhythm vars (`--gutter --section-gap
@@ -93,5 +104,12 @@ Icons and OG cards are the V3 bundle's PNGs (`V3 Design Update/assets/`),
 shipped verbatim — the earlier generated `opengraph-image.tsx` / `icon.svg`
 are gone. Footer meta stays `white/55` (v3 says 0.45; fails AA at 10.5px).
 
-The old `Tom Keefe AI design system/` folder is the SUPERSEDED v1
-reference (Archivo, red accent, zero-radius). Do not build against it.
+`Tom Keefe AI design system/` is the synced mirror of the live Claude
+Design project (current brand: Onest/Plex Mono, navy accent — synced
+2026-08-03). It previously held the superseded v1 system (Archivo, red
+accent, zero-radius); if it ever shows those values again, it is stale —
+re-run design-sync before trusting it. Known local leftovers absent
+upstream (pending cleanup — do not build against them): `css/`, `_ds/`,
+`ui_kits/website/` (upstream is `ui_kits/site/`), `tokens/elevation.css`,
+`components/content/`, and assorted v1 files in `components/` and
+`guidelines/` that still show Archivo/red.

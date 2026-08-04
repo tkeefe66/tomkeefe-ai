@@ -1,12 +1,23 @@
-<!-- @dsCard group="Components" viewport="700x120" name="Navigation" -->
-<!DOCTYPE html><html><head><link rel="stylesheet" href="../../styles.css"></head>
-<body style="padding:24px 0;">
-<nav class="nav">
-  <a class="nav-brand" href="#">Tom Keefe</a>
-  <a href="#">Principles</a>
-  <a href="#" aria-current="page">Projects</a>
-  <a href="#">About</a>
-  <a href="#">Contact</a>
-  <button class="btn btn-secondary" style="padding:4px 10px;font-size:12px;">Dark</button>
-</nav>
-</body></html>
+<!-- @dsCard group="Components" viewport="700x170" subtitle="Deep-field nav bar with the projects dropdown." name="Navigation — sticky site nav" -->
+<!doctype html>
+<html><head><meta charset="utf-8" />
+<link rel="stylesheet" href="../../styles.css" />
+<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>body{margin:0;padding:20px;background:var(--bg);color:var(--ink);font-family:var(--font-sans);letter-spacing:var(--track-base)}</style>
+</head><body><div id="root"></div>
+<script type="text/babel">
+const NS = window.TomKeefeDesignSystem_7aaa63 || {};
+const { SiteNav } = NS;
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <div style={{margin:"-20px"}}>
+    <SiteNav
+      items={[{label:"OVERVIEW",href:"#range"},{label:"PRINCIPLES",href:"#principles"},{label:"CONTACT",href:"#contact"}]}
+      projects={[{title:"B2B MarTech Intel",meta:"MARKET INTELLIGENCE · INTERNAL",href:"#"},{title:"Inventory",meta:"LEDGER + DIGEST · LIVE",href:"#"}]}
+      cta={{label:"EMAIL",href:"#"}} />
+    <div style={{padding:"20px",fontSize:"13px",color:"var(--muted)"}}>Hover PROJECTS to open the dropdown.</div>
+  </div>
+);
+</script></body></html>

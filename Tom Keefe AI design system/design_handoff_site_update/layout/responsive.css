@@ -1,0 +1,80 @@
+/* Responsive layout. The site is one 1180px container; below that the gutter
+   shrinks and every multi-column row collapses to a single column.
+   Components expose `tk-*` class hooks because their layout is inline-styled —
+   these media queries are the only place layout changes by viewport. */
+
+:root {
+  --bp-wide: 1150px;
+  --bp-tablet: 900px;
+  --bp-mobile: 700px;
+  --bp-small: 520px;
+}
+
+/* ---- Gutter and section rhythm tighten on small screens ---- */
+@media (max-width: 700px) {
+  :root { --gutter: 20px; --section-gap: 36px; --space-9: 52px; --space-8: 40px; }
+}
+@media (max-width: 520px) {
+  :root { --gutter: 16px; }
+}
+
+/* ---- Masthead: ledger variant (text + fact table) ---- */
+.tk-masthead-ledger { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 56px; align-items: start; }
+@media (max-width: 900px) {
+  .tk-masthead-ledger { grid-template-columns: minmax(0, 1fr); gap: 34px; }
+}
+
+/* ---- Masthead: column-rule variant (identity rail + statement) ---- */
+.tk-masthead-column { display: grid; grid-template-columns: 230px minmax(0, 1fr); }
+.tk-masthead-column > .tk-rail { padding-right: 30px; }
+.tk-masthead-column > .tk-column-body { border-left: 1px solid var(--on-field-rule-strong); padding-left: 40px; }
+@media (max-width: 900px) {
+  .tk-masthead-column { grid-template-columns: minmax(0, 1fr); gap: 30px; }
+  .tk-masthead-column > .tk-rail { padding-right: 0; }
+  .tk-masthead-column > .tk-column-body { border-left: 0; border-top: 1px solid var(--on-field-rule-strong); padding-left: 0; padding-top: 28px; }
+}
+
+/* ---- Project page: prose + spec table ---- */
+.tk-project-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, 340px); gap: 48px; align-items: start; }
+@media (max-width: 900px) {
+  .tk-project-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+}
+
+/* ---- Labelled rows: the 118px mono label stacks above its text ---- */
+@media (max-width: 700px) {
+  .tk-labelled-row { display: block !important; }
+  .tk-labelled-row > .tk-label { display: block; margin-bottom: 5px; }
+}
+
+/* ---- Figure plates: fixed crop heights shorten rather than scale ---- */
+@media (max-width: 900px) { .tk-figure { height: 400px !important; } }
+@media (max-width: 700px) { .tk-figure { height: 300px !important; } }
+
+/* ---- Footer / pager meta rows wrap instead of squeezing ---- */
+@media (max-width: 560px) {
+  .tk-meta-row { flex-direction: column; align-items: flex-start !important; gap: 10px !important; }
+}
+
+/* ---- Collapsible fact table: closed by default on mobile only ---- */
+.tk-facts-toggle { display: none; }
+@media (max-width: 700px) {
+  .tk-facts-toggle { display: flex; align-items: center; justify-content: space-between; }
+  .tk-facts-rows[data-open="false"] { display: none; }
+}
+
+/* ---- Nav: inline links below the mobile breakpoint move to a panel ---- */
+.tk-nav-links { display: flex; align-items: center; gap: 4px; }
+.tk-nav-toggle { display: none; }
+@media (max-width: 760px) {
+  .tk-nav-links { display: none; }
+  .tk-nav-links[data-open="true"] {
+    display: flex; flex-direction: column; align-items: stretch; gap: 2px;
+    position: absolute; top: 100%; left: 0; right: 0;
+    background: var(--acc-deep); border-top: 1px solid var(--on-field-rule);
+    padding: 10px var(--gutter) 18px;
+  }
+  .tk-nav-links[data-open="true"] > * { width: 100%; }
+  .tk-nav-toggle { display: inline-flex; }
+  .tk-nav-dropdown { position: static !important; }
+  .tk-nav-dropdown-panel { position: static !important; min-width: 0 !important; margin-top: 4px; }
+}

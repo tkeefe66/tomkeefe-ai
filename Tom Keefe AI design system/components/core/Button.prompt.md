@@ -1,9 +1,9 @@
-Action button; use `primary` for the single most important action on a view, `secondary` for the rest, `ghost` for inline text actions.
+One-line: the only button in the system — a mono uppercase label in a 3px-radius box, filled for primary and hairline-outlined for secondary.
 
 ```jsx
-<Button variant="primary">View projects</Button>
-<Button variant="secondary" href="mailto:x">Email</Button>
-<Button variant="ghost" icon={<ArrowRight size={16} />}>LinkedIn</Button>
+<Button href="mailto:tkeefe66@gmail.com">EMAIL</Button>
+<Button variant="secondary" href="https://linkedin.com/in/tomkeefesmc">LINKEDIN</Button>
+<Button onField>EMAIL</Button>
 ```
 
-Variants: primary (accent fill), secondary (outlined), ghost (accent text), icon (36×36). `block` makes it full-width with the label still flush left — never center labels.
+Always uppercase the label. On a navy field pass `onField` so primary flips to a white fill with accent text. Groups sit in a `display:flex; gap:8px` row.

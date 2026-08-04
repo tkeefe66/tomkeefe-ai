@@ -1,0 +1,30 @@
+<!-- @dsCard group="Components" viewport="700x210" subtitle="Three project states, plus the non-state markers." name="Status states" -->
+<!doctype html>
+<html><head><meta charset="utf-8" /><link rel="stylesheet" href="../../styles.css" />
+<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>body{margin:0;padding:20px;background:var(--bg);color:var(--ink);font-family:var(--font-sans);letter-spacing:var(--track-base)}.mono{font-family:var(--font-mono);font-size:10px;letter-spacing:0.06em;color:var(--faint)}.r{display:flex;gap:20px;align-items:center;padding:9px 0;border-bottom:1px solid var(--hair)}.r:last-of-type{border-bottom:0}</style>
+</head><body><div id="root"></div>
+<script type="text/babel">
+const { StatusLabel } = window.TomKeefeDesignSystem_7aaa63;
+const Row = ({ note, children }) => (
+  <div className="r">{children}<span className="mono">{note}</span></div>
+);
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <div>
+    <Row note="ACTIONABLE — THE ONLY LOUD STATE"><StatusLabel state="live">LIVE</StatusLabel></Row>
+    <Row note="UNDERWAY, NOT YET SHIPPED"><StatusLabel state="progress">IN PROGRESS</StatusLabel></Row>
+    <Row note="DATED — TINTED CAPSULE, QUIETER THAN LIVE"><StatusLabel state="launching">LAUNCHING SEPT 2026</StatusLabel></Row>
+    <Row note="BOTH IN ONE ROW DURING LAUNCH WEEK">
+      <span style={{ display: "flex", gap: "14px", alignItems: "center" }}>
+        <StatusLabel state="launching">LAUNCHING SEPT 2026</StatusLabel>
+        <StatusLabel state="live">LIVE</StatusLabel>
+      </span>
+    </Row>
+    <Row note="NON-STATE MARKERS"><span style={{ display: "flex", gap: "16px" }}><StatusLabel tone="accent">READ →</StatusLabel><StatusLabel>PROJECT 01</StatusLabel></span></Row>
+  </div>
+);
+</script>
+</body></html>

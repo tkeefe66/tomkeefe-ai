@@ -1,0 +1,34 @@
+<!-- @dsCard group="Brand" viewport="700x230" subtitle="Hover only — press states are deliberately unstyled. 160ms throughout." name="Interaction states" -->
+<!doctype html>
+<html><head><meta charset="utf-8" /><link rel="stylesheet" href="../styles.css" />
+<style>
+body{margin:0;padding:20px;font-family:var(--font-sans);letter-spacing:var(--track-base);background:var(--bg);color:var(--ink)}
+.mono{font-family:var(--font-mono);font-size:10px;letter-spacing:0.06em;color:var(--muted)}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1.5px solid var(--ink)}
+.cell{padding:12px 0;border-bottom:1px solid var(--hair)}
+.cell + .cell{padding-left:18px;border-left:1px solid var(--hair)}
+.rl{display:block;padding:8px 0;text-decoration:none;color:var(--ink);transition:padding-left var(--dur-hover) var(--ease)}
+.rl:hover{padding-left:10px}
+.title{font-size:16px;font-weight:600;letter-spacing:-0.03em}
+.btn{display:inline-block;padding:9px 15px;border-radius:var(--radius-button);font-family:var(--font-mono);font-size:11px;letter-spacing:0.06em;text-decoration:none;background:var(--acc);color:var(--acc-ink);border:1px solid var(--acc);transition:background var(--dur-hover),color var(--dur-hover)}
+.btn:hover{background:transparent;color:var(--acc)}
+.nv{display:inline-block;padding:7px 11px;border-radius:var(--radius-button);font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;color:var(--on-field-strong);text-decoration:none;transition:background var(--dur-hover)}
+.nv:hover{background:var(--on-field-hover);color:var(--on-field)}
+</style>
+</head><body>
+<div class="pair">
+  <div class="cell">
+    <a class="rl" href="#"><span class="title">Inventory</span></a>
+    <div class="mono">ROW LINK — PADDING-LEFT 0 → 10PX. NEVER A COLOR CHANGE</div>
+  </div>
+  <div class="cell">
+    <a class="btn" href="#">EMAIL</a>
+    <div class="mono" style="margin-top:9px">BUTTON — INVERTS ITS FILL</div>
+  </div>
+</div>
+<div style="margin-top:16px;background:var(--acc-deep);padding:11px 13px;border-radius:var(--radius-panel)">
+  <a class="nv" href="#">OVERVIEW</a><a class="nv" href="#">PRINCIPLES</a><a class="nv" href="#">CONTACT</a>
+</div>
+<div class="mono" style="margin-top:9px">NAV ITEM — 9% WHITE WASH ON THE DEEP FIELD</div>
+<div class="mono" style="margin-top:12px;color:var(--faint)">HOVER 160MS · THEME 220MS · EASE CUBIC-BEZIER(0.2,0.8,0.2,1) · NO PRESS STATE, NO SCROLL REVEALS</div>
+</body></html>
