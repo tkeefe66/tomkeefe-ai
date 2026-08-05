@@ -15,26 +15,38 @@ export type SiteContent = {
   techStrip: string[];
   links: SiteLink[];
   contactHeadline: string;
-  footer: { left: string; right: string };
+  /** right is absent while the changelog values are unfilled (OPEN.md). */
+  footer: { left: string; right?: string };
   notFound: { headline: string; line: string; cta: string };
 };
 
 export type RangeContent = {
   headline: string;
-  subhead: string;
-  paragraph: string;
-  altitudes: { label: string; text: string }[];
+  /** Two paragraphs; subhead and the altitude ladder were cut in the 2026-08 rewrite. */
+  paragraphs: string[];
 };
 
-export type Principle = { text: string };
+export type Principle = {
+  text: string;
+  /** Optional receipt line tying the claim to a project (DS5 Statement annotation). */
+  annotation?: string;
+};
+
+/** A homepage prose section: heading + consecutive paragraphs (ProseBlock). */
+export type ProseSection = { heading: string; paragraphs: string[] };
 
 export type ProjectRow = {
   name: string;
-  description: string;
-  /** Present = row links to /projects/<slug> and shows READ →. */
+  /** Present = card links to /projects/<slug> and shows READ →. */
   slug?: string;
-  /** Inert rows only. */
-  status?: "IN PROGRESS" | "LIVE";
+  /** Drives StatusLabel; "launching" gets the tinted capsule. */
+  state: "live" | "progress" | "launching";
+  /** Badge text, e.g. "LIVE" or "LAUNCHING SEPT 2026". */
+  status: string;
+  /** 1–3 card body paragraphs. */
+  body: string[];
+  /** [scale, cost, what broke]; null = value unavailable, clause omitted (OPEN.md). Absent = no meta row at all. */
+  meta?: (string | null)[];
 };
 
 export type ProjectSection = {

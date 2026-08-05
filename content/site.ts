@@ -4,18 +4,16 @@ export const site: SiteContent = {
   name: "Tom Keefe",
   domain: "tomkeefe.ai",
   tagline:
-    "I build the systems that carry go-to-market — the automation, the data model, and the tooling underneath the number.",
+    "I run GTM at a B2B SaaS company and build agents for an audience of one, on the assumption they won't stay that way.",
   // Ledger is the shipped masthead; Column is the approved backup. Flip to
   // "column" to compare — do not delete either variant.
   mastheadVariant: "ledger",
   masthead: {
-    lead: "I build the systems that carry go-to-market — the automation, the data model, and the tooling underneath the number.",
+    lead: "I run GTM at a B2B SaaS company and build agents for an audience of one, on the assumption they won't stay that way.",
     ledger: [
-      { label: "ROLE", value: "Director, GTM Experts" },
-      { label: "COMPANY", value: "Demandbase" },
-      { label: "FIELD", value: "MOps · RevOps · GTM" },
-      { label: "YEARS", value: "13" },
-      { label: "STATUS", value: "Open to conversation" },
+      { label: "ROLE", value: "Director, GTM Experts at Demandbase" },
+      { label: "YEARS", value: "13 in revenue operations. 2 building things that run without me." },
+      { label: "STATUS", value: "The agents are typing." },
     ],
     column: {
       headline: "Every GTM team is running on systems somebody had to build.",
@@ -35,8 +33,8 @@ export const site: SiteContent = {
     { label: "GITHUB", href: "https://github.com/tkeefe66" },
   ],
   contactHeadline:
-    "If something in your stack is held together by a Friday afternoon, let's talk.",
-  footer: { left: "© 2026 TOM KEEFE", right: "DIRECTED BY A HUMAN. BUILT WITH AGENTS." },
+    "I answer email. Especially about GTM systems, agent architecture, or why your enrichment pipeline is quietly lying to you.",
+  footer: { left: "© 2026 Tom Keefe" },
   notFound: {
     headline: "404",
     line: "This page doesn't exist. The systems do.",

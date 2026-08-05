@@ -20,7 +20,7 @@ export default function ContactBand() {
         </div>
         <footer className="mono mt-15 flex flex-wrap justify-between gap-5 border-t border-white/18 pt-[18px] text-[10.5px] tracking-[0.06em] text-white/55 max-[560px]:flex-col max-[560px]:items-start max-[560px]:gap-2.5">
           <span>{site.footer.left}</span>
-          <span>{site.footer.right}</span>
+          {site.footer.right ? <span>{site.footer.right}</span> : null}
         </footer>
       </div>
     </section>

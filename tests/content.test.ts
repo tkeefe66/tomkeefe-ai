@@ -2,77 +2,118 @@ import { describe, it, expect } from "vitest";
 import { site } from "@/content/site";
 import { range } from "@/content/range";
 import { principles } from "@/content/principles";
+import { agents } from "@/content/agents";
+import { wrong } from "@/content/wrong";
 import { projects, projectDetails, getProjectDetail } from "@/content/projects";
 
+/** Rule 1 of the rewrite brief: a literal bracket in copy is a defect. */
+function expectNoBrackets(s: string) {
+  expect(s).not.toMatch(/[[\]]/);
+}
+
 describe("site content", () => {
-  it("has identity and masthead", () => {
+  it("has the new tagline in hero and meta source", () => {
     expect(site.name).toBe("Tom Keefe");
-    expect(site.masthead.lead.length).toBeGreaterThan(40);
-    expect(site.masthead.ledger).toHaveLength(5);
-    for (const row of site.masthead.ledger) {
-      expect(row.label).toMatch(/^[A-Z ]+$/);
-      expect(row.value).toBeTruthy();
-    }
-    expect(site.masthead.column.headline).toBeTruthy();
-    expect(["ledger", "column"]).toContain(site.mastheadVariant);
+    expect(site.tagline).toContain("audience of one");
+    expect(site.masthead.lead).toBe(site.tagline);
+  });
+
+  it("ledger is three rows: ROLE, YEARS, STATUS", () => {
+    expect(site.masthead.ledger.map((r) => r.label)).toEqual(["ROLE", "YEARS", "STATUS"]);
+    expect(site.masthead.ledger[0].value).toBe("Director, GTM Experts at Demandbase");
+    expect(site.masthead.ledger[2].value).toBe("The agents are typing.");
   });
 
   it("has tech strip, links, contact and footer", () => {
-    expect(site.techStrip.length).toBeGreaterThanOrEqual(10);
-    expect(site.links).toHaveLength(3);
+    expect(site.techStrip).toHaveLength(13); // marquee trim NOT approved
     expect(site.links.map((l) => l.label)).toEqual(["EMAIL", "LINKEDIN", "GITHUB"]);
-    expect(site.contactHeadline).toContain("Friday afternoon");
-    expect(site.footer.left).toContain("TOM KEEFE");
-    expect(site.footer.right).toBe("DIRECTED BY A HUMAN. BUILT WITH AGENTS.");
+    expect(site.contactHeadline).toContain("I answer email");
+    expect(site.footer.left).toBe("© 2026 Tom Keefe");
+    // Changelog values unfilled → footer is the © line alone (OPEN.md).
+    // "DIRECTED BY A HUMAN. BUILT WITH AGENTS." moved to a section heading.
+    expect(site.footer.right).toBeUndefined();
   });
 });
 
-describe("range", () => {
-  it("has headline and exactly 5 altitudes", () => {
+describe("range (Boardroom)", () => {
+  it("keeps the headline, drops the subhead and the altitude ladder", () => {
     expect(range.headline).toBe("Boardroom to production query.");
-    expect(range.altitudes).toHaveLength(5);
-    expect(range.altitudes.map((a) => a.label)).toEqual([
-      "C-SUITE", "LEADERSHIP", "PROGRAM", "SYSTEM", "MACHINE",
+    expect(range.paragraphs).toHaveLength(2);
+    expect(range.paragraphs[0]).toContain("enrichment job stopped writing on a Tuesday");
+    expect(range.paragraphs[1]).toContain("Customer Zero by instinct");
+    expect("altitudes" in range).toBe(false);
+    expect("subhead" in range).toBe(false);
+  });
+});
+
+describe("new prose sections", () => {
+  it("agents section: heading appears here (and only here — footer test above)", () => {
+    expect(agents.heading).toBe("Directed by a human. Built with agents.");
+    expect(agents.paragraphs).toHaveLength(4);
+    expect(agents.paragraphs[2]).toContain("Silence isn't a valid answer");
+  });
+
+  it("wrong section: two final paragraphs, B6 resolved inline", () => {
+    expect(wrong.heading).toBe("How I get things wrong.");
+    expect(wrong.paragraphs).toHaveLength(2);
+    expect(wrong.paragraphs[0]).toContain("the better part of a month");
+    for (const p of wrong.paragraphs) expectNoBrackets(p);
+  });
+});
+
+describe("opinions", () => {
+  it("ships six, annotations on 03 and 04 only", () => {
+    expect(principles).toHaveLength(6);
+    expect(principles.map((p) => Boolean(p.annotation))).toEqual([
+      false, false, true, true, false, false,
+    ]);
+    expect(principles[2].annotation).toContain("packing the same bag wrong");
+    expect(principles[3].annotation).toContain("The month was the cheap part.");
+    expect(principles[5].text).toBe(
+      "The feature you're most excited about is usually the one to cut.",
+    );
+  });
+});
+
+describe("project cards", () => {
+  it("five cards, brief order, no Field Assistant", () => {
+    expect(projects.map((p) => p.name)).toEqual([
+      "MarTech Intel", "Inventory", "Life Tracker", "Dynasty Analyzer", "tomkeefe.ai",
     ]);
   });
-});
 
-describe("principles", () => {
-  it("ships exactly 5", () => {
-    expect(principles).toHaveLength(5);
-    for (const p of principles) expect(p.text.length).toBeGreaterThan(20);
+  it("statuses and states", () => {
+    expect(projects.map((p) => p.status)).toEqual([
+      "LIVE", "LIVE", "LIVE", "LAUNCHING SEPT 2026", "LIVE",
+    ]);
+    expect(projects[3].state).toBe("launching");
+    expect(projects.filter((p) => p.state === "live")).toHaveLength(4);
   });
-});
 
-describe("projects", () => {
-  it("lists 5 rows, exactly 2 linked", () => {
-    expect(projects).toHaveLength(5);
-    const linked = projects.filter((p) => p.slug);
-    expect(linked.map((p) => p.slug)).toEqual(["b2b-martech-intel", "inventory"]);
-    for (const p of projects.filter((p) => !p.slug)) {
-      expect(["IN PROGRESS", "LIVE"]).toContain(p.status);
+  it("Inventory card is intentionally three units (2 paragraphs + meta); Life Tracker and tomkeefe.ai carry no meta row", () => {
+    expect(projects[1].body).toHaveLength(2);
+    expect(projects[1].meta?.filter(Boolean)).toHaveLength(2); // B5 clause omitted
+    expect(projects[2].meta).toBeUndefined(); // Life Tracker: B1/B2 deferred
+    expect(projects[4].meta).toBeUndefined(); // tomkeefe.ai: B7 → whole line dropped
+    expect(projects[0].meta?.filter(Boolean)).toHaveLength(3);
+    expect(projects[3].meta?.filter(Boolean)).toHaveLength(2); // B4 clause omitted
+  });
+
+  it("no literal placeholders anywhere in card copy", () => {
+    for (const p of projects) {
+      expectNoBrackets(p.name);
+      expectNoBrackets(p.status);
+      p.body.forEach(expectNoBrackets);
+      (p.meta ?? []).filter((m): m is string => Boolean(m)).forEach(expectNoBrackets);
     }
   });
 
-  it("has complete detail records for both linked projects", () => {
-    expect(projectDetails).toHaveLength(2);
-    for (const d of projectDetails) {
-      expect(d.title).toBeTruthy();
-      expect(d.number).toMatch(/^PROJECT 0[12]$/);
-      expect(d.premise.length).toBeGreaterThan(40);
-      expect(d.sections.length).toBeGreaterThanOrEqual(3);
-      expect(d.facts).toHaveLength(5);
-      expect(d.figures.length).toBeGreaterThanOrEqual(1);
-      expect(d.next.slug).not.toBe(d.slug);
-    }
-    const martech = getProjectDetail("b2b-martech-intel");
-    expect(martech.sections.find((s) => s.pending)?.heading).toBe("WHAT CHANGED");
-    expect(getProjectDetail("inventory").figures).toHaveLength(2);
-  });
-
-  it("every linked row and next-pointer resolves to a detail record", () => {
+  it("linked cards resolve to detail records (2 until Phase 3 lands routes)", () => {
     const slugs = new Set(projectDetails.map((d) => d.slug));
-    for (const p of projects.filter((p) => p.slug)) expect(slugs.has(p.slug!)).toBe(true);
+    for (const p of projects.filter((p) => p.slug)) {
+      expect(slugs.has(p.slug!)).toBe(true);
+    }
     for (const d of projectDetails) expect(slugs.has(d.next.slug)).toBe(true);
+    expect(getProjectDetail("inventory").title).toBeTruthy();
   });
 });

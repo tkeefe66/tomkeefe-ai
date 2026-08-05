@@ -2,31 +2,69 @@ import type { ProjectDetail, ProjectRow } from "./types";
 
 export const projects: ProjectRow[] = [
   {
-    name: "B2B MarTech Intel",
+    name: "MarTech Intel",
     slug: "b2b-martech-intel",
-    description:
-      "Market intelligence for the GTM org — 63,731 articles ingested, categorized and tagged, with briefings, trend analysis and drafting tools on top.",
+    state: "live",
+    status: "LIVE",
+    body: [
+      "A market intelligence function for a GTM org that doesn't have one. It watches B2B martech coverage, filters against the topics and specific companies I care about, and sends one digest email every morning. It also tracks how the narrative moves over weeks, not just what happened yesterday.",
+    ],
+    meta: [
+      "63,731 articles ingested",
+      "under $10/month to run",
+      "took over a month, mostly because v1 also insisted on building slide decks",
+    ],
   },
   {
     name: "Inventory",
     slug: "inventory",
-    description:
-      "Every purchase parsed from receipts and email into one queryable ledger, with a daily digest that reads a week as behavior.",
+    state: "live",
+    status: "LIVE",
+    // Intentionally three units where others are two (brief: do not compress).
+    body: [
+      "Started as a way to stop losing track of outdoor gear. It learns what I own by parsing my receipts and email, so buying a jacket is the same act as cataloguing one. From there it reads the forecast, talks to AllTrails, and answers over Telegram: what to pack for Saturday, what's missing, what to buy before I find out about it on the trail.",
+      "Then I bought a camera I couldn't operate. Instead of working through tutorials I taught the same system to teach me, which is how Field Assistant became a module rather than a project: light, conditions, location and timing for a shoot.",
+    ],
+    // B5 (items catalogued) unfilled — first clause omitted, logged in OPEN.md.
+    meta: [
+      null,
+      "under $20/month",
+      "began life as a spreadsheet replacement and now has opinions about golden hour",
+    ],
+  },
+  {
+    name: "Life Tracker",
+    state: "live",
+    status: "LIVE",
+    body: [
+      "Spending and habits, tracked and then actually interpreted. Inventory reads my receipts to learn what I own; this one reads them to learn what I keep doing. Two systems parsing the same input for different reasons, which is a design I intend to fix and haven't.",
+      "The only thing I've built that I open every day without deciding to.",
+    ],
+    // No meta row by decision: B1 + B2 deferred (OPEN.md). Do not pad.
   },
   {
     name: "Dynasty Analyzer",
-    status: "IN PROGRESS",
-    description: "Trade, roster-value and draft-capital analytics for Sleeper dynasty leagues.",
-  },
-  {
-    name: "Field Assistant",
-    status: "IN PROGRESS",
-    description: "Trip and photography planner — conditions, light, locations, timing.",
+    state: "launching",
+    status: "LAUNCHING SEPT 2026",
+    body: [
+      "Trade evaluation, roster valuation and draft-capital modeling for Sleeper dynasty leagues. Built across one offseason so my league could stop arguing about whether a trade was fair and start losing that argument with numbers.",
+      "Launching in September because that's when the arguing starts.",
+    ],
+    // B4 (leagues modeled) unfilled — middle clause omitted, logged in OPEN.md.
+    meta: [
+      "Free, and staying free",
+      null,
+      "built entirely in the offseason, which means it goes live having never been tested under real traffic",
+    ],
   },
   {
     name: "tomkeefe.ai",
+    state: "live",
     status: "LIVE",
-    description: "This site — designed, written and deployed by AI agents under my direction.",
+    body: [
+      "This site. Written, designed and deployed by agents under my direction. The footer isn't a joke.",
+    ],
+    // B7 wholly unfilled — third line dropped entirely rather than partial (OPEN.md).
   },
 ];
 
