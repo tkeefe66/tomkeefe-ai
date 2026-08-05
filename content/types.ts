@@ -82,5 +82,7 @@ export type ProjectDetail = {
   figures: ProjectFigure[];
   /** Inventory only: paragraph beside FIG. 02. */
   digestNote?: string;
+  /** Same three-line stat block as the card (brief Phase 2 §3); null clauses omitted per OPEN.md. */
+  meta?: (string | null)[];
   next: { slug: string };
 };

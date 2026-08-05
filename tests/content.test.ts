@@ -117,3 +117,27 @@ describe("project cards", () => {
     expect(getProjectDetail("inventory").title).toBeTruthy();
   });
 });
+
+describe("project details (Phase 2 alignment)", () => {
+  it("detail meta matches the card meta for both live writeups", () => {
+    for (const slug of ["b2b-martech-intel", "inventory"]) {
+      const card = projects.find((p) => p.slug === slug)!;
+      expect(getProjectDetail(slug).meta).toEqual(card.meta);
+    }
+  });
+
+  it("MarTech no longer ships the bracketed WHAT CHANGED placeholder", () => {
+    const martech = getProjectDetail("b2b-martech-intel");
+    expect(martech.sections.some((s) => s.pending)).toBe(false);
+    for (const s of martech.sections) {
+      expect(s.body).not.toMatch(/[[\]]/);
+    }
+  });
+
+  it("Inventory page carries the Field Assistant module and the camera story", () => {
+    const inv = getProjectDetail("inventory");
+    const fa = inv.sections.find((s) => s.heading === "THE CAMERA DETOUR");
+    expect(fa?.body).toContain("Field Assistant");
+    expect(fa?.body).toContain("Sony");
+  });
+});

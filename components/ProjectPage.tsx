@@ -2,6 +2,7 @@ import Link from "next/link";
 import Nav from "@/components/Nav";
 import ContactBand from "@/components/ContactBand";
 import FigurePlate from "@/components/FigurePlate";
+import MetaRow from "@/components/MetaRow";
 import { getProjectDetail } from "@/content/projects";
 
 export default function ProjectPage({
@@ -79,6 +80,11 @@ export default function ProjectPage({
                 {project.digestNote}
               </p>
             )}
+          </div>
+        )}
+        {project.meta?.some(Boolean) && (
+          <div className="mt-(--space-8)">
+            <MetaRow items={project.meta} />
           </div>
         )}
         <div

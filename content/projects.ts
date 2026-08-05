@@ -74,10 +74,10 @@ export const projectDetails: ProjectDetail[] = [
   {
     slug: "b2b-martech-intel",
     number: "PROJECT 01",
-    title: "B2B MarTech Intel",
+    title: "MarTech Intel",
     menuSubtitle: "MARKET INTELLIGENCE · INTERNAL",
     premise:
-      "A market-intelligence system for a go-to-market organization, built so the field stops guessing what changed this week.",
+      "A market intelligence function for a GTM org that doesn't have one — filtered against the topics and companies I care about, delivered as one digest email every morning.",
     sections: [
       {
         heading: "THE PROBLEM",
@@ -85,12 +85,7 @@ export const projectDetails: ProjectDetail[] = [
       },
       {
         heading: "WHAT I BUILT",
-        body: "A continuous ingest across news, GTM tech and AI sources that categorizes and tags every article, tracks named companies, and refreshes every twelve minutes. On top of the same corpus sit the things people actually asked for: briefings, trend analysis, an AI analyst, and drafting tools for thought leadership and field enablement.",
-      },
-      {
-        heading: "WHAT CHANGED",
-        body: "[Outcome pending — the number you want to lead with goes here.]",
-        pending: true,
+        body: "A continuous ingest across news, GTM tech and AI sources that categorizes and tags every article, tracks named companies, and refreshes every twelve minutes. On top of the same corpus sit the things people actually asked for: briefings, trend analysis, an AI analyst, and drafting tools for thought leadership and field enablement. It also tracks how the narrative moves over weeks, not just what happened yesterday.",
       },
     ],
     facts: [
@@ -112,6 +107,11 @@ export const projectDetails: ProjectDetail[] = [
         naturalHeight: 1740,
       },
     ],
+    meta: [
+      "63,731 articles ingested",
+      "under $10/month to run",
+      "took over a month, mostly because v1 also insisted on building slide decks",
+    ],
     next: { slug: "inventory" },
   },
   {
@@ -120,7 +120,7 @@ export const projectDetails: ProjectDetail[] = [
     title: "Inventory",
     menuSubtitle: "LEDGER + DIGEST · LIVE",
     premise:
-      "The same discipline I apply to a revenue stack, pointed at my own household: parse everything, categorize it once, query it forever.",
+      "Started as a way to stop losing track of outdoor gear: it learns what I own by parsing receipts and email, so buying a jacket is the same act as cataloguing one.",
     sections: [
       {
         heading: "THE PROBLEM",
@@ -128,7 +128,11 @@ export const projectDetails: ProjectDetail[] = [
       },
       {
         heading: "WHAT I BUILT",
-        body: "An agent ingest that parses receipts and email into a single ledger — 491 items with brand, price, category, domain and type resolved automatically, and a review queue for anything it can't place confidently. Spend is tracked against the same month last year, and a daily digest rolls it up by day with behavioral tags rather than merchant names.",
+        body: "An agent ingest that parses receipts and email into a single ledger — 491 items with brand, price, category, domain and type resolved automatically, and a review queue for anything it can't place confidently. From there it reads the forecast, talks to AllTrails, and answers over Telegram: what to pack for Saturday, what's missing, and what to buy before I find out about it on the trail.",
+      },
+      {
+        heading: "THE CAMERA DETOUR",
+        body: "Then I bought a Sony camera I couldn't operate. The manual assumed I knew what aperture was for; the tutorials assumed I had evenings free. Instead of working through either, I taught the same system to teach me — which is how Field Assistant became a module rather than a project. It already knew my gear, my trails and my weekends from the ledger; now it reads light, conditions, location and timing for a shoot, and folds the answer into the same Telegram thread as the packing list. I still can't recite the exposure triangle. The camera comes home with usable photographs anyway, which was the actual requirement.",
       },
       {
         heading: "WHY IT MATTERS AT WORK",
@@ -166,6 +170,11 @@ export const projectDetails: ProjectDetail[] = [
     ],
     digestNote:
       "Days are tagged by shape — social, delivery, rides, date — so a week reads as behavior instead of a list of charges. It's the same instinct as a signal feed: the raw event is less useful than the pattern it belongs to.",
+    meta: [
+      null,
+      "under $20/month",
+      "began life as a spreadsheet replacement and now has opinions about golden hour",
+    ],
     next: { slug: "b2b-martech-intel" },
   },
 ];
