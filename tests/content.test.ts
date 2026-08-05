@@ -92,13 +92,13 @@ describe("project cards", () => {
     expect(projects.filter((p) => p.state === "live")).toHaveLength(4);
   });
 
-  it("Inventory card is intentionally three units (2 paragraphs + meta); Life Tracker and tomkeefe.ai carry no meta row", () => {
+  it("Inventory card is intentionally three units (2 paragraphs + meta); Life Tracker alone carries no meta row", () => {
     expect(projects[1].body).toHaveLength(2);
-    expect(projects[1].meta?.filter(Boolean)).toHaveLength(2); // B5 clause omitted
+    expect(projects[1].meta?.filter(Boolean)).toHaveLength(3); // B5 filled: over 1,000 items
     expect(projects[2].meta).toBeUndefined(); // Life Tracker: B1/B2 deferred
-    expect(projects[4].meta).toBeUndefined(); // tomkeefe.ai: B7 → whole line dropped
+    expect(projects[4].meta?.filter(Boolean)).toHaveLength(2); // B7: cost fragment still unfilled
     expect(projects[0].meta?.filter(Boolean)).toHaveLength(3);
-    expect(projects[3].meta?.filter(Boolean)).toHaveLength(2); // B4 clause omitted
+    expect(projects[3].meta?.filter(Boolean)).toHaveLength(3); // B4 filled: 2 leagues in beta
   });
 
   it("no literal placeholders anywhere in card copy", () => {
@@ -149,8 +149,8 @@ describe("project details (Phase 2 alignment)", () => {
     expect(getProjectDetail("dynasty-analyzer").launch).toBe(true);
   });
 
-  it("detail meta matches the card meta for both live writeups", () => {
-    for (const slug of ["b2b-martech-intel", "inventory"]) {
+  it("detail meta matches the card meta everywhere a card has one", () => {
+    for (const slug of ["b2b-martech-intel", "inventory", "dynasty-analyzer", "tomkeefe-ai"]) {
       const card = projects.find((p) => p.slug === slug)!;
       expect(getProjectDetail(slug).meta).toEqual(card.meta);
     }

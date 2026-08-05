@@ -31,9 +31,8 @@ export const projects: ProjectRow[] = [
       "Started as a way to stop losing track of outdoor gear. It learns what I own by parsing my receipts and email, so buying a jacket is the same act as cataloguing one. From there it reads the forecast, talks to AllTrails, and answers over Telegram: what to pack for Saturday, what's missing, what to buy before I find out about it on the trail.",
       "Then I bought a camera I couldn't operate. Instead of working through tutorials I taught the same system to teach me, which is how Field Assistant became a module rather than a project: light, conditions, location and timing for a shoot.",
     ],
-    // B5 (items catalogued) unfilled — first clause omitted, logged in OPEN.md.
     meta: [
-      null,
+      "over 1,000 items catalogued",
       "under $20/month",
       "began life as a spreadsheet replacement and now has opinions about golden hour",
     ],
@@ -58,10 +57,9 @@ export const projects: ProjectRow[] = [
       "Trade evaluation, roster valuation and draft-capital modeling for Sleeper dynasty leagues. Built across one offseason so my league could stop arguing about whether a trade was fair and start losing that argument with numbers.",
       "Launching in September because that's when the arguing starts.",
     ],
-    // B4 (leagues modeled) unfilled — middle clause omitted, logged in OPEN.md.
     meta: [
       "Free, and staying free",
-      null,
+      "2 leagues in beta, both of them people I know",
       "built entirely in the offseason, which means it goes live having never been tested under real traffic",
     ],
   },
@@ -73,7 +71,13 @@ export const projects: ProjectRow[] = [
     body: [
       "This site. Written, designed and deployed by agents under my direction. The footer isn't a joke.",
     ],
-    // B7 wholly unfilled — third line dropped entirely rather than partial (OPEN.md).
+    // B7 fragments derived from the repo's own history (plan docs + commit
+    // 2c69b08); cost fragment still unfilled — dropped cleanly by MetaRow.
+    meta: [
+      "three rewrites in its first two weeks",
+      null,
+      "shipped grays that failed WCAG AA until an audit caught them",
+    ],
   },
 ];
 
@@ -135,7 +139,7 @@ export const projectDetails: ProjectDetail[] = [
       },
       {
         heading: "WHAT I BUILT",
-        body: "An agent ingest that parses receipts and email into a single ledger — 491 items with brand, price, category, domain and type resolved automatically, and a review queue for anything it can't place confidently. From there it reads the forecast, talks to AllTrails, and answers over Telegram: what to pack for Saturday, what's missing, and what to buy before I find out about it on the trail.",
+        body: "An agent ingest that parses receipts and email into a single ledger — over 1,000 items with brand, price, category, domain and type resolved automatically, and a review queue for anything it can't place confidently. From there it reads the forecast, talks to AllTrails, and answers over Telegram: what to pack for Saturday, what's missing, and what to buy before I find out about it on the trail.",
       },
       {
         heading: "THE CAMERA DETOUR",
@@ -149,7 +153,7 @@ export const projectDetails: ProjectDetail[] = [
     facts: [
       { label: "ROLE", value: "Designed and built" },
       { label: "STACK", value: "Local-first · agent ingest" },
-      { label: "RECORDS", value: "491 items · 168 active" },
+      { label: "RECORDS", value: "1,000+ items" },
       { label: "NEEDS REVIEW", value: "0" },
       { label: "STATUS", value: "Live, personal" },
     ],
@@ -178,7 +182,7 @@ export const projectDetails: ProjectDetail[] = [
     digestNote:
       "Days are tagged by shape — social, delivery, rides, date — so a week reads as behavior instead of a list of charges. It's the same instinct as a signal feed: the raw event is less useful than the pattern it belongs to.",
     meta: [
-      null,
+      "over 1,000 items catalogued",
       "under $20/month",
       "began life as a spreadsheet replacement and now has opinions about golden hour",
     ],
@@ -227,7 +231,7 @@ export const projectDetails: ProjectDetail[] = [
     figures: [],
     meta: [
       "Free, and staying free",
-      null,
+      "2 leagues in beta, both of them people I know",
       "built entirely in the offseason, which means it goes live having never been tested under real traffic",
     ],
     next: { slug: "tomkeefe-ai" },
@@ -250,6 +254,11 @@ export const projectDetails: ProjectDetail[] = [
       { label: "STATUS", value: "Live" },
     ],
     figures: [],
+    meta: [
+      "three rewrites in its first two weeks",
+      null,
+      "shipped grays that failed WCAG AA until an audit caught them",
+    ],
     next: { slug: "b2b-martech-intel" },
   },
 ];
