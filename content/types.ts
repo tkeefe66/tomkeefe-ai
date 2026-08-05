@@ -84,5 +84,7 @@ export type ProjectDetail = {
   digestNote?: string;
   /** Same three-line stat block as the card (brief Phase 2 §3); null clauses omitted per OPEN.md. */
   meta?: (string | null)[];
+  /** Renders the LAUNCHING SEPT 2026 capsule in the page header (Dynasty). */
+  launch?: true;
   next: { slug: string };
 };

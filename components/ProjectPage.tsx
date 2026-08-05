@@ -3,13 +3,10 @@ import Nav from "@/components/Nav";
 import ContactBand from "@/components/ContactBand";
 import FigurePlate from "@/components/FigurePlate";
 import MetaRow from "@/components/MetaRow";
+import StatusLabel from "@/components/StatusLabel";
 import { getProjectDetail } from "@/content/projects";
 
-export default function ProjectPage({
-  slug,
-}: {
-  slug: "b2b-martech-intel" | "inventory";
-}) {
+export default function ProjectPage({ slug }: { slug: string }) {
   const project = getProjectDetail(slug);
   const next = getProjectDetail(project.next.slug);
 
@@ -33,6 +30,11 @@ export default function ProjectPage({
           <p className="mt-[18px] max-w-[46ch] text-xl leading-normal text-white/80">
             {project.premise}
           </p>
+          {project.launch && (
+            <div className="mt-[18px]">
+              <StatusLabel state="launching">LAUNCHING SEPT 2026</StatusLabel>
+            </div>
+          )}
         </div>
       </header>
       <main className="container-page flex-1 pt-[46px]">
@@ -64,9 +66,11 @@ export default function ProjectPage({
             ))}
           </div>
         </div>
-        <div className="mt-(--section-gap)">
-          <FigurePlate figure={project.figures[0]} />
-        </div>
+        {project.figures[0] && (
+          <div className="mt-(--section-gap)">
+            <FigurePlate figure={project.figures[0]} />
+          </div>
+        )}
         {project.figures[1] && (
           <div className="mt-[38px] flex flex-wrap items-start gap-[26px]">
             <div className="min-w-[280px] flex-[0_1_460px]">

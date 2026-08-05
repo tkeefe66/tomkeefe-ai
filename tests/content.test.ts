@@ -108,7 +108,7 @@ describe("project cards", () => {
     }
   });
 
-  it("linked cards resolve to detail records (2 until Phase 3 lands routes)", () => {
+  it("linked cards resolve to detail records", () => {
     const slugs = new Set(projectDetails.map((d) => d.slug));
     for (const p of projects.filter((p) => p.slug)) {
       expect(slugs.has(p.slug!)).toBe(true);
@@ -119,6 +119,34 @@ describe("project cards", () => {
 });
 
 describe("project details (Phase 2 alignment)", () => {
+  it("five detail records in card order; closed next-chain", () => {
+    expect(projectDetails.map((d) => d.slug)).toEqual([
+      "b2b-martech-intel", "inventory", "life-tracker", "dynasty-analyzer", "tomkeefe-ai",
+    ]);
+    expect(projectDetails.map((d) => d.number)).toEqual([
+      "PROJECT 01", "PROJECT 02", "PROJECT 03", "PROJECT 04", "PROJECT 05",
+    ]);
+    const slugs = projectDetails.map((d) => d.slug);
+    projectDetails.forEach((d, i) => {
+      expect(d.next.slug).toBe(slugs[(i + 1) % slugs.length]);
+    });
+  });
+
+  it("all five cards are linked once routes exist", () => {
+    expect(projects.every((p) => p.slug)).toBe(true);
+  });
+
+  it("stubs are honest: no invented narrative, no brackets, no figures", () => {
+    for (const slug of ["life-tracker", "dynasty-analyzer", "tomkeefe-ai"]) {
+      const d = getProjectDetail(slug);
+      expect(d.figures).toHaveLength(0);
+      for (const s of d.sections) {
+        expect(s.body).not.toMatch(/[[\]]/);
+      }
+    }
+    expect(getProjectDetail("dynasty-analyzer").launch).toBe(true);
+  });
+
   it("detail meta matches the card meta for both live writeups", () => {
     for (const slug of ["b2b-martech-intel", "inventory"]) {
       const card = projects.find((p) => p.slug === slug)!;

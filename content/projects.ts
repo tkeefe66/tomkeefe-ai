@@ -34,6 +34,7 @@ export const projects: ProjectRow[] = [
   },
   {
     name: "Life Tracker",
+    slug: "life-tracker",
     state: "live",
     status: "LIVE",
     body: [
@@ -44,6 +45,7 @@ export const projects: ProjectRow[] = [
   },
   {
     name: "Dynasty Analyzer",
+    slug: "dynasty-analyzer",
     state: "launching",
     status: "LAUNCHING SEPT 2026",
     body: [
@@ -59,6 +61,7 @@ export const projects: ProjectRow[] = [
   },
   {
     name: "tomkeefe.ai",
+    slug: "tomkeefe-ai",
     state: "live",
     status: "LIVE",
     body: [
@@ -175,6 +178,75 @@ export const projectDetails: ProjectDetail[] = [
       "under $20/month",
       "began life as a spreadsheet replacement and now has opinions about golden hour",
     ],
+    next: { slug: "life-tracker" },
+  },
+  // Stub by decision (B1/B2 deferred) — card body + short intro only (OPEN.md).
+  {
+    slug: "life-tracker",
+    number: "PROJECT 03",
+    title: "Life Tracker",
+    menuSubtitle: "SPEND + HABITS · LIVE",
+    premise:
+      "Spending and habits, tracked and then actually interpreted — the only thing I've built that I open every day without deciding to.",
+    sections: [
+      {
+        heading: "THE SHORT VERSION",
+        body: "Inventory reads my receipts to learn what I own; this one reads them to learn what I keep doing. Two systems parsing the same input for different reasons, which is a design I intend to fix and haven't. The full writeup lands when the tool's own findings are ready to publish.",
+      },
+    ],
+    facts: [
+      { label: "ROLE", value: "Built and operated" },
+      { label: "STATUS", value: "Live, personal" },
+    ],
+    figures: [],
+    next: { slug: "dynasty-analyzer" },
+  },
+  // Stub gated on B4 — card body + launch marker only.
+  {
+    slug: "dynasty-analyzer",
+    number: "PROJECT 04",
+    title: "Dynasty Analyzer",
+    menuSubtitle: "SLEEPER ANALYTICS · SEPT 2026",
+    launch: true,
+    premise:
+      "Trade evaluation, roster valuation and draft-capital modeling for Sleeper dynasty leagues.",
+    sections: [
+      {
+        heading: "THE SHORT VERSION",
+        body: "Built across one offseason so my league could stop arguing about whether a trade was fair and start losing that argument with numbers. Launching in September because that's when the arguing starts.",
+      },
+    ],
+    facts: [
+      { label: "ROLE", value: "Built and operated" },
+      { label: "PRICE", value: "Free, and staying free" },
+      { label: "STATUS", value: "Launching Sept 2026" },
+    ],
+    figures: [],
+    meta: [
+      "Free, and staying free",
+      null,
+      "built entirely in the offseason, which means it goes live having never been tested under real traffic",
+    ],
+    next: { slug: "tomkeefe-ai" },
+  },
+  // Stub pending B7 — card body + short intro only.
+  {
+    slug: "tomkeefe-ai",
+    number: "PROJECT 05",
+    title: "tomkeefe.ai",
+    menuSubtitle: "THIS SITE · LIVE",
+    premise: "This site. Written, designed and deployed by agents under my direction.",
+    sections: [
+      {
+        heading: "THE SHORT VERSION",
+        body: "The footer isn't a joke: every page here was built with Claude Code doing the typing, under the working agreement described on the homepage — Directed by a human. Built with agents.",
+      },
+    ],
+    facts: [
+      { label: "ROLE", value: "Directed" },
+      { label: "STATUS", value: "Live" },
+    ],
+    figures: [],
     next: { slug: "b2b-martech-intel" },
   },
 ];

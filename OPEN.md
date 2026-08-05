@@ -19,3 +19,7 @@ listed.
 - **MarTech detail page — "WHAT CHANGED" section** (`content/projects.ts`,
   removed in Phase 2): its body was a literal bracket placeholder awaiting a
   real outcome metric. Reinstate when the number exists.
+- **Stub routes** (`/projects/life-tracker`, `/projects/dynasty-analyzer`,
+  `/projects/tomkeefe-ai`): intentionally incomplete — card copy + short intro
+  only, no invented narratives. Life Tracker awaits B1/B2; Dynasty awaits B4;
+  tomkeefe.ai awaits B7.
