@@ -22,8 +22,8 @@ export default function ProseBlock({
       } leading-[1.6]${className ? ` ${className}` : ""}`}
       style={{ color: reading ? "var(--body)" : "var(--muted)" }}
     >
-      {paragraphs.filter(Boolean).map((p) => (
-        <p key={p} className="m-0">
+      {paragraphs.filter(Boolean).map((p, i) => (
+        <p key={`${i}-${p.slice(0, 40)}`} className="m-0">
           {p}
         </p>
       ))}

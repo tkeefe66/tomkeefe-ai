@@ -52,8 +52,6 @@ export type ProjectRow = {
 export type ProjectSection = {
   heading: string;
   body: string;
-  /** Renders in --faint: outcome placeholder awaiting a real metric. */
-  pending?: boolean;
 };
 
 export type ProjectFigure = {
@@ -86,5 +84,7 @@ export type ProjectDetail = {
   meta?: (string | null)[];
   /** Renders the LAUNCHING SEPT 2026 capsule in the page header (Dynasty). */
   launch?: true;
+  /** Per-route social card; stubs omit it and inherit the root image. */
+  og?: { image: string; alt: string };
   next: { slug: string };
 };

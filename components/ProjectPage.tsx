@@ -57,7 +57,7 @@ export default function ProjectPage({ slug }: { slug: string }) {
                 </h2>
                 <p
                   className="mt-3 max-w-[64ch] text-[16.5px] leading-relaxed"
-                  style={{ color: s.pending ? "var(--faint)" : "var(--body)" }}
+                  style={{ color: "var(--body)" }}
                 >
                   {s.body}
                 </p>

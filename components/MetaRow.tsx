@@ -17,7 +17,7 @@ export default function MetaRow({
       style={{ color: "var(--muted)" }}
     >
       {parts.map((item, i) => (
-        <Fragment key={item}>
+        <Fragment key={`${i}-${item}`}>
           {i > 0 && (
             <span aria-hidden="true" style={{ color: "var(--faint)" }}>
               ·

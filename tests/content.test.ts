@@ -158,7 +158,6 @@ describe("project details (Phase 2 alignment)", () => {
 
   it("MarTech no longer ships the bracketed WHAT CHANGED placeholder", () => {
     const martech = getProjectDetail("b2b-martech-intel");
-    expect(martech.sections.some((s) => s.pending)).toBe(false);
     for (const s of martech.sections) {
       expect(s.body).not.toMatch(/[[\]]/);
     }
@@ -171,11 +170,25 @@ describe("project details (Phase 2 alignment)", () => {
     expect(fa?.body).toContain("Sony");
   });
 
-  it("every project card slug has a route file", () => {
+  it("the dynamic [slug] route file exists", () => {
+    const routePath = path.join(process.cwd(), "app", "projects", "[slug]", "page.tsx");
+    expect(fs.existsSync(routePath)).toBe(true);
+  });
+
+  it("every project card slug resolves to a detail record via getProjectDetail", () => {
     for (const p of projects) {
       if (!p.slug) continue;
-      const routePath = path.join(process.cwd(), "app", "projects", p.slug, "page.tsx");
-      expect(fs.existsSync(routePath)).toBe(true);
+      expect(() => getProjectDetail(p.slug!)).not.toThrow();
+    }
+  });
+
+  it("b2b-martech-intel and inventory carry an og image that exists on disk, with non-empty alt text", () => {
+    for (const slug of ["b2b-martech-intel", "inventory"]) {
+      const d = getProjectDetail(slug);
+      expect(d.og).toBeDefined();
+      const imagePath = path.join(process.cwd(), "public", d.og!.image);
+      expect(fs.existsSync(imagePath)).toBe(true);
+      expect(d.og!.alt.length).toBeGreaterThan(0);
     }
   });
 

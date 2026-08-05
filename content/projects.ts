@@ -123,6 +123,7 @@ export const projectDetails: ProjectDetail[] = [
       "under $10/month to run",
       "took over a month, mostly because v1 also insisted on building slide decks",
     ],
+    og: { image: "/og/b2b-martech-intel.png", alt: "MarTech Intel — Tom Keefe" },
     next: { slug: "inventory" },
   },
   {
@@ -186,6 +187,7 @@ export const projectDetails: ProjectDetail[] = [
       "under $20/month",
       "began life as a spreadsheet replacement and now has opinions about golden hour",
     ],
+    og: { image: "/og/inventory.png", alt: "Inventory — Tom Keefe" },
     next: { slug: "life-tracker" },
   },
   // Stub by decision (B1/B2 deferred) — card body + short intro only (OPEN.md).
