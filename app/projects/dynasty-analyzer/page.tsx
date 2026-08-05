@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     description: project.premise,
     url: "/projects/dynasty-analyzer",
     type: "website",
+    images: ["/opengraph-image.png"],
   },
 };
 

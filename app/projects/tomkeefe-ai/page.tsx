@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     description: project.premise,
     url: "/projects/tomkeefe-ai",
     type: "website",
+    images: ["/opengraph-image.png"],
   },
 };
 

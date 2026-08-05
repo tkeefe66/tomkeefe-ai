@@ -1,5 +1,11 @@
 import type { ProjectDetail, ProjectRow } from "./types";
 
+export const projectsIntro: string[] = [
+  "Four tools and this website. Three run in production with a user base of one, which is me, and one of them I open every single day. That's the point rather than the apology: I don't recommend a workflow I haven't already run against my own data for months.",
+  "The fourth goes public in September, at which point I find out whether any of this survives contact with strangers.",
+  "Each writeup covers the problem, the build, what it costs to run, and the part where it didn't work.",
+];
+
 export const projects: ProjectRow[] = [
   {
     name: "MarTech Intel",
@@ -71,8 +77,6 @@ export const projects: ProjectRow[] = [
   },
 ];
 
-// Narrative copy inferred from screenshots by the designer — pending Tom's
-// verification (design README §Outstanding 2).
 export const projectDetails: ProjectDetail[] = [
   {
     slug: "b2b-martech-intel",
@@ -101,7 +105,7 @@ export const projectDetails: ProjectDetail[] = [
     figures: [
       {
         src: "/projects/martech-intel.png",
-        alt: "B2B MarTech Intel news feed",
+        alt: "MarTech Intel news feed",
         caption: "FIG. 01 — NEWS FEED. CATEGORY, SOURCE AND TAG FILTERS ACROSS THE FULL CORPUS.",
         height: 520,
         wide: true,

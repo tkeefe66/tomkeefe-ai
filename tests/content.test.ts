@@ -1,10 +1,12 @@
 import { describe, it, expect } from "vitest";
+import fs from "node:fs";
+import path from "node:path";
 import { site } from "@/content/site";
 import { range } from "@/content/range";
 import { principles } from "@/content/principles";
 import { agents } from "@/content/agents";
 import { wrong } from "@/content/wrong";
-import { projects, projectDetails, getProjectDetail } from "@/content/projects";
+import { projects, projectDetails, projectsIntro, getProjectDetail } from "@/content/projects";
 
 /** Rule 1 of the rewrite brief: a literal bracket in copy is a defect. */
 function expectNoBrackets(s: string) {
@@ -167,5 +169,45 @@ describe("project details (Phase 2 alignment)", () => {
     const fa = inv.sections.find((s) => s.heading === "THE CAMERA DETOUR");
     expect(fa?.body).toContain("Field Assistant");
     expect(fa?.body).toContain("Sony");
+  });
+
+  it("every project card slug has a route file", () => {
+    for (const p of projects) {
+      if (!p.slug) continue;
+      const routePath = path.join(process.cwd(), "app", "projects", p.slug, "page.tsx");
+      expect(fs.existsSync(routePath)).toBe(true);
+    }
+  });
+
+  it("no literal brackets anywhere across all detail records", () => {
+    for (const d of projectDetails) {
+      expectNoBrackets(d.premise);
+      expectNoBrackets(d.menuSubtitle);
+      for (const s of d.sections) {
+        expectNoBrackets(s.heading);
+        expectNoBrackets(s.body);
+      }
+      for (const f of d.facts) {
+        expectNoBrackets(f.value);
+      }
+      (d.meta ?? []).filter((m): m is string => Boolean(m)).forEach(expectNoBrackets);
+    }
+  });
+
+  it("full writeups (b2b-martech-intel, inventory) meet writeup invariants", () => {
+    for (const slug of ["b2b-martech-intel", "inventory"]) {
+      const d = getProjectDetail(slug);
+      expect(d.figures.length).toBeGreaterThanOrEqual(1);
+      expect(d.premise.length).toBeGreaterThan(40);
+      expect(d.sections.length).toBeGreaterThanOrEqual(2);
+    }
+  });
+});
+
+describe("projects intro copy", () => {
+  it("three paragraphs, bracket-free, opens with the framing line", () => {
+    expect(projectsIntro).toHaveLength(3);
+    projectsIntro.forEach(expectNoBrackets);
+    expect(projectsIntro[0]).toContain("Four tools and this website");
   });
 });
