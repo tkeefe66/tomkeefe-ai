@@ -3,7 +3,7 @@ import type { ProjectDetail, ProjectRow } from "./types";
 export const projectsIntro: string[] = [
   "Four tools and this website. Three run in production with a user base of one, which is me, and one of them I open every single day. That's the point rather than the apology: I don't recommend a workflow I haven't already run against my own data for months.",
   "The fourth goes public in September, at which point I find out whether any of this survives contact with strangers.",
-  "Each writeup covers the problem, the build, what it costs to run, and the part where it didn't work.",
+  "The finished writeups cover the problem, the build, what it costs to run, and the part where it didn't work. The rest are stubs until their numbers exist — I'd rather ship a short page than invent one.",
 ];
 
 export const projects: ProjectRow[] = [
@@ -222,7 +222,6 @@ export const projectDetails: ProjectDetail[] = [
     ],
     facts: [
       { label: "ROLE", value: "Built and operated" },
-      { label: "PRICE", value: "Free, and staying free" },
       { label: "STATUS", value: "Launching Sept 2026" },
     ],
     figures: [],

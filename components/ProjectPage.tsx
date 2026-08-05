@@ -3,7 +3,6 @@ import Nav from "@/components/Nav";
 import ContactBand from "@/components/ContactBand";
 import FigurePlate from "@/components/FigurePlate";
 import MetaRow from "@/components/MetaRow";
-import StatusLabel from "@/components/StatusLabel";
 import { getProjectDetail } from "@/content/projects";
 
 export default function ProjectPage({ slug }: { slug: string }) {
@@ -32,7 +31,15 @@ export default function ProjectPage({ slug }: { slug: string }) {
           </p>
           {project.launch && (
             <div className="mt-[18px]">
-              <StatusLabel state="launching">LAUNCHING SEPT 2026</StatusLabel>
+              {/* Band-context variant of the launching capsule: the standard
+                  --tint surface reads as a hole against the dark band, so on
+                  the band the chip goes ghost, matching band-btn-ghost. */}
+              <span
+                className="mono whitespace-nowrap rounded-full border border-white/28 px-[9px] py-[3px] text-[10.5px] tracking-[0.08em]"
+                style={{ color: "var(--acc-soft)" }}
+              >
+                LAUNCHING SEPT 2026
+              </span>
             </div>
           )}
         </div>
