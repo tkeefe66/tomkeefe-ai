@@ -23,7 +23,7 @@ describe("site content", () => {
   it("ledger is three rows: ROLE, YEARS, STATUS", () => {
     expect(site.masthead.ledger.map((r) => r.label)).toEqual(["ROLE", "YEARS", "STATUS"]);
     expect(site.masthead.ledger[0].value).toBe("Director, GTM Experts at Demandbase");
-    expect(site.masthead.ledger[2].value).toBe("The agents are typing.");
+    expect(site.masthead.ledger[2].value).toBe("The agents are typing");
   });
 
   it("has tech strip, links, contact and footer", () => {
