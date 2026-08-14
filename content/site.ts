@@ -3,13 +3,12 @@ import type { SiteContent } from "./types";
 export const site: SiteContent = {
   name: "Tom Keefe",
   domain: "tomkeefe.ai",
-  tagline:
-    "Build vs. buy is dead. It's build vs. wait. I stopped waiting. Here's what survived.",
+  tagline: "I build the tools I got tired of waiting for.",
   // Ledger is the shipped masthead; Column is the approved backup. Flip to
   // "column" to compare — do not delete either variant.
   mastheadVariant: "ledger",
   masthead: {
-    lead: "Build vs. buy is dead. It's build vs. wait. I stopped waiting. Here's what survived.",
+    lead: "I build the tools I got tired of waiting for.",
     ledger: [
       { label: "ROLE", value: "Director, GTM Experts at Demandbase" },
       { label: "YEARS", value: "13 in revenue operations. 2 building things that run without me." },

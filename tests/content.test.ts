@@ -16,7 +16,7 @@ function expectNoBrackets(s: string) {
 describe("site content", () => {
   it("has the new tagline in hero and meta source", () => {
     expect(site.name).toBe("Tom Keefe");
-    expect(site.tagline).toContain("build vs. wait");
+    expect(site.tagline).toContain("tired of waiting for");
     expect(site.masthead.lead).toBe(site.tagline);
   });
 
