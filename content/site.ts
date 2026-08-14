@@ -11,7 +11,9 @@ export const site: SiteContent = {
     lead: "I build the tools I got tired of waiting for.",
     ledger: [
       { label: "ROLE", value: "Director, GTM Experts at Demandbase" },
-      { label: "YEARS", value: "13 in revenue operations. 2 building things that run without me." },
+      // Newline is intentional — the ledger value renders `pre-line` so the
+      // second clause starts its own row instead of wrapping mid-sentence.
+      { label: "YEARS", value: "13 in revenue operations.\n2 building things that run without me." },
       { label: "STATUS", value: "The agents are typing." },
     ],
     column: {

@@ -303,6 +303,9 @@
   }
   .fact-row > :last-child {
     text-align: right;
+    /* Honour explicit newlines in a fact value (see site.masthead.ledger
+       YEARS) so a two-clause value breaks where the copy says, not mid-line. */
+    white-space: pre-line;
   }
   /* white variant for the masthead ledger */
   .band .fact-row {
