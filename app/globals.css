@@ -314,24 +314,9 @@
     gap: 16px;
   }
 
-  /* Collapsible fact table: rows start closed behind a mono disclosure line
-     on mobile only. Visibility is owned here, NOT by inline styles — an
-     inline display could not be overridden by the media query
-     (design v3 README §Components — FactTable). */
-  .facts-toggle {
-    display: none;
-  }
-  @media (max-width: 700px) {
-    .facts-toggle {
-      display: flex;
-      width: 100%;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .facts-rows[data-open="false"] {
-      display: none;
-    }
-  }
+  /* The mobile PROFILE disclosure (design v3 README §Components — FactTable)
+     was removed on 2026-08-14: the ledger always renders, at every width, so
+     .facts-toggle / .facts-rows no longer exist. */
 
   /* — project index rows — */
   .row-link {
