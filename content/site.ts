@@ -4,12 +4,12 @@ export const site: SiteContent = {
   name: "Tom Keefe",
   domain: "tomkeefe.ai",
   tagline:
-    "I run GTM at a B2B SaaS company and build agents for an audience of one, on the assumption they won't stay that way.",
+    "Build vs. buy is dead. It's build vs. wait. I stopped waiting. Here's what survived.",
   // Ledger is the shipped masthead; Column is the approved backup. Flip to
   // "column" to compare — do not delete either variant.
   mastheadVariant: "ledger",
   masthead: {
-    lead: "I run GTM at a B2B SaaS company and build agents for an audience of one, on the assumption they won't stay that way.",
+    lead: "Build vs. buy is dead. It's build vs. wait. I stopped waiting. Here's what survived.",
     ledger: [
       { label: "ROLE", value: "Director, GTM Experts at Demandbase" },
       { label: "YEARS", value: "13 in revenue operations. 2 building things that run without me." },
