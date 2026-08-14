@@ -101,10 +101,19 @@ describe("project cards", () => {
     expect(projects[3].meta?.filter(Boolean)).toHaveLength(3); // B4 filled: 2 leagues in beta
   });
 
+  it("every card carries one sentence short enough to sit on a line", () => {
+    for (const p of projects) {
+      expect(p.line.length).toBeGreaterThan(0);
+      expect(p.line.length).toBeLessThanOrEqual(72);
+      expect(p.line).toMatch(/\.$/);
+    }
+  });
+
   it("no literal placeholders anywhere in card copy", () => {
     for (const p of projects) {
       expectNoBrackets(p.name);
       expectNoBrackets(p.status);
+      expectNoBrackets(p.line);
       p.body.forEach(expectNoBrackets);
       (p.meta ?? []).filter((m): m is string => Boolean(m)).forEach(expectNoBrackets);
     }

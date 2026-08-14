@@ -1,61 +1,40 @@
 import Link from "next/link";
 import StatusLabel from "@/components/StatusLabel";
-import MetaRow from "@/components/MetaRow";
-import ProseBlock from "@/components/ProseBlock";
 
 type ProjectCardProps = {
   name: string;
   state?: "live" | "progress" | "launching";
   status?: string;
-  body: string[];
-  meta?: Array<string | null>;
+  line: string;
   href?: string;
-  cta?: string;
 };
 
-/* One card per project — full-width stacked rows, never a grid. Unequal
-   bodies read as a list of essays, which is what they are. Same hover as
-   .row-link: padding-left 0 → 10px, never a color change. */
-export default function ProjectCard({
-  name,
-  state,
-  status,
-  body,
-  meta,
-  href,
-  cta = "READ →",
-}: ProjectCardProps) {
+/* Compact catalogue card: name + status on one line, the project's single
+   sentence under it. The whole card is the link — there is no separate READ
+   affordance and no meta row, so cost per project is ~87px instead of ~293px
+   (2026-08-14). Hover matches .row-link: padding-left 0 → 10px, never colour.
+   Deviates from design v2 §Project rows ("full-width stacked rows, never a
+   grid") by decision — see ProjectsList. */
+export default function ProjectCard({ name, state, status, line, href }: ProjectCardProps) {
   const inner = (
     <>
-      <div className="flex items-baseline justify-between gap-[22px] max-[560px]:flex-col max-[560px]:items-start max-[560px]:gap-2">
-        <span
-          className="text-[21px] font-semibold tracking-[-0.03em]"
-          style={{ color: "var(--ink)" }}
-        >
+      <div className="flex items-baseline justify-between gap-4">
+        <span className="text-[17px] font-semibold tracking-[-0.03em]" style={{ color: "var(--ink)" }}>
           {name}
         </span>
         {status ? <StatusLabel state={state}>{status}</StatusLabel> : null}
       </div>
-      <ProseBlock paragraphs={body} size="row" className="mt-[11px]" />
-      {meta?.some(Boolean) ? (
-        <div className="mt-4">
-          <MetaRow items={meta} />
-        </div>
-      ) : null}
-      {href && cta ? (
-        <div className="mt-4">
-          <StatusLabel tone="accent">{cta}</StatusLabel>
-        </div>
-      ) : null}
+      <span className="mt-[5px] block text-[14.5px] leading-[1.5]" style={{ color: "var(--muted)" }}>
+        {line}
+      </span>
     </>
   );
-  const pad = { paddingTop: 26, paddingBottom: 26 };
   return href ? (
-    <Link href={href} className="row-link last:border-b-0" style={pad}>
+    <Link href={href} className="row-link" style={{ paddingTop: 13, paddingBottom: 13 }}>
       {inner}
     </Link>
   ) : (
-    <div className="row-link last:border-b-0" style={pad}>
+    <div className="row-link" style={{ paddingTop: 13, paddingBottom: 13 }}>
       {inner}
     </div>
   );

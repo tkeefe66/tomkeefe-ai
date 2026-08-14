@@ -12,6 +12,7 @@ export const projects: ProjectRow[] = [
     slug: "b2b-martech-intel",
     state: "live",
     status: "LIVE",
+    line: "Market intelligence for a GTM org that doesn't have one.",
     body: [
       "A market intelligence function for a GTM org that doesn't have one. It watches B2B martech coverage, filters against the topics and specific companies I care about, and sends one digest email every morning. It also tracks how the narrative moves over weeks, not just what happened yesterday.",
     ],
@@ -26,6 +27,7 @@ export const projects: ProjectRow[] = [
     slug: "inventory",
     state: "live",
     status: "LIVE",
+    line: "Receipts and email become a gear ledger that answers back.",
     // Intentionally three units where others are two (brief: do not compress).
     body: [
       "Started as a way to stop losing track of outdoor gear. It learns what I own by parsing my receipts and email, so buying a jacket is the same act as cataloguing one. From there it reads the forecast, talks to AllTrails, and answers over Telegram: what to pack for Saturday, what's missing, what to buy before I find out about it on the trail.",
@@ -42,6 +44,7 @@ export const projects: ProjectRow[] = [
     slug: "life-tracker",
     state: "live",
     status: "LIVE",
+    line: "Spending and habits, tracked and then actually interpreted.",
     body: [
       "Spending and habits, tracked and then actually interpreted. Inventory reads my receipts to learn what I own; this one reads them to learn what I keep doing. Two systems parsing the same input for different reasons, which is a design I intend to fix and haven't.",
       "The only thing I've built that I open every day without deciding to.",
@@ -53,6 +56,7 @@ export const projects: ProjectRow[] = [
     slug: "dynasty-analyzer",
     state: "launching",
     status: "LAUNCHING SEPT 2026",
+    line: "Trade and roster valuation for Sleeper dynasty leagues.",
     body: [
       "Trade evaluation, roster valuation and draft-capital modeling for Sleeper dynasty leagues. Built across one offseason so my league could stop arguing about whether a trade was fair and start losing that argument with numbers.",
       "Launching in September because that's when the arguing starts.",
@@ -68,6 +72,7 @@ export const projects: ProjectRow[] = [
     slug: "tomkeefe-ai",
     state: "live",
     status: "LIVE",
+    line: "This site. Written, designed and deployed by agents.",
     body: [
       "This site. Written, designed and deployed by agents under my direction. The footer isn't a joke.",
     ],
