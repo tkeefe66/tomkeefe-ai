@@ -48,7 +48,7 @@ rewritten to 2–3 lines at the 46ch measure; five currently read "Not written u
 | Heading | Voice | Content |
 |---|---|---|
 | `THE PROBLEM` | past tense | What was broken before the thing existed. |
-| `WHAT IT DOES` | present tense, user's seat | The payoff as an experience — concrete moments, what it replaced. Must go beyond the premise line, which already compresses this into one sentence. |
+| `WHAT IT DOES` | present tense, user's seat | The payoff, stated outright rather than implied: concrete moments, what it replaced, and what having it is worth. Must go beyond the premise line, which already compresses this into one sentence. |
 | `WHAT I BUILT` | builder's voice | The mechanism: ingest, schema, cadence, model, surfaces. |
 | `WHERE IT BROKE` | past tense | A real failure from git history or the repo's own audit docs. |
 
@@ -61,6 +61,12 @@ Extra sections only where a genuine story exists. Outdoor Inventory keeps
 `THE CAMERA DETOUR` as a fifth. `WHY IT MATTERS AT WORK` is removed from Outdoor
 Inventory and added nowhere — the site shows no work projects, so the mapping has
 nothing to attach to.
+
+A fifth section arguing significance to the reader (`WHY IT MATTERS` / `WHAT IT
+PROVES`) was considered and declined. That argument still has to be made — it lives
+inside `WHAT IT DOES`, which is why that section states the benefit outright instead
+of leaving it implied. Four sections carry it; a page does not close on a claim it
+cannot support.
 
 ### Fact rail — five rows
 
