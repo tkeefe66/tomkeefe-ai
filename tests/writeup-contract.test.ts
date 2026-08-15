@@ -83,7 +83,7 @@ const BASELINE: Record<string, string[]> = {
   "dynasty-analyzer": ["one-figure"],
   "tomkeefe-ai": ["one-figure"],
   "camera-agent": ["four-sections", "five-facts", "core-fact-labels", "one-figure", "premise-length"],
-  "job-search": ["four-sections", "five-facts", "core-fact-labels", "one-figure", "premise-length"],
+  "job-search": ["one-figure"],
   "family-tree": ["one-figure"],
   "code-coach": ["one-figure"],
 };

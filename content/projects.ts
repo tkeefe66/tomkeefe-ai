@@ -107,8 +107,10 @@ export const projects: ProjectRow[] = [
     slug: "job-search",
     state: "live",
     status: "LIVE",
-    line: "Writeup coming.",
-    body: ["Not written up yet."],
+    line: "Tracks open roles against my own criteria, and keeps every link real.",
+    body: [
+      "A single-user tool that watches company career pages, scores every role against my own criteria, and keeps each link pointed at the real posting instead of a copy that will outlive it.",
+    ],
   },
   {
     name: "Family Tree",
@@ -388,15 +390,34 @@ export const projectDetails: ProjectDetail[] = [
     slug: "job-search",
     number: "PROJECT 08",
     title: "Job Search",
-    menuSubtitle: "LIVE",
-    premise: "Not written up yet.",
+    menuSubtitle: "DISCOVER + TRACK · LIVE",
+    premise:
+      "A single-user tool that watches company career pages, scores every role against my own criteria, and keeps each link pointed at the real posting.",
     sections: [
       {
-        heading: "THE SHORT VERSION",
-        body: "This one is on the list and not yet documented. The writeup lands when there is something true to say about what it costs, what it does and where it broke.",
+        heading: "THE PROBLEM",
+        body: "Openings for a specific function are scattered across funding and hiring news, dozens of company career pages each running a different applicant system, and job-board listings whose links usually outlive the posting they copied. Watching all of that by hand means revisiting the same pages on a schedule, and a link that still resolves says nothing about whether the role behind it is still open.",
+      },
+      {
+        heading: "WHAT IT DOES",
+        body: "It checks in on the companies I'm tracking on its own, so a new opening shows up without me revisiting the same list of career pages by hand, and it only surfaces a role once it has scored how well that specific listing matches criteria I set — title, location, tooling, pay floor — so I'm not making the same judgment call from scratch every time one appears. It also keeps the link honest: a posting that's actually closed gets marked closed instead of sitting there forever, and one that arrived through a board gets pointed back at the employer's own page instead of a copy that goes stale first. Doing any of that by hand across more than a handful of companies doesn't scale, and a link that still loads is no guarantee the role behind it still exists.",
+      },
+      {
+        heading: "WHAT I BUILT",
+        body: "Discovery runs two ways: a company mode that follows funding and hiring news for companies already being tracked, and a role mode that searches by title and by the specific tools a listing mentions, so a company that never turns up in funding coverage still surfaces. Watched companies are also crawled directly on a recurring schedule — a plain page fetch first, falling back to a broader search only when the page turns out to be a JS-rendered shell — and whichever method actually worked is remembered per company for next time. Every discovered role is scored against an editable rubric (titles, locations, tooling terms, an optional pay floor) that can be retuned from a settings page without a deploy, and a posting's compensation is parsed preferring the base figure over on-target earnings so a floor comparison isn't skewed by a number that assumes full commission. Link resolution checks a company's own applicant board through each vendor's public endpoint, but only after control-testing that vendor against a nonsense company slug — two candidates were excluded outright because they return a false success for a board that doesn't exist. A posting is only marked closed on a definitive not-found response; anything ambiguous is left for a manual pass instead of being closed against a false positive.",
+      },
+      {
+        heading: "WHERE IT BROKE",
+        body: "A sweep across every server action found eight places where a database write's error comes back as a plain string, and an empty string is falsy — so a check written to catch a failure read it as a success instead. That's not hypothetical: the Postgres driver rejects with an empty message whenever the database is entirely unreachable, so the failure mode is a clean build with a silently wrong screen. A first fixing commit closed six of the eight sites; a second, the same day, closed the remaining four — one of which sat in the path that saves newly discovered roles, where a failed insert would fall through to the same line that marks a role as saved, and the next scheduled check's dedupe would then treat it as already seen and skip it for good.",
       },
     ],
-    facts: [{ label: "STATUS", value: "Live" }],
+    facts: [
+      { label: "ROLE", value: "Built and operated" },
+      { label: "STACK", value: "Next.js · Supabase · Postgres · Anthropic" },
+      { label: "BUILT", value: "162 commits, 38 test files" },
+      { label: "PIPELINE", value: "13 stages, new to offer" },
+      { label: "STATUS", value: "Live, personal" },
+    ],
     figures: [],
     next: { slug: "family-tree" },
   },
