@@ -12,7 +12,7 @@ type ProjectCardProps = {
 /* Compact catalogue card: name + status on one line, the project's single
    sentence under it. The whole card is the link — there is no separate READ
    affordance and no meta row, so cost per project is ~87px instead of ~293px
-   (2026-08-14). Hover matches .row-link: padding-left 0 → 10px, never colour.
+   (2026-08-14). No hover motion — see .row-link in globals.css.
    Deviates from design v2 §Project rows ("full-width stacked rows, never a
    grid") by decision — see ProjectsList. */
 export default function ProjectCard({ name, state, status, line, href }: ProjectCardProps) {

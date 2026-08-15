@@ -319,17 +319,18 @@
      .facts-toggle / .facts-rows no longer exist. */
 
   /* — project index rows — */
+  /* No hover state by decision (2026-08-14). Design v2 §Project rows slid the
+     row 10px right on hover; in the two-up catalogue that drags the sentence
+     with the title and reads as the page shifting. The pointer cursor carries
+     the affordance instead. Keyboard focus still gets a visible ring. */
   .row-link {
     display: block;
     padding: 20px 0;
     border-bottom: 1px solid var(--hair);
-    transition: padding 160ms;
   }
   a.row-link:hover {
-    padding-left: 10px;
     color: inherit;
   }
-  /* the ring must not collide with the hover padding shift */
   a.row-link:focus-visible {
     outline-offset: 3px;
   }
