@@ -142,8 +142,16 @@ export const projectDetails: ProjectDetail[] = [
         body: "Market and account signal lived in a dozen places — newsletters, alerts, analyst notes, someone's bookmarks. By the time it reached a seller it was stale, and nobody owned the job of curating it.",
       },
       {
+        heading: "WHAT IT DOES",
+        body: "One email, every morning. Everything that moved overnight in B2B martech, filtered to the topics and the specific companies I care about — plus how the narrative shifted over the week, which is the part no newsletter gives you. It replaced a reading habit I kept failing to maintain, and it does the job a company this size would otherwise have to hire an analyst for.",
+      },
+      {
         heading: "WHAT I BUILT",
         body: "A continuous ingest across news, GTM tech and AI sources that categorizes and tags every article, tracks named companies, and refreshes every twelve minutes. On top of the same corpus sit the things people actually asked for: briefings, trend analysis, an AI analyst, and drafting tools for thought leadership and field enablement. It also tracks how the narrative moves over weeks, not just what happened yesterday.",
+      },
+      {
+        heading: "WHERE IT BROKE",
+        body: "The first version treated content generation as a slide-deck problem: eight rigid layout types, a dedicated outline-editing page, seven specialized slide-rendering functions. One commit tore all of it out — over 4,000 lines — and replaced it with a plain four-part format: headline, story arc, outline, talk track. The deck system was the single biggest thing this project built and then had to unbuild.",
       },
     ],
     facts: [
