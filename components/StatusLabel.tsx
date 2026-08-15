@@ -37,6 +37,15 @@ export default function StatusLabel({
     state === "live" ? tones.accent : state === "progress" ? tones.muted : tones[tone];
   return (
     <span className={base} style={{ color }}>
+      {/* LIVE gets a --ok dot, the only non-navy hue on the page; the word
+          itself stays --acc so type keeps one colour (2026-08-14). */}
+      {state === "live" ? (
+        <span
+          aria-hidden
+          className="mr-[6px] inline-block size-[5px] rounded-full align-[1.5px]"
+          style={{ background: "var(--ok)" }}
+        />
+      ) : null}
       {children}
     </span>
   );

@@ -33,6 +33,8 @@
   --tint-edge: #d0dae8;
   --acc-deep: #152c4b;
   --acc-soft: #a6bcd8;
+  /* Status dot only — the one non-navy hue, and never used for type. */
+  --ok: #12714a;
 
   --font-ui: var(--font-onest), system-ui, sans-serif;
   --font-mono-ui: var(--font-ibm-plex-mono), ui-monospace, monospace;
@@ -75,6 +77,7 @@
   --tint-edge: #26313f;
   --acc-deep: #1b3050;
   --acc-soft: #9dbbdd;
+  --ok: #56d364;
 }
 
 @layer base {
