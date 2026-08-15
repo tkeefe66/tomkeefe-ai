@@ -81,7 +81,7 @@ const ALLOWED: Record<string, string[]> = {};
 const BASELINE: Record<string, string[]> = {
   "outdoor-telegram-agent": ["four-sections", "five-facts", "core-fact-labels", "one-figure", "premise-length"],
   "dynasty-analyzer": ["one-figure"],
-  "tomkeefe-ai": ["four-sections", "five-facts", "core-fact-labels", "one-figure"],
+  "tomkeefe-ai": ["one-figure"],
   "camera-agent": ["four-sections", "five-facts", "core-fact-labels", "one-figure", "premise-length"],
   "job-search": ["four-sections", "five-facts", "core-fact-labels", "one-figure", "premise-length"],
   "family-tree": ["four-sections", "five-facts", "core-fact-labels", "one-figure", "premise-length"],

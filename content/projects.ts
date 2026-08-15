@@ -336,12 +336,27 @@ export const projectDetails: ProjectDetail[] = [
     premise: "This site. Written, designed and deployed by agents under my direction.",
     sections: [
       {
-        heading: "THE SHORT VERSION",
-        body: "The footer isn't a joke: every page here was built with Claude Code doing the typing, under the working agreement described on the homepage — Directed by a human. Built with agents.",
+        heading: "THE PROBLEM",
+        body: "The other tools on this site are real — a receipt ledger, a habit tracker, a trade grader, a news digest — but a résumé states a title and asks to be believed on faith. It doesn't link to a system that's actually running, and it never admits to what broke on the way to shipping it.",
+      },
+      {
+        heading: "WHAT IT DOES",
+        body: "This page is the evidence, not the pitch. Every project on the site links through to what it actually costs, what it does today, and — in its own section — where it broke, instead of leaving the failure out or filing it as a footnote. It opens dark by default, reads the same on a phone as a desk, and gets a stranger from the front door to the actual record in a click or two. It turns a claim into something anyone can go check.",
+      },
+      {
+        heading: "WHAT I BUILT",
+        body: "Content lives in typed files under content/, separate from the components that render it, so a copy edit never touches a component. Design tokens sync pull-only from a live Claude Design project into a local mirror and land as CSS custom properties in one stylesheet — every color and neutral on the site traces back to a token, never a hard-coded value in a component. Screenshots render as fixed-height figure plates, captured at roughly double width and cropped, with a gradient fade into the page background that has to hold up in both themes. Vitest checks content shape on every commit — required fields present, nothing silently empty — so a bad content edit fails the build instead of rendering blank.",
+      },
+      {
+        heading: "WHERE IT BROKE",
+        body: "A pre-launch review caught three rendering bugs in one pass, all invisible on a static comp and only visible against a live theme toggle. The muted gray token used for status labels and dropdown subtitles read as sufficiently faint to the eye but failed WCAG AA contrast outright — 2.60:1 light, 2.97:1 dark, against a 4.5:1 minimum — and the first attempted fix didn't clear the bar either, landing at 3.82:1 and 4.12:1; a second correction was needed to actually pass, at 4.57:1 and 4.78:1. The same review found a screenshot plate's fade gradient hard-coded to #FFFFFF, which rendered as a white band across a black page in dark mode, and a CSS specificity bug that let a generic band-link rule override a navy button's own text color, leaving the email button white-on-white — invisible, though still clickable.",
       },
     ],
     facts: [
       { label: "ROLE", value: "Directed" },
+      { label: "STACK", value: "Next.js · TypeScript · Railway" },
+      { label: "DESIGN", value: "Navy enterprise-document, synced from Claude Design" },
+      { label: "THEME", value: "Dark by default, OS-aware fallback" },
       { label: "STATUS", value: "Live" },
     ],
     figures: [],
