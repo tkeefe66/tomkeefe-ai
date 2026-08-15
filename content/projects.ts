@@ -302,11 +302,11 @@ export const projectDetails: ProjectDetail[] = [
     sections: [
       {
         heading: "THE PROBLEM",
-        body: "A dynasty league carries every trade on its books for years, but Sleeper keeps no verdict on any of them. Whether a deal from three seasons ago actually paid off is a question nobody can settle from memory — it takes the whole chain replayed against real production numbers, and the league has nothing that does that.",
+        body: "A dynasty league carries every trade on its books for years, but Sleeper keeps no verdict on any of them. Whether an old deal actually paid off is a question nobody can settle from memory — it takes the whole chain replayed against real production numbers, and the league has nothing that does that.",
       },
       {
         heading: "WHAT IT DOES",
-        body: "Enter a Sleeper username, pick a league, and every trade it has ever made comes back graded — Trade Value, today's market swing, next to how each side's return actually produced across the regular season, the playoffs and the Toilet Bowl, with nothing cherry-picked out. Every owner also carries a letter grade built off those same numbers, so a standings argument and a three-season-old trade argument get settled by the same page. It replaces the group chat rehashing a deal from memory with a link someone pastes — the argument just ends there.",
+        body: "Enter a Sleeper username, pick a league, and every trade it has ever made comes back graded — Trade Value, today's market swing, next to how each side's return actually produced across the regular season, the playoffs and the Toilet Bowl, with nothing cherry-picked out. Every owner also carries a single letter grade for the whole roster, so a standings argument and an old trade argument get settled by the same page. It replaces the group chat rehashing a deal from memory with a link someone pastes — the argument just ends there.",
       },
       {
         heading: "WHAT I BUILT",
