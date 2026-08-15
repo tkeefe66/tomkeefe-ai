@@ -341,22 +341,22 @@ export const projectDetails: ProjectDetail[] = [
       },
       {
         heading: "WHAT IT DOES",
-        body: "This page is the evidence, not the pitch. Every project on the site links through to what it actually costs, what it does today, and — in its own section — where it broke, instead of leaving the failure out or filing it as a footnote. It opens dark by default, reads the same on a phone as a desk, and gets a stranger from the front door to the actual record in a click or two. It turns a claim into something anyone can go check.",
+        body: "This page is the evidence, not the pitch. The finished project pages link through to what a thing actually costs, what it does today, and where it broke — the parts a résumé leaves out entirely. The rest stay short stubs instead of getting padded to look finished. It opens dark by default, reads the same on a phone as a desk, and gets a stranger from the front door to the record in a click or two. It turns a claim into something anyone can go check.",
       },
       {
         heading: "WHAT I BUILT",
-        body: "Content lives in typed files under content/, separate from the components that render it, so a copy edit never touches a component. Design tokens sync pull-only from a live Claude Design project into a local mirror and land as CSS custom properties in one stylesheet — every color and neutral on the site traces back to a token, never a hard-coded value in a component. Screenshots render as fixed-height figure plates, captured at roughly double width and cropped, with a gradient fade into the page background that has to hold up in both themes. Vitest checks content shape on every commit — required fields present, nothing silently empty — so a bad content edit fails the build instead of rendering blank.",
+        body: "Content lives in typed files under content/, separate from the components that render it, so a copy edit never touches a component. Design tokens sync pull-only from a live Claude Design project into a local mirror and land as CSS custom properties in one stylesheet — every color and neutral on the site traces back to a token, never a hard-coded value in a component. Screenshots render as fixed-height figure plates, captured at roughly double width and cropped, with a gradient fade into the page background that has to hold up in both themes. A Vitest suite checks content shape — required fields present, nothing silently empty — so a bad content edit surfaces as a failing test instead of a blank page.",
       },
       {
         heading: "WHERE IT BROKE",
-        body: "A pre-launch review caught three rendering bugs in one pass, all invisible on a static comp and only visible against a live theme toggle. The muted gray token used for status labels and dropdown subtitles read as sufficiently faint to the eye but failed WCAG AA contrast outright — 2.60:1 light, 2.97:1 dark, against a 4.5:1 minimum — and the first attempted fix didn't clear the bar either, landing at 3.82:1 and 4.12:1; a second correction was needed to actually pass, at 4.57:1 and 4.78:1. The same review found a screenshot plate's fade gradient hard-coded to #FFFFFF, which rendered as a white band across a black page in dark mode, and a CSS specificity bug that let a generic band-link rule override a navy button's own text color, leaving the email button white-on-white — invisible, though still clickable.",
+        body: "The band-link specificity bug took three commits in one afternoon to actually close. A catch-all rule that made every masthead-band link inherit white text beat the EMAIL button's own navy text color on specificity, rendering it white-on-white and invisible. The first fix scoped the rule to exclude the email button's class, which closed that hole but opened a related one — the ghost-button variant lost its own color the same way. A second commit extended the exclusion to cover it too. Neither felt durable, so a third commit dropped the exclusion list for a lower-specificity selector that lets any real button class win by source order instead of a hand-maintained list. In the same window, the muted gray token used for status labels and dropdown subtitles read as sufficiently faint to the eye but failed WCAG AA contrast outright — 2.60:1 light, 2.97:1 dark, against a 4.5:1 minimum. The first attempted fix didn't clear the bar either, landing at 3.82:1 and 4.12:1; a second correction was needed to actually pass, at 4.57:1 and 4.78:1.",
       },
     ],
     facts: [
       { label: "ROLE", value: "Directed" },
       { label: "STACK", value: "Next.js · TypeScript · Railway" },
       { label: "DESIGN", value: "Navy enterprise-document, synced from Claude Design" },
-      { label: "THEME", value: "Dark by default, OS-aware fallback" },
+      { label: "THEME", value: "Dark by default, no OS-preference fallback" },
       { label: "STATUS", value: "Live" },
     ],
     figures: [],
