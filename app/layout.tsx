@@ -19,9 +19,10 @@ const plexMono = IBM_Plex_Mono({
   display: "swap",
 });
 
-// Applies the persisted theme before first paint; falls back to the OS
-// preference when nothing is stored (design README §Interactions).
-const themeInit = `try{var t=localStorage.getItem('tk-theme');if(t==null)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';if(t==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}`;
+// Applies the persisted theme before first paint. Dark is the default when
+// nothing is stored — by decision (2026-08-14), over the design README's
+// OS-preference fallback. A stored choice always wins.
+const themeInit = `try{var t=localStorage.getItem('tk-theme')||'dark';document.documentElement.setAttribute('data-theme',t==='light'?'light':'dark')}catch(e){document.documentElement.setAttribute('data-theme','dark')}`;
 
 export const metadata: Metadata = {
   title: "Tom Keefe — GTM systems",

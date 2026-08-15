@@ -41,15 +41,18 @@ export default function Nav() {
   return (
     <nav className="band sticky top-0 z-40" aria-label="Main">
       <div className="container-page flex h-14 items-center justify-between gap-6">
-        {/* Wordmark is the monogram — the masthead already says the name in
-            full one line below it. aria-label keeps the link readable. */}
-        <Link
-          href="/"
-          aria-label="Tom Keefe — home"
-          className="text-[15px] font-semibold tracking-[0.02em] text-white"
-        >
-          TK
-        </Link>
+        {/* Theme icons sit left of the wordmark; the wordmark is the monogram
+            since the masthead says the name in full one line below it. */}
+        <div className="flex items-center gap-3">
+          <ThemeToggle />
+          <Link
+            href="/"
+            aria-label="Tom Keefe — home"
+            className="text-[15px] font-semibold tracking-[0.02em] text-white"
+          >
+            TK
+          </Link>
+        </div>
         <div className="flex items-center gap-1">
           <div id="site-nav-links" className="nav-links" data-open={panelOpen ? "true" : "false"}>
             <Link href="/#range" className="nav-link" onClick={closeAll}>
@@ -125,7 +128,6 @@ export default function Nav() {
               Contact
             </Link>
           </div>
-          <ThemeToggle />
           <a
             href={email.href}
             className="mono ml-2 rounded-[3px] bg-white px-3.5 py-2 text-[11px] font-medium tracking-[0.08em]"
