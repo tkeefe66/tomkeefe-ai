@@ -14,7 +14,9 @@ export type SiteContent = {
   };
   techStrip: string[];
   links: SiteLink[];
+  /** Short invitation. The long sentence lives in contactLine. */
   contactHeadline: string;
+  contactLine: string;
   /** right is absent while the changelog values are unfilled (OPEN.md). */
   footer: { left: string; right?: string };
   notFound: { headline: string; line: string; cta: string };

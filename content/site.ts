@@ -33,7 +33,8 @@ export const site: SiteContent = {
     { label: "LINKEDIN", href: "https://www.linkedin.com/in/tomkeefesmc" },
     { label: "GITHUB", href: "https://github.com/tkeefe66" },
   ],
-  contactHeadline:
+  contactHeadline: "Let's talk.",
+  contactLine:
     "I answer email. Especially about GTM systems, agent architecture, or why your enrichment pipeline is quietly lying to you.",
   footer: { left: "© 2026 Tom Keefe" },
   notFound: {

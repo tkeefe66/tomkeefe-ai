@@ -36,7 +36,8 @@ describe("site content", () => {
   it("has tech strip, links, contact and footer", () => {
     expect(site.techStrip).toHaveLength(13); // marquee trim NOT approved
     expect(site.links.map((l) => l.label)).toEqual(["EMAIL", "LINKEDIN", "GITHUB"]);
-    expect(site.contactHeadline).toContain("I answer email");
+    expect(site.contactHeadline).toBe("Let's talk.");
+    expect(site.contactLine).toContain("I answer email");
     expect(site.footer.left).toBe("© 2026 Tom Keefe");
     // Changelog values unfilled → footer is the © line alone (OPEN.md).
     // "DIRECTED BY A HUMAN. BUILT WITH AGENTS." moved to a section heading.
