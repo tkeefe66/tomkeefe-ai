@@ -306,7 +306,7 @@ export const projectDetails: ProjectDetail[] = [
       },
       {
         heading: "WHERE IT BROKE",
-        body: "Early on, replies went out with no parse_mode set at all, so any markdown an agent produced — bold text, formatting — arrived as literal asterisks instead of rendering, a bug that surfaced in acceptance testing rather than being caught before it shipped. The fix set replies to send as Markdown, wrapped in a fallback: if Telegram rejects the formatting as invalid, the same reply goes out a second time as plain text rather than never arriving at all. That fallback is still what runs today whenever a reply contains a markdown character Telegram won't parse.",
+        body: "Early on, replies went out with no parse_mode set at all, so any markdown an agent produced — bold text, formatting — arrived as literal asterisks instead of rendering. It was caught the same day, about 75 minutes later, at the acceptance-testing gate that phase exists to run — not a bug that got past it. The fix set replies to send as Markdown, wrapped in a fallback: if Telegram rejects the formatting as invalid, the same reply goes out a second time as plain text rather than never arriving at all. That fallback is still what runs today whenever a reply contains a markdown character Telegram won't parse.",
       },
     ],
     facts: [
