@@ -73,26 +73,36 @@ export default function ProjectPage({ slug }: { slug: string }) {
             ))}
           </div>
         </div>
-        {project.figures[0] && (
-          <div className="mt-(--section-gap)">
-            <FigurePlate figure={project.figures[0]} />
-          </div>
-        )}
-        {project.figures[1] && (
-          <div className="mt-[38px] flex flex-wrap items-start gap-[26px]">
-            <div className="min-w-[280px] flex-[0_1_460px]">
-              <FigurePlate figure={project.figures[1]} />
-            </div>
-            {project.digestNote && (
+        {/* The note always pairs with the LAST figure, side by side; any figure
+            before it runs full width. A page with one figure and a note gets
+            the paired layout — that's Life Tracker since FIG. 02 moved there
+            (2026-08-14). */}
+        {project.figures.map((figure, i) => {
+          const paired = project.digestNote && i === project.figures.length - 1;
+          if (!paired) {
+            return (
+              <div key={figure.src} className={i === 0 ? "mt-(--section-gap)" : "mt-[38px]"}>
+                <FigurePlate figure={figure} />
+              </div>
+            );
+          }
+          return (
+            <div
+              key={figure.src}
+              className={`flex flex-wrap items-start gap-[26px] ${i === 0 ? "mt-(--section-gap)" : "mt-[38px]"}`}
+            >
+              <div className="min-w-[280px] flex-[0_1_460px]">
+                <FigurePlate figure={figure} />
+              </div>
               <p
                 className="m-0 max-w-[46ch] flex-[1_1_300px] text-[15.5px] leading-relaxed"
                 style={{ color: "var(--muted)" }}
               >
                 {project.digestNote}
               </p>
-            )}
-          </div>
-        )}
+            </div>
+          );
+        })}
         {project.meta?.some(Boolean) && (
           <div className="mt-(--space-8)">
             <MetaRow items={project.meta} />

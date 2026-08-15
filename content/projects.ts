@@ -216,19 +216,7 @@ export const projectDetails: ProjectDetail[] = [
         width: 3302,
         naturalHeight: 1760,
       },
-      {
-        src: "/projects/spend-digest.png",
-        alt: "Daily spend digest",
-        caption: "FIG. 02 — DAILY DIGEST.",
-        height: 360,
-        wide: false,
-        capture: "light",
-        width: 918,
-        naturalHeight: 1636,
-      },
     ],
-    digestNote:
-      "Days are tagged by shape — social, delivery, rides, date — so a week reads as behavior instead of a list of charges. It's the same instinct as a signal feed: the raw event is less useful than the pattern it belongs to.",
     meta: [
       "over 1,000 items catalogued",
       "under $20/month",
@@ -255,7 +243,20 @@ export const projectDetails: ProjectDetail[] = [
       { label: "ROLE", value: "Built and operated" },
       { label: "STATUS", value: "Live, personal" },
     ],
-    figures: [],
+    figures: [
+      {
+        src: "/projects/spend-digest.png",
+        alt: "Daily spend digest",
+        caption: "FIG. 01 — DAILY DIGEST.",
+        height: 360,
+        wide: false,
+        capture: "light",
+        width: 918,
+        naturalHeight: 1636,
+      },
+    ],
+    digestNote:
+      "Days are tagged by shape — social, delivery, rides, date — so a week reads as behavior instead of a list of charges. It's the same instinct as a signal feed: the raw event is less useful than the pattern it belongs to.",
     next: { slug: "outdoor-telegram-agent" },
   },
   {

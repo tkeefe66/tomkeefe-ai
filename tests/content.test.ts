@@ -153,8 +153,9 @@ describe("project details (Phase 2 alignment)", () => {
   });
 
   it("stubs are honest: no invented narrative, no brackets, no figures", () => {
+    // Life Tracker is off this list since FIG. 02 moved to it (2026-08-14).
     for (const slug of [
-      "life-tracker", "dynasty-analyzer", "tomkeefe-ai", "outdoor-telegram-agent",
+      "dynasty-analyzer", "tomkeefe-ai", "outdoor-telegram-agent",
       "camera-agent", "job-search", "family-tree", "code-coach",
     ]) {
       const d = getProjectDetail(slug);
@@ -179,6 +180,17 @@ describe("project details (Phase 2 alignment)", () => {
     for (const s of martech.sections) {
       expect(s.body).not.toMatch(/[[\]]/);
     }
+  });
+
+  it("the daily digest figure and its note live on Life Tracker, not Inventory", () => {
+    const lt = getProjectDetail("life-tracker");
+    expect(lt.figures).toHaveLength(1);
+    expect(lt.figures[0].src).toBe("/projects/spend-digest.png");
+    expect(lt.figures[0].caption).toContain("FIG. 01");
+    expect(lt.digestNote).toBeDefined();
+    const inv = getProjectDetail("inventory");
+    expect(inv.figures.map((f) => f.src)).toEqual(["/projects/inventory.png"]);
+    expect(inv.digestNote).toBeUndefined();
   });
 
   it("Inventory page carries the Field Assistant module and the camera story", () => {

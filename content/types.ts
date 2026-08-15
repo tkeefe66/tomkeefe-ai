@@ -80,7 +80,7 @@ export type ProjectDetail = {
   sections: ProjectSection[];
   facts: LedgerRow[];
   figures: ProjectFigure[];
-  /** Inventory only: paragraph beside FIG. 02. */
+  /** Optional paragraph set beside the page's last figure (Life Tracker). */
   digestNote?: string;
   /** Same three-line stat block as the card (brief Phase 2 §3); null clauses omitted per OPEN.md. */
   meta?: (string | null)[];
