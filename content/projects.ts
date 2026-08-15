@@ -102,7 +102,9 @@ export const projects: ProjectRow[] = [
     state: "live",
     status: "LIVE",
     line: "Expands one lesson at a time, then grades the photo that comes back.",
-    body: ["Not written up yet."],
+    body: [
+      "A photography curriculum built as a skill tree: it hands over one topic at a time instead of a fixed syllabus, then grades the photo an assignment comes back with against that topic's own criteria. The whole thing exports as a single offline file for shooting somewhere with no signal.",
+    ],
   },
   {
     name: "Job Search",
