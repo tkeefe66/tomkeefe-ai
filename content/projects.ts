@@ -408,13 +408,13 @@ export const projectDetails: ProjectDetail[] = [
       },
       {
         heading: "WHERE IT BROKE",
-        body: "A sweep across every server action found eight places where a database write's error comes back as a plain string, and an empty string is falsy — so a check written to catch a failure read it as a success instead. That's not hypothetical: the Postgres driver rejects with an empty message whenever the database is entirely unreachable, so the failure mode is a clean build with a silently wrong screen. A first fixing commit closed six of the eight sites; a second, the same day, closed the remaining four — one of which sat in the path that saves newly discovered roles, where a failed insert would fall through to the same line that marks a role as saved, and the next scheduled check's dedupe would then treat it as already seen and skip it for good.",
+        body: "A sweep across the server actions looked for one specific shape: a database write's error comes back as a plain string, and an empty string is falsy, so a check written to catch a failure reads it as a success instead. That's not hypothetical: the Postgres driver rejects with an empty message whenever the database is entirely unreachable, so the failure mode is a clean build with a silently wrong screen. The sweep found the pattern in more than half a dozen places and fixed most of them in one pass; a second pass, the same day, caught the rest — including the path that saves newly discovered roles, where a failed insert would fall through to the same line that marks a role as saved, and the next scheduled check's dedupe would then treat it as already seen and skip it for good.",
       },
     ],
     facts: [
       { label: "ROLE", value: "Built and operated" },
-      { label: "STACK", value: "Next.js · Supabase · Postgres · Anthropic" },
-      { label: "BUILT", value: "162 commits, 38 test files" },
+      { label: "STACK", value: "Next.js · TypeScript · Postgres · Anthropic" },
+      { label: "BUILT", value: "164 commits, 38 test files" },
       { label: "PIPELINE", value: "13 stages, new to offer" },
       { label: "STATUS", value: "Live, personal" },
     ],
