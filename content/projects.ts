@@ -84,6 +84,40 @@ export const projects: ProjectRow[] = [
       "shipped grays that failed WCAG AA until an audit caught them",
     ],
   },
+  // Four added 2026-08-14 to get the full nine onto the layout. Copy is
+  // deliberately a placeholder — no invented scale, cost or narrative.
+  {
+    name: "Camera Agent",
+    slug: "camera-agent",
+    state: "progress",
+    status: "IN PROGRESS",
+    line: "Writeup coming.",
+    body: ["Not written up yet."],
+  },
+  {
+    name: "Job Search",
+    slug: "job-search",
+    state: "progress",
+    status: "IN PROGRESS",
+    line: "Writeup coming.",
+    body: ["Not written up yet."],
+  },
+  {
+    name: "Family Tree",
+    slug: "family-tree",
+    state: "progress",
+    status: "IN PROGRESS",
+    line: "Writeup coming.",
+    body: ["Not written up yet."],
+  },
+  {
+    name: "Code Coach",
+    slug: "code-coach",
+    state: "progress",
+    status: "IN PROGRESS",
+    line: "Writeup coming.",
+    body: ["Not written up yet."],
+  },
 ];
 
 export const projectDetails: ProjectDetail[] = [
@@ -266,6 +300,72 @@ export const projectDetails: ProjectDetail[] = [
       null,
       "shipped grays that failed WCAG AA until an audit caught them",
     ],
+    next: { slug: "camera-agent" },
+  },
+  // Placeholder records for the four projects added on 2026-08-14. Each one
+  // says only that it exists — the writeup replaces this wholesale.
+  {
+    slug: "camera-agent",
+    number: "PROJECT 06",
+    title: "Camera Agent",
+    menuSubtitle: "IN PROGRESS",
+    premise: "Not written up yet.",
+    sections: [
+      {
+        heading: "THE SHORT VERSION",
+        body: "This one is on the list and not yet documented. The writeup lands when there is something true to say about what it costs, what it does and where it broke.",
+      },
+    ],
+    facts: [{ label: "STATUS", value: "In progress" }],
+    figures: [],
+    next: { slug: "job-search" },
+  },
+  {
+    slug: "job-search",
+    number: "PROJECT 07",
+    title: "Job Search",
+    menuSubtitle: "IN PROGRESS",
+    premise: "Not written up yet.",
+    sections: [
+      {
+        heading: "THE SHORT VERSION",
+        body: "This one is on the list and not yet documented. The writeup lands when there is something true to say about what it costs, what it does and where it broke.",
+      },
+    ],
+    facts: [{ label: "STATUS", value: "In progress" }],
+    figures: [],
+    next: { slug: "family-tree" },
+  },
+  {
+    slug: "family-tree",
+    number: "PROJECT 08",
+    title: "Family Tree",
+    menuSubtitle: "IN PROGRESS",
+    premise: "Not written up yet.",
+    sections: [
+      {
+        heading: "THE SHORT VERSION",
+        body: "This one is on the list and not yet documented. The writeup lands when there is something true to say about what it costs, what it does and where it broke.",
+      },
+    ],
+    facts: [{ label: "STATUS", value: "In progress" }],
+    figures: [],
+    next: { slug: "code-coach" },
+  },
+  {
+    slug: "code-coach",
+    number: "PROJECT 09",
+    title: "Code Coach",
+    menuSubtitle: "IN PROGRESS",
+    premise: "Not written up yet.",
+    sections: [
+      {
+        heading: "THE SHORT VERSION",
+        body: "This one is on the list and not yet documented. The writeup lands when there is something true to say about what it costs, what it does and where it broke.",
+      },
+    ],
+    facts: [{ label: "STATUS", value: "In progress" }],
+    figures: [],
     next: { slug: "b2b-martech-intel" },
   },
 ];

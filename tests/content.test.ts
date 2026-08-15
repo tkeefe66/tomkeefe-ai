@@ -78,18 +78,21 @@ describe("opinions", () => {
 });
 
 describe("project cards", () => {
-  it("five cards, brief order, no Field Assistant", () => {
+  it("nine cards, brief order first, the 2026-08-14 additions after", () => {
     expect(projects.map((p) => p.name)).toEqual([
       "MarTech Intel", "Inventory", "Life Tracker", "Dynasty Analyzer", "tomkeefe.ai",
+      "Camera Agent", "Job Search", "Family Tree", "Code Coach",
     ]);
   });
 
   it("statuses and states", () => {
     expect(projects.map((p) => p.status)).toEqual([
       "LIVE", "LIVE", "LIVE", "LAUNCHING SEPT 2026", "LIVE",
+      "IN PROGRESS", "IN PROGRESS", "IN PROGRESS", "IN PROGRESS",
     ]);
     expect(projects[3].state).toBe("launching");
     expect(projects.filter((p) => p.state === "live")).toHaveLength(4);
+    expect(projects.filter((p) => p.state === "progress")).toHaveLength(4);
   });
 
   it("Inventory card is intentionally three units (2 paragraphs + meta); Life Tracker alone carries no meta row", () => {
@@ -130,12 +133,14 @@ describe("project cards", () => {
 });
 
 describe("project details (Phase 2 alignment)", () => {
-  it("five detail records in card order; closed next-chain", () => {
+  it("nine detail records in card order; closed next-chain", () => {
     expect(projectDetails.map((d) => d.slug)).toEqual([
       "b2b-martech-intel", "inventory", "life-tracker", "dynasty-analyzer", "tomkeefe-ai",
+      "camera-agent", "job-search", "family-tree", "code-coach",
     ]);
     expect(projectDetails.map((d) => d.number)).toEqual([
       "PROJECT 01", "PROJECT 02", "PROJECT 03", "PROJECT 04", "PROJECT 05",
+      "PROJECT 06", "PROJECT 07", "PROJECT 08", "PROJECT 09",
     ]);
     const slugs = projectDetails.map((d) => d.slug);
     projectDetails.forEach((d, i) => {
@@ -143,12 +148,15 @@ describe("project details (Phase 2 alignment)", () => {
     });
   });
 
-  it("all five cards are linked once routes exist", () => {
+  it("every card is linked", () => {
     expect(projects.every((p) => p.slug)).toBe(true);
   });
 
   it("stubs are honest: no invented narrative, no brackets, no figures", () => {
-    for (const slug of ["life-tracker", "dynasty-analyzer", "tomkeefe-ai"]) {
+    for (const slug of [
+      "life-tracker", "dynasty-analyzer", "tomkeefe-ai",
+      "camera-agent", "job-search", "family-tree", "code-coach",
+    ]) {
       const d = getProjectDetail(slug);
       expect(d.figures).toHaveLength(0);
       for (const s of d.sections) {
