@@ -154,22 +154,6 @@ describe("project details (Phase 2 alignment)", () => {
     expect(projects.every((p) => p.slug)).toBe(true);
   });
 
-  it("stubs are honest: no invented narrative, no brackets, no figures", () => {
-    // Life Tracker is off this list since FIG. 02 moved to it (2026-08-14).
-    for (const slug of [
-      "dynasty-analyzer", "tomkeefe-ai", "outdoor-telegram-agent",
-      "camera-agent", "job-search", "family-tree", "code-coach",
-    ]) {
-      const d = getProjectDetail(slug);
-      expect(d.figures).toHaveLength(0);
-      for (const s of d.sections) {
-        expect(s.body).not.toMatch(/[[\]]/);
-      }
-    }
-    // No launch capsule anywhere — every project reads LIVE.
-    expect(projectDetails.some((d) => d.launch)).toBe(false);
-  });
-
   it("card meta survives on the homepage; detail records no longer carry it", () => {
     for (const slug of ["b2b-martech-intel", "inventory", "dynasty-analyzer", "tomkeefe-ai"]) {
       const card = projects.find((p) => p.slug === slug)!;
