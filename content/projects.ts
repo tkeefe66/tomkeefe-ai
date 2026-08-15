@@ -40,14 +40,6 @@ export const projects: ProjectRow[] = [
     ],
   },
   {
-    name: "Outdoor Telegram Agent",
-    slug: "outdoor-telegram-agent",
-    state: "progress",
-    status: "IN PROGRESS",
-    line: "Writeup coming.",
-    body: ["Not written up yet."],
-  },
-  {
     name: "Life Tracker",
     slug: "life-tracker",
     state: "live",
@@ -58,6 +50,14 @@ export const projects: ProjectRow[] = [
       "The only thing I've built that I open every day without deciding to.",
     ],
     // No meta row by decision: B1 + B2 deferred (OPEN.md). Do not pad.
+  },
+  {
+    name: "Outdoor Telegram Agent",
+    slug: "outdoor-telegram-agent",
+    state: "progress",
+    status: "IN PROGRESS",
+    line: "Writeup coming.",
+    body: ["Not written up yet."],
   },
   {
     name: "Dynasty Analyzer",
@@ -235,28 +235,12 @@ export const projectDetails: ProjectDetail[] = [
       "began life as a spreadsheet replacement and now has opinions about golden hour",
     ],
     og: { image: "/og/inventory.png", alt: "Outdoor Inventory Mgmt — Tom Keefe" },
-    next: { slug: "outdoor-telegram-agent" },
-  },
-  {
-    slug: "outdoor-telegram-agent",
-    number: "PROJECT 03",
-    title: "Outdoor Telegram Agent",
-    menuSubtitle: "IN PROGRESS",
-    premise: "Not written up yet.",
-    sections: [
-      {
-        heading: "THE SHORT VERSION",
-        body: "This one is on the list and not yet documented. The writeup lands when there is something true to say about what it costs, what it does and where it broke.",
-      },
-    ],
-    facts: [{ label: "STATUS", value: "In progress" }],
-    figures: [],
     next: { slug: "life-tracker" },
   },
   // Stub by decision (B1/B2 deferred) — card body + short intro only (OPEN.md).
   {
     slug: "life-tracker",
-    number: "PROJECT 04",
+    number: "PROJECT 03",
     title: "Life Tracker",
     menuSubtitle: "SPEND + HABITS · LIVE",
     premise:
@@ -271,6 +255,22 @@ export const projectDetails: ProjectDetail[] = [
       { label: "ROLE", value: "Built and operated" },
       { label: "STATUS", value: "Live, personal" },
     ],
+    figures: [],
+    next: { slug: "outdoor-telegram-agent" },
+  },
+  {
+    slug: "outdoor-telegram-agent",
+    number: "PROJECT 04",
+    title: "Outdoor Telegram Agent",
+    menuSubtitle: "IN PROGRESS",
+    premise: "Not written up yet.",
+    sections: [
+      {
+        heading: "THE SHORT VERSION",
+        body: "This one is on the list and not yet documented. The writeup lands when there is something true to say about what it costs, what it does and where it broke.",
+      },
+    ],
+    facts: [{ label: "STATUS", value: "In progress" }],
     figures: [],
     next: { slug: "dynasty-analyzer" },
   },

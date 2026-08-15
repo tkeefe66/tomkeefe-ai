@@ -87,7 +87,7 @@ describe("opinions", () => {
 describe("project cards", () => {
   it("ten cards in display order", () => {
     expect(projects.map((p) => p.name)).toEqual([
-      "MarTech Intel", "Outdoor Inventory Mgmt", "Outdoor Telegram Agent", "Life Tracker",
+      "MarTech Intel", "Outdoor Inventory Mgmt", "Life Tracker", "Outdoor Telegram Agent",
       "Dynasty Analyzer", "tomkeefe.ai",
       "Camera Agent", "Job Search", "Family Tree", "Code Coach",
     ]);
