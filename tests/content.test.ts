@@ -13,6 +13,13 @@ function expectNoBrackets(s: string) {
   expect(s).not.toMatch(/[[\]]/);
 }
 
+/** Cards are looked up by slug — card order changes as projects are added. */
+function card(slug: string) {
+  const found = projects.find((p) => p.slug === slug);
+  if (!found) throw new Error(`no project card for slug ${slug}`);
+  return found;
+}
+
 describe("site content", () => {
   it("has the new tagline in hero and meta source", () => {
     expect(site.name).toBe("Tom Keefe");
@@ -78,30 +85,32 @@ describe("opinions", () => {
 });
 
 describe("project cards", () => {
-  it("nine cards, brief order first, the 2026-08-14 additions after", () => {
+  it("ten cards in display order", () => {
     expect(projects.map((p) => p.name)).toEqual([
-      "MarTech Intel", "Outdoor Inventory Mgmt", "Life Tracker", "Dynasty Analyzer", "tomkeefe.ai",
+      "MarTech Intel", "Outdoor Inventory Mgmt", "Outdoor Telegram Agent", "Life Tracker",
+      "Dynasty Analyzer", "tomkeefe.ai",
       "Camera Agent", "Job Search", "Family Tree", "Code Coach",
     ]);
   });
 
   it("statuses and states", () => {
-    expect(projects.map((p) => p.status)).toEqual([
-      "LIVE", "LIVE", "LIVE", "LAUNCHING SEPT 2026", "LIVE",
-      "IN PROGRESS", "IN PROGRESS", "IN PROGRESS", "IN PROGRESS",
-    ]);
-    expect(projects[3].state).toBe("launching");
+    expect(card("dynasty-analyzer").state).toBe("launching");
+    expect(card("dynasty-analyzer").status).toBe("LAUNCHING SEPT 2026");
     expect(projects.filter((p) => p.state === "live")).toHaveLength(4);
-    expect(projects.filter((p) => p.state === "progress")).toHaveLength(4);
+    expect(projects.filter((p) => p.state === "progress")).toHaveLength(5);
+    for (const p of projects.filter((p) => p.state === "progress")) {
+      expect(p.status).toBe("IN PROGRESS");
+    }
   });
 
-  it("Inventory card is intentionally three units (2 paragraphs + meta); Life Tracker alone carries no meta row", () => {
-    expect(projects[1].body).toHaveLength(2);
-    expect(projects[1].meta?.filter(Boolean)).toHaveLength(3); // B5 filled: over 1,000 items
-    expect(projects[2].meta).toBeUndefined(); // Life Tracker: B1/B2 deferred
-    expect(projects[4].meta?.filter(Boolean)).toHaveLength(2); // B7: cost fragment still unfilled
-    expect(projects[0].meta?.filter(Boolean)).toHaveLength(3);
-    expect(projects[3].meta?.filter(Boolean)).toHaveLength(3); // B4 filled: 2 leagues in beta
+  // Keyed by slug, not index — the list is reordered as projects are added.
+  it("Outdoor Inventory Mgmt is three units (2 paragraphs + meta); Life Tracker alone carries no meta row", () => {
+    expect(card("inventory").body).toHaveLength(2);
+    expect(card("inventory").meta?.filter(Boolean)).toHaveLength(3); // B5 filled: over 1,000 items
+    expect(card("life-tracker").meta).toBeUndefined(); // B1/B2 deferred
+    expect(card("tomkeefe-ai").meta?.filter(Boolean)).toHaveLength(2); // B7: cost fragment unfilled
+    expect(card("b2b-martech-intel").meta?.filter(Boolean)).toHaveLength(3);
+    expect(card("dynasty-analyzer").meta?.filter(Boolean)).toHaveLength(3); // B4 filled
   });
 
   it("every card carries one sentence short enough to sit on a line", () => {
@@ -133,15 +142,11 @@ describe("project cards", () => {
 });
 
 describe("project details (Phase 2 alignment)", () => {
-  it("nine detail records in card order; closed next-chain", () => {
-    expect(projectDetails.map((d) => d.slug)).toEqual([
-      "b2b-martech-intel", "inventory", "life-tracker", "dynasty-analyzer", "tomkeefe-ai",
-      "camera-agent", "job-search", "family-tree", "code-coach",
-    ]);
-    expect(projectDetails.map((d) => d.number)).toEqual([
-      "PROJECT 01", "PROJECT 02", "PROJECT 03", "PROJECT 04", "PROJECT 05",
-      "PROJECT 06", "PROJECT 07", "PROJECT 08", "PROJECT 09",
-    ]);
+  it("detail records mirror card order, numbered in sequence, closed next-chain", () => {
+    expect(projectDetails.map((d) => d.slug)).toEqual(projects.map((p) => p.slug));
+    expect(projectDetails.map((d) => d.number)).toEqual(
+      projectDetails.map((_, i) => `PROJECT ${String(i + 1).padStart(2, "0")}`),
+    );
     const slugs = projectDetails.map((d) => d.slug);
     projectDetails.forEach((d, i) => {
       expect(d.next.slug).toBe(slugs[(i + 1) % slugs.length]);
@@ -154,7 +159,7 @@ describe("project details (Phase 2 alignment)", () => {
 
   it("stubs are honest: no invented narrative, no brackets, no figures", () => {
     for (const slug of [
-      "life-tracker", "dynasty-analyzer", "tomkeefe-ai",
+      "life-tracker", "dynasty-analyzer", "tomkeefe-ai", "outdoor-telegram-agent",
       "camera-agent", "job-search", "family-tree", "code-coach",
     ]) {
       const d = getProjectDetail(slug);

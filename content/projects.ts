@@ -40,6 +40,14 @@ export const projects: ProjectRow[] = [
     ],
   },
   {
+    name: "Outdoor Telegram Agent",
+    slug: "outdoor-telegram-agent",
+    state: "progress",
+    status: "IN PROGRESS",
+    line: "Writeup coming.",
+    body: ["Not written up yet."],
+  },
+  {
     name: "Life Tracker",
     slug: "life-tracker",
     state: "live",
@@ -227,12 +235,28 @@ export const projectDetails: ProjectDetail[] = [
       "began life as a spreadsheet replacement and now has opinions about golden hour",
     ],
     og: { image: "/og/inventory.png", alt: "Outdoor Inventory Mgmt — Tom Keefe" },
+    next: { slug: "outdoor-telegram-agent" },
+  },
+  {
+    slug: "outdoor-telegram-agent",
+    number: "PROJECT 03",
+    title: "Outdoor Telegram Agent",
+    menuSubtitle: "IN PROGRESS",
+    premise: "Not written up yet.",
+    sections: [
+      {
+        heading: "THE SHORT VERSION",
+        body: "This one is on the list and not yet documented. The writeup lands when there is something true to say about what it costs, what it does and where it broke.",
+      },
+    ],
+    facts: [{ label: "STATUS", value: "In progress" }],
+    figures: [],
     next: { slug: "life-tracker" },
   },
   // Stub by decision (B1/B2 deferred) — card body + short intro only (OPEN.md).
   {
     slug: "life-tracker",
-    number: "PROJECT 03",
+    number: "PROJECT 04",
     title: "Life Tracker",
     menuSubtitle: "SPEND + HABITS · LIVE",
     premise:
@@ -253,7 +277,7 @@ export const projectDetails: ProjectDetail[] = [
   // Stub gated on B4 — card body + launch marker only.
   {
     slug: "dynasty-analyzer",
-    number: "PROJECT 04",
+    number: "PROJECT 05",
     title: "Dynasty Analyzer",
     menuSubtitle: "SLEEPER ANALYTICS · SEPT 2026",
     launch: true,
@@ -280,7 +304,7 @@ export const projectDetails: ProjectDetail[] = [
   // Stub pending B7 — card body + short intro only.
   {
     slug: "tomkeefe-ai",
-    number: "PROJECT 05",
+    number: "PROJECT 06",
     title: "tomkeefe.ai",
     menuSubtitle: "THIS SITE · LIVE",
     premise: "This site. Written, designed and deployed by agents under my direction.",
@@ -306,7 +330,7 @@ export const projectDetails: ProjectDetail[] = [
   // says only that it exists — the writeup replaces this wholesale.
   {
     slug: "camera-agent",
-    number: "PROJECT 06",
+    number: "PROJECT 07",
     title: "Camera Agent",
     menuSubtitle: "IN PROGRESS",
     premise: "Not written up yet.",
@@ -322,7 +346,7 @@ export const projectDetails: ProjectDetail[] = [
   },
   {
     slug: "job-search",
-    number: "PROJECT 07",
+    number: "PROJECT 08",
     title: "Job Search",
     menuSubtitle: "IN PROGRESS",
     premise: "Not written up yet.",
@@ -338,7 +362,7 @@ export const projectDetails: ProjectDetail[] = [
   },
   {
     slug: "family-tree",
-    number: "PROJECT 08",
+    number: "PROJECT 09",
     title: "Family Tree",
     menuSubtitle: "IN PROGRESS",
     premise: "Not written up yet.",
@@ -354,7 +378,7 @@ export const projectDetails: ProjectDetail[] = [
   },
   {
     slug: "code-coach",
-    number: "PROJECT 09",
+    number: "PROJECT 10",
     title: "Code Coach",
     menuSubtitle: "IN PROGRESS",
     premise: "Not written up yet.",
