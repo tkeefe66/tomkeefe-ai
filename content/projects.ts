@@ -238,7 +238,7 @@ export const projectDetails: ProjectDetail[] = [
     sections: [
       {
         heading: "THE PROBLEM",
-        body: "The first version of this app demanded a log entry for everything, and it died from being too demanding to keep using. What I actually wanted was one honest weekly answer — am I doing the things I said I would — without turning the seeking of that answer into a chore. The nearest data was already sitting in email and on the calendar, which is also where Inventory looks for the same purchases, for a different reason: two systems reading the same receipts, one to learn what I own and one to learn what I keep doing. That's a design I intend to fix and haven't.",
+        body: "The first version of this app died from being too demanding to keep using. What I actually wanted was one honest weekly answer — am I doing the things I said I would — without turning the seeking of that answer into a chore. The nearest data was already sitting in email and on the calendar, which is also where Inventory looks for the same purchases, for a different reason: two systems reading the same receipts, one to learn what I own and one to learn what I keep doing. That's a design I intend to fix and haven't.",
       },
       {
         heading: "WHAT IT DOES",
@@ -250,7 +250,7 @@ export const projectDetails: ProjectDetail[] = [
       },
       {
         heading: "WHERE IT BROKE",
-        body: "A credential tied to the bank sync reached the deploy logs anyway. httpx, the library making that outbound call, logs every request URL at INFO by default — a path the app's own safeguard doesn't cover, because that safeguard only intercepts raised exceptions, and nothing here was ever raised to trigger it. The fix didn't extend the exception boundary; it closed the leak at the source. main.py now pins httpx and httpcore to WARNING immediately after logging starts, so the credential-bearing request never reaches a log line at all. A regression test locks the exact configured level rather than the effective one, because under pytest the effective level already reads correctly — for the wrong reason, the same kind of pass that let the original gap through review once already.",
+        body: "A credential tied to the bank sync reached the deploy logs anyway. httpx, the library making that outbound call, logs more about every call it sends than the app's own redaction boundary was built to catch — that boundary intercepts raised exceptions, and nothing here was ever raised to trigger it, so the library's own logging went uncovered by it entirely. The fix didn't extend the exception boundary; it closed the gap at the source. main.py now pins httpx and httpcore to WARNING immediately after logging starts, so the library stops narrating outbound calls at that level of detail at all. A regression test locks the exact configured level rather than the effective one, because under pytest the effective level already reads correctly — for the wrong reason, the same kind of pass that let the original gap through review once already.",
       },
     ],
     facts: [
