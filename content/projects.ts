@@ -146,7 +146,7 @@ export const projectDetails: ProjectDetail[] = [
     title: "MarTech Intel",
     menuSubtitle: "MARKET INTELLIGENCE · INTERNAL",
     premise:
-      "A market intelligence function for a GTM org that doesn't have one — filtered against the topics and companies I care about, delivered as one digest email every morning.",
+      "A market intelligence function for a GTM org that doesn't have one — filtered against the topics and companies I care about, delivered as one digest email every weekday morning.",
     sections: [
       {
         heading: "THE PROBLEM",
