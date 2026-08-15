@@ -101,7 +101,7 @@ export const projects: ProjectRow[] = [
     slug: "camera-agent",
     state: "live",
     status: "LIVE",
-    line: "Writeup coming.",
+    line: "Expands one lesson at a time, then grades the photo that comes back.",
     body: ["Not written up yet."],
   },
   {
@@ -395,15 +395,34 @@ export const projectDetails: ProjectDetail[] = [
     slug: "camera-agent",
     number: "PROJECT 07",
     title: "Camera Agent",
-    menuSubtitle: "LIVE",
-    premise: "Not written up yet.",
+    menuSubtitle: "MODULE OF OUTDOOR INVENTORY · LIVE",
+    premise:
+      "A photography curriculum built as a skill tree — a lesson and an assignment get written only for the topic reached next.",
     sections: [
       {
-        heading: "THE SHORT VERSION",
-        body: "This one is on the list and not yet documented. The writeup lands when there is something true to say about what it costs, what it does and where it broke.",
+        heading: "THE PROBLEM",
+        body: "A camera manual and a generic photography course both assume a free evening and a live connection to look things up — neither one knows what's already in the bag, what's already been learned, or that some of this happens somewhere with no signal at all.",
+      },
+      {
+        heading: "WHAT IT DOES",
+        body: "It never hands over the same fixed course twice — it looks at what's already been learned and hands over exactly one next thing to work on, never the whole curriculum at once. A lesson and an assignment get written out only for that one topic, so what shows up matches where things actually stand rather than a syllabus written in advance. Send a photo back and the answer isn't a grade in isolation — it's specific feedback tied to what that particular assignment was actually asking for. And because some of this happens somewhere with no signal, the whole curriculum can be pulled down once as a single file and worked through offline — read, shoot, no connection and no cost — with grading waiting for whenever service comes back.",
+      },
+      {
+        heading: "WHAT I BUILT",
+        body: "The curriculum is a flat list of 59 topics across four branches — operating the camera, seeing, editing, printing — four tiers each, every topic carrying its own prerequisites, a short description, and two seed paragraphs for its lesson and its assignment. A set of pure functions turns progress against that list into a status per topic (locked, available, in-progress, completed, skipped), checks whether a topic's prerequisites are actually satisfied, and picks the next one: whatever's already in progress first, otherwise the lowest available tier, broken by topic id when two tie. A startup check walks the same list for authoring mistakes — an unknown prerequisite, a cycle, a topic depending on itself, or one that reaches into a higher tier or a different branch. One model expands a topic's seed into the full lesson or a concrete assignment with its own grading criteria only once that topic is reached; a second, vision-capable model scores a submitted photo against that assignment's stored criteria and returns a verdict, a per-criterion breakdown, and a written critique. A separate free-form agent answers open questions with its own narrow toolset — forecast, sunrise/sunset and golden-hour times, named-trail lookups, the active assignment, the topic list, an expanded lesson on demand — plus a web search scoped to a fixed list of manufacturer, retailer, and print-paper sites. A small web section outside the chat covers the same ground for browsing: a grid of the four branches, one page per topic, and a reverse-chronological history of every assignment and its verdict.",
+      },
+      {
+        heading: "WHERE IT BROKE",
+        body: "Adding a sixth foundation topic ahead of the branch's existing entry point pushed the tree from 58 topics to 59 and turned that entry topic from one with no prerequisite into one that now had to wait on the new topic first. The computed values were correct from that commit on — the actual topic count, and each topic's locked-or-available status. What didn't update were the hardcoded '58' baked into the agent's own tool description and system-prompt copy, and five tests across the curriculum, tool, and bot-command suites that still asserted the old count and the old prerequisite-free topic. Both sat wrong for about two months before a later commit corrected the prompt copy and the five stale tests to match the tree that had already shipped.",
       },
     ],
-    facts: [{ label: "STATUS", value: "Live" }],
+    facts: [
+      { label: "ROLE", value: "Built and operated" },
+      { label: "STACK", value: "TypeScript · Claude (Sonnet + Opus) · exifr" },
+      { label: "TOPICS", value: "59 across 4 branches" },
+      { label: "OFFLINE EXPORT", value: "One HTML file, zero network, zero cost" },
+      { label: "STATUS", value: "Live, personal" },
+    ],
     figures: [],
     next: { slug: "job-search" },
   },
