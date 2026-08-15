@@ -115,8 +115,10 @@ export const projects: ProjectRow[] = [
     slug: "family-tree",
     state: "live",
     status: "LIVE",
-    line: "Writeup coming.",
-    body: ["Not written up yet."],
+    line: "A private, invite-only family tree, walled off tenant by tenant.",
+    body: [
+      "A private, multi-tenant family tree that invites the relatives you want in and keeps every other family's tree out of reach — enforced by the database, not just the app.",
+    ],
   },
   {
     name: "Code Coach",
@@ -402,15 +404,34 @@ export const projectDetails: ProjectDetail[] = [
     slug: "family-tree",
     number: "PROJECT 09",
     title: "Family Tree",
-    menuSubtitle: "LIVE",
-    premise: "Not written up yet.",
+    menuSubtitle: "INVITE-ONLY TREE · LIVE",
+    premise:
+      "A private, multi-tenant family tree: invite the relatives you want in, and the database — not just the app — keeps every other family's tree out of reach.",
     sections: [
       {
-        heading: "THE SHORT VERSION",
-        body: "This one is on the list and not yet documented. The writeup lands when there is something true to say about what it costs, what it does and where it broke.",
+        heading: "THE PROBLEM",
+        body: "A family tree usually lives in one of two places: a spreadsheet or a GEDCOM file one relative keeps and re-sends whenever it changes, or a public genealogy site that publishes it whether or not the people in it are still alive. Neither has a real notion of who's allowed to see what, and neither keeps a record of who changed a fact when someone later gets it wrong.",
+      },
+      {
+        heading: "WHAT IT DOES",
+        body: "You invite the relatives you want in, and that's the whole guest list — no public link, and nobody has to remember a separate login just to see it. A living relative's details stay out of view until you say otherwise, and correcting a fact never makes the old version disappear: it sits right next to the new one, so you can see what changed and put it back if the correction was wrong. It replaces the one shared spreadsheet nobody wanted to be the one editing, and it keeps private what a public genealogy site would otherwise publish by default.",
+      },
+      {
+        heading: "WHAT I BUILT",
+        body: "Tenancy is enforced twice — a repository layer that refuses to run a query without a tenant scope, and Postgres row-level security keyed to the same value at the database itself, so a bug in one layer alone doesn't leak one family into another's. Dates carry a qualifier — exact, about, before, after, between, unknown — alongside the raw text someone typed, so 'sometime in the 1850s' round-trips instead of getting forced into a false precision. Contact details are encrypted at rest with a key held apart from the database credentials; phone numbers are normalized to E.164 before a per-tenant HMAC hash is computed, so a duplicate can be caught without the value, or a hash of it, being comparable across two different trees. Sign-in supports a magic link, a password, or Google, and a Google account only ever links to an existing one if Google's own signing keys verify the token and report the email address confirmed. The tree can also be exported as a standard GEDCOM file, for anyone who wants a copy outside the app.",
+      },
+      {
+        heading: "WHERE IT BROKE",
+        body: "A 2026-08-11 deploy shipped code that read four new columns and a new enum before the migration adding them had been applied to production — nothing in the deploy step runs a migration automatically. The person page, the tree view and the person-details page all threw on every request for the fifteen minutes it took to apply the migration by hand. The fix wasn't just running it; it's now a written rule — migrate first, then push — plus a runbook that records exactly where the migration credential lives and how to reach it.",
       },
     ],
-    facts: [{ label: "STATUS", value: "Live" }],
+    facts: [
+      { label: "ROLE", value: "Built and operated" },
+      { label: "STACK", value: "Next.js · Drizzle · Postgres · S3" },
+      { label: "BUILT", value: "332 commits, 89 test files" },
+      { label: "MIGRATIONS", value: "13, applied by hand" },
+      { label: "STATUS", value: "Live, personal" },
+    ],
     figures: [],
     next: { slug: "code-coach" },
   },
