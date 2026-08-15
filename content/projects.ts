@@ -123,8 +123,10 @@ export const projects: ProjectRow[] = [
     slug: "code-coach",
     state: "live",
     status: "LIVE",
-    line: "Writeup coming.",
-    body: ["Not written up yet."],
+    line: "Grades my own side projects and tracks what each one costs to run.",
+    body: [
+      "A private dashboard that grades every side project against real engineering work and tracks what each one costs to run, in place of a skill I had to remember to invoke by hand.",
+    ],
   },
 ];
 
@@ -416,15 +418,34 @@ export const projectDetails: ProjectDetail[] = [
     slug: "code-coach",
     number: "PROJECT 10",
     title: "Code Coach",
-    menuSubtitle: "LIVE",
-    premise: "Not written up yet.",
+    menuSubtitle: "GRADE + COST · LIVE",
+    premise:
+      "Grades every side project I run against real engineering work, and tracks what each one actually costs to keep running.",
     sections: [
       {
-        heading: "THE SHORT VERSION",
-        body: "This one is on the list and not yet documented. The writeup lands when there is something true to say about what it costs, what it does and where it broke.",
+        heading: "THE PROBLEM",
+        body: "A classifier already read git history across every side project I run and tagged what kind of engineering work each commit represented, but seeing any of it meant remembering to invoke a skill by hand, so the picture went stale between runs and nothing tracked new Claude Code features as they shipped. Cost was worse: spend was scattered across eight separate Railway projects and a handful of separate Anthropic keys, with nothing that added any of it up in one place.",
+      },
+      {
+        heading: "WHAT IT DOES",
+        body: "A private dashboard, reachable from my phone, that answers two questions every morning: what am I actually building, and what does it cost to run. Every project I've shipped rolls up into one graded level, earned by the kind of engineering work that actually landed rather than a box I checked myself. It shows what the next level is still missing, flags a Claude Code feature I haven't picked up yet, and writes a short brief only when something material changed, so it never repeats yesterday's numbers back to me. What each project spends on model calls and what it costs to host both land on one page instead of chasing down each account separately. It replaces a skill I had to remember to run by hand with something that finds me instead.",
+      },
+      {
+        heading: "WHAT I BUILT",
+        body: "A local sweep runs nightly under launchd, reading git history across every registered repo and parsing Claude Code session transcripts on the same machine — raw history and prompt content never leave it. Each unit of work gets classified against a 25-tag capability taxonomy by a language model, then rolled into a rubric of count, complexity and recency gates that produces one of five levels, from Newcomer to Senior Engineer. The classified snapshot ships to a Postgres-backed API on Railway, which renders the dashboard and generates two kinds of coaching brief — a deep assessment and a short delta — gated behind a fingerprint over five underlying facts, so a quiet week produces no brief at all rather than a near-duplicate of the last one. A separate cost lane, built off a repo-root registry of eight projects, joins each to its Railway project and, where one exists, its Anthropic key; reporters copied into each deployed app post their own token usage back, and the sweep shells out to the Railway CLI per project, down to individual services, for infrastructure spend. The four hand-entered tables — goals, notes, dismissals, checked-off features — plus the ingested history back up to Cloudflare R2, encrypted, with the restore path verified end to end by hand; the schedule that would run it automatically hasn't been wired up yet.",
+      },
+      {
+        heading: "WHERE IT BROKE",
+        body: "Every repo-root config the server reads at boot has to be listed in the Dockerfile's COPY line. taxonomy.yaml shipped there from the start, but rubric.yaml and then apps.yaml were each folded into the registry later, and each time the Dockerfile update landed as its own separate fix commit, after the missing file crash-looped the server at boot. A new test, test_dockerfile_data_files.py, now asserts all three are actually copied into the image, so a fourth config landing here can't repeat the pattern.",
       },
     ],
-    facts: [{ label: "STATUS", value: "Live" }],
+    facts: [
+      { label: "ROLE", value: "Built and operated" },
+      { label: "STACK", value: "Python · FastAPI · SQLAlchemy · Anthropic" },
+      { label: "BUILT", value: "198 commits, 170 test files" },
+      { label: "LEVELS", value: "5, newcomer to senior" },
+      { label: "STATUS", value: "Live, personal" },
+    ],
     figures: [],
     next: { slug: "b2b-martech-intel" },
   },

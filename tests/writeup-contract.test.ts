@@ -85,7 +85,7 @@ const BASELINE: Record<string, string[]> = {
   "camera-agent": ["four-sections", "five-facts", "core-fact-labels", "one-figure", "premise-length"],
   "job-search": ["four-sections", "five-facts", "core-fact-labels", "one-figure", "premise-length"],
   "family-tree": ["four-sections", "five-facts", "core-fact-labels", "one-figure", "premise-length"],
-  "code-coach": ["four-sections", "five-facts", "core-fact-labels", "one-figure", "premise-length"],
+  "code-coach": ["one-figure"],
 };
 
 const failures = (d: ProjectDetail) =>
