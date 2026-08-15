@@ -165,11 +165,6 @@ export const projectDetails: ProjectDetail[] = [
         naturalHeight: 1740,
       },
     ],
-    meta: [
-      "63,731 articles ingested",
-      "under $10/month to run",
-      "took over a month, mostly because v1 also insisted on building slide decks",
-    ],
     og: { image: "/og/b2b-martech-intel.png", alt: "MarTech Intel — Tom Keefe" },
     next: { slug: "inventory" },
   },
@@ -216,11 +211,6 @@ export const projectDetails: ProjectDetail[] = [
         width: 3302,
         naturalHeight: 1760,
       },
-    ],
-    meta: [
-      "over 1,000 items catalogued",
-      "under $20/month",
-      "began life as a spreadsheet replacement and now has opinions about golden hour",
     ],
     og: { image: "/og/inventory.png", alt: "Outdoor Inventory Mgmt — Tom Keefe" },
     next: { slug: "life-tracker" },
@@ -294,11 +284,6 @@ export const projectDetails: ProjectDetail[] = [
       { label: "STATUS", value: "Live" },
     ],
     figures: [],
-    meta: [
-      "Free, and staying free",
-      "2 leagues in beta, both of them people I know",
-      "built entirely in the offseason, which means it goes live having never been tested under real traffic",
-    ],
     next: { slug: "tomkeefe-ai" },
   },
   // Stub pending B7 — card body + short intro only.
@@ -319,11 +304,6 @@ export const projectDetails: ProjectDetail[] = [
       { label: "STATUS", value: "Live" },
     ],
     figures: [],
-    meta: [
-      "three rewrites in its first two weeks",
-      null,
-      "shipped grays that failed WCAG AA until an audit caught them",
-    ],
     next: { slug: "camera-agent" },
   },
   // Placeholder records for the four projects added on 2026-08-14. Each one

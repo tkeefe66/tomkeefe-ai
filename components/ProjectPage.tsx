@@ -2,7 +2,6 @@ import Link from "next/link";
 import Nav from "@/components/Nav";
 import ContactBand from "@/components/ContactBand";
 import FigurePlate from "@/components/FigurePlate";
-import MetaRow from "@/components/MetaRow";
 import { getProjectDetail } from "@/content/projects";
 
 export default function ProjectPage({ slug }: { slug: string }) {
@@ -103,11 +102,6 @@ export default function ProjectPage({ slug }: { slug: string }) {
             </div>
           );
         })}
-        {project.meta?.some(Boolean) && (
-          <div className="mt-(--space-8)">
-            <MetaRow items={project.meta} />
-          </div>
-        )}
         <div
           className="mono mt-(--space-8) flex justify-between gap-5 pb-14 pt-5 text-[11px] tracking-[0.08em] max-[560px]:flex-col max-[560px]:items-start max-[560px]:gap-2.5"
           style={{ borderTop: "1px solid var(--hair)" }}

@@ -170,10 +170,15 @@ describe("project details (Phase 2 alignment)", () => {
     expect(projectDetails.some((d) => d.launch)).toBe(false);
   });
 
-  it("detail meta matches the card meta everywhere a card has one", () => {
+  it("card meta survives on the homepage; detail records no longer carry it", () => {
     for (const slug of ["b2b-martech-intel", "inventory", "dynasty-analyzer", "tomkeefe-ai"]) {
       const card = projects.find((p) => p.slug === slug)!;
-      expect(getProjectDetail(slug).meta).toEqual(card.meta);
+      expect(card.meta?.some(Boolean)).toBe(true);
+    }
+    // The detail meta row was retired when WHERE IT BROKE became a section
+    // (spec 2026-08-15). No detail record may reintroduce it.
+    for (const d of projectDetails) {
+      expect(d).not.toHaveProperty("meta");
     }
   });
 
