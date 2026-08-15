@@ -292,23 +292,37 @@ export const projectDetails: ProjectDetail[] = [
     figures: [],
     next: { slug: "dynasty-analyzer" },
   },
-  // Stub gated on B4 — card body + launch marker only.
   {
     slug: "dynasty-analyzer",
     number: "PROJECT 05",
     title: "Dynasty Analyzer",
-    menuSubtitle: "SLEEPER ANALYTICS · SEPT 2026",
+    menuSubtitle: "SLEEPER ANALYTICS · LIVE",
     premise:
       "Trade evaluation, roster valuation and draft-capital modeling for Sleeper dynasty leagues.",
     sections: [
       {
-        heading: "THE SHORT VERSION",
-        body: "Built across one offseason so my league could stop arguing about whether a trade was fair and start losing that argument with numbers. Launching in September because that's when the arguing starts.",
+        heading: "THE PROBLEM",
+        body: "A dynasty league carries every trade on its books for years, but Sleeper keeps no verdict on any of them. Whether a deal from three seasons ago actually paid off is a question nobody can settle from memory — it takes the whole chain replayed against real production numbers, and the league has nothing that does that.",
+      },
+      {
+        heading: "WHAT IT DOES",
+        body: "Enter a Sleeper username, pick a league, and every trade it has ever made comes back graded — Trade Value, today's market swing, next to how each side's return actually produced across the regular season, the playoffs and the Toilet Bowl, with nothing cherry-picked out. Every owner also carries a letter grade built off those same numbers, so a standings argument and a three-season-old trade argument get settled by the same page. It replaces the group chat rehashing a deal from memory with a link someone pastes — the argument just ends there.",
+      },
+      {
+        heading: "WHAT I BUILT",
+        body: "One grading engine serves both a CLI — season simulation, trade grading, a savage weekly recap — and a multi-tenant web app, walking a league's full chain back to its origin. Trade Value is priced off KeepTradeCut and computed as a zero-sum swing between the two sides; the other four metrics work differently — received-only tallies, points scored by the assets each side received while on that side's roster, with no subtraction for what was given up. Playoff and Toilet Bowl splits are bracket-aware — a bye or an eliminated week scores zero, and placement games don't count as title-path. Every received asset carries its own journey, kept or flipped and linked forward to whatever it became. The Franchise Rating rolls a three-pillar composite into a grade off a 1500-centered number. Ingestion is platform-pluggable — a shared protocol defines the contract, and Sleeper implements it today.",
+      },
+      {
+        heading: "WHERE IT BROKE",
+        body: "One heuristic quietly ate a real league's only draft, every season. The grader read the Sleeper pool setting — whether a draft was restricted to rookies — as a stand-in for whether the draft itself was a startup, and treated an open pool as proof of one. Dynasty Chill runs its actual rookie draft every year with the pool left open, so a manager can grab a veteran instead — which meant its one draft a season was discarded from the grade, silently, every year. The fix stopped trusting the pool setting alone: an open pool is no longer read as a startup, and the question that actually separates the two — was this the league's first season — decides it instead.",
       },
     ],
     facts: [
       { label: "ROLE", value: "Built and operated" },
-      { label: "STATUS", value: "Live" },
+      { label: "STACK", value: "Python · FastAPI · Alembic · Docker · Postgres" },
+      { label: "METRICS", value: "5, every trade" },
+      { label: "LEAGUES", value: "2, private beta" },
+      { label: "STATUS", value: "Live, private beta" },
     ],
     figures: [],
     next: { slug: "tomkeefe-ai" },
