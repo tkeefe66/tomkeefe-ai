@@ -34,7 +34,8 @@ describe("site content", () => {
   });
 
   it("has tech strip, links, contact and footer", () => {
-    expect(site.techStrip).toHaveLength(13); // marquee trim NOT approved
+    // 18 approved 2026-08-15 (docs/tech-strip-update.md). Trimming still NOT approved.
+    expect(site.techStrip).toHaveLength(18);
     expect(site.links.map((l) => l.label)).toEqual(["EMAIL", "LINKEDIN", "GITHUB"]);
     expect(site.contactHeadline).toBe("Let's talk.");
     expect(site.contactLine).toContain("I answer email");
