@@ -80,7 +80,7 @@ describe("opinions", () => {
 describe("project cards", () => {
   it("nine cards, brief order first, the 2026-08-14 additions after", () => {
     expect(projects.map((p) => p.name)).toEqual([
-      "MarTech Intel", "Inventory", "Life Tracker", "Dynasty Analyzer", "tomkeefe.ai",
+      "MarTech Intel", "Outdoor Inventory Mgmt", "Life Tracker", "Dynasty Analyzer", "tomkeefe.ai",
       "Camera Agent", "Job Search", "Family Tree", "Code Coach",
     ]);
   });

@@ -23,7 +23,7 @@ export const projects: ProjectRow[] = [
     ],
   },
   {
-    name: "Inventory",
+    name: "Outdoor Inventory Mgmt",
     slug: "inventory",
     state: "live",
     status: "LIVE",
@@ -168,7 +168,7 @@ export const projectDetails: ProjectDetail[] = [
   {
     slug: "inventory",
     number: "PROJECT 02",
-    title: "Inventory",
+    title: "Outdoor Inventory Mgmt",
     menuSubtitle: "LEDGER + DIGEST · LIVE",
     premise:
       "Started as a way to stop losing track of outdoor gear: it learns what I own by parsing receipts and email, so buying a jacket is the same act as cataloguing one.",
@@ -226,7 +226,7 @@ export const projectDetails: ProjectDetail[] = [
       "under $20/month",
       "began life as a spreadsheet replacement and now has opinions about golden hour",
     ],
-    og: { image: "/og/inventory.png", alt: "Inventory — Tom Keefe" },
+    og: { image: "/og/inventory.png", alt: "Outdoor Inventory Mgmt — Tom Keefe" },
     next: { slug: "life-tracker" },
   },
   // Stub by decision (B1/B2 deferred) — card body + short intro only (OPEN.md).
