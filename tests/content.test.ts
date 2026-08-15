@@ -93,14 +93,9 @@ describe("project cards", () => {
     ]);
   });
 
-  it("statuses and states", () => {
-    expect(card("dynasty-analyzer").state).toBe("launching");
-    expect(card("dynasty-analyzer").status).toBe("LAUNCHING SEPT 2026");
-    expect(projects.filter((p) => p.state === "live")).toHaveLength(4);
-    expect(projects.filter((p) => p.state === "progress")).toHaveLength(5);
-    for (const p of projects.filter((p) => p.state === "progress")) {
-      expect(p.status).toBe("IN PROGRESS");
-    }
+  it("every project reads LIVE (2026-08-14 decision)", () => {
+    expect(projects.filter((p) => p.state === "live")).toHaveLength(projects.length);
+    for (const p of projects) expect(p.status).toBe("LIVE");
   });
 
   // Keyed by slug, not index — the list is reordered as projects are added.
@@ -168,7 +163,8 @@ describe("project details (Phase 2 alignment)", () => {
         expect(s.body).not.toMatch(/[[\]]/);
       }
     }
-    expect(getProjectDetail("dynasty-analyzer").launch).toBe(true);
+    // No launch capsule anywhere — every project reads LIVE.
+    expect(projectDetails.some((d) => d.launch)).toBe(false);
   });
 
   it("detail meta matches the card meta everywhere a card has one", () => {

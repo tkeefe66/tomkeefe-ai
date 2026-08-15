@@ -54,16 +54,16 @@ export const projects: ProjectRow[] = [
   {
     name: "Outdoor Telegram Agent",
     slug: "outdoor-telegram-agent",
-    state: "progress",
-    status: "IN PROGRESS",
+    state: "live",
+    status: "LIVE",
     line: "Writeup coming.",
     body: ["Not written up yet."],
   },
   {
     name: "Dynasty Analyzer",
     slug: "dynasty-analyzer",
-    state: "launching",
-    status: "LAUNCHING SEPT 2026",
+    state: "live",
+    status: "LIVE",
     line: "Trade and roster valuation for Sleeper dynasty leagues.",
     body: [
       "Trade evaluation, roster valuation and draft-capital modeling for Sleeper dynasty leagues. Built across one offseason so my league could stop arguing about whether a trade was fair and start losing that argument with numbers.",
@@ -97,32 +97,32 @@ export const projects: ProjectRow[] = [
   {
     name: "Camera Agent",
     slug: "camera-agent",
-    state: "progress",
-    status: "IN PROGRESS",
+    state: "live",
+    status: "LIVE",
     line: "Writeup coming.",
     body: ["Not written up yet."],
   },
   {
     name: "Job Search",
     slug: "job-search",
-    state: "progress",
-    status: "IN PROGRESS",
+    state: "live",
+    status: "LIVE",
     line: "Writeup coming.",
     body: ["Not written up yet."],
   },
   {
     name: "Family Tree",
     slug: "family-tree",
-    state: "progress",
-    status: "IN PROGRESS",
+    state: "live",
+    status: "LIVE",
     line: "Writeup coming.",
     body: ["Not written up yet."],
   },
   {
     name: "Code Coach",
     slug: "code-coach",
-    state: "progress",
-    status: "IN PROGRESS",
+    state: "live",
+    status: "LIVE",
     line: "Writeup coming.",
     body: ["Not written up yet."],
   },
@@ -262,7 +262,7 @@ export const projectDetails: ProjectDetail[] = [
     slug: "outdoor-telegram-agent",
     number: "PROJECT 04",
     title: "Outdoor Telegram Agent",
-    menuSubtitle: "IN PROGRESS",
+    menuSubtitle: "LIVE",
     premise: "Not written up yet.",
     sections: [
       {
@@ -270,7 +270,7 @@ export const projectDetails: ProjectDetail[] = [
         body: "This one is on the list and not yet documented. The writeup lands when there is something true to say about what it costs, what it does and where it broke.",
       },
     ],
-    facts: [{ label: "STATUS", value: "In progress" }],
+    facts: [{ label: "STATUS", value: "Live" }],
     figures: [],
     next: { slug: "dynasty-analyzer" },
   },
@@ -280,7 +280,6 @@ export const projectDetails: ProjectDetail[] = [
     number: "PROJECT 05",
     title: "Dynasty Analyzer",
     menuSubtitle: "SLEEPER ANALYTICS · SEPT 2026",
-    launch: true,
     premise:
       "Trade evaluation, roster valuation and draft-capital modeling for Sleeper dynasty leagues.",
     sections: [
@@ -291,7 +290,7 @@ export const projectDetails: ProjectDetail[] = [
     ],
     facts: [
       { label: "ROLE", value: "Built and operated" },
-      { label: "STATUS", value: "Launching Sept 2026" },
+      { label: "STATUS", value: "Live" },
     ],
     figures: [],
     meta: [
@@ -332,7 +331,7 @@ export const projectDetails: ProjectDetail[] = [
     slug: "camera-agent",
     number: "PROJECT 07",
     title: "Camera Agent",
-    menuSubtitle: "IN PROGRESS",
+    menuSubtitle: "LIVE",
     premise: "Not written up yet.",
     sections: [
       {
@@ -340,7 +339,7 @@ export const projectDetails: ProjectDetail[] = [
         body: "This one is on the list and not yet documented. The writeup lands when there is something true to say about what it costs, what it does and where it broke.",
       },
     ],
-    facts: [{ label: "STATUS", value: "In progress" }],
+    facts: [{ label: "STATUS", value: "Live" }],
     figures: [],
     next: { slug: "job-search" },
   },
@@ -348,7 +347,7 @@ export const projectDetails: ProjectDetail[] = [
     slug: "job-search",
     number: "PROJECT 08",
     title: "Job Search",
-    menuSubtitle: "IN PROGRESS",
+    menuSubtitle: "LIVE",
     premise: "Not written up yet.",
     sections: [
       {
@@ -356,7 +355,7 @@ export const projectDetails: ProjectDetail[] = [
         body: "This one is on the list and not yet documented. The writeup lands when there is something true to say about what it costs, what it does and where it broke.",
       },
     ],
-    facts: [{ label: "STATUS", value: "In progress" }],
+    facts: [{ label: "STATUS", value: "Live" }],
     figures: [],
     next: { slug: "family-tree" },
   },
@@ -364,7 +363,7 @@ export const projectDetails: ProjectDetail[] = [
     slug: "family-tree",
     number: "PROJECT 09",
     title: "Family Tree",
-    menuSubtitle: "IN PROGRESS",
+    menuSubtitle: "LIVE",
     premise: "Not written up yet.",
     sections: [
       {
@@ -372,7 +371,7 @@ export const projectDetails: ProjectDetail[] = [
         body: "This one is on the list and not yet documented. The writeup lands when there is something true to say about what it costs, what it does and where it broke.",
       },
     ],
-    facts: [{ label: "STATUS", value: "In progress" }],
+    facts: [{ label: "STATUS", value: "Live" }],
     figures: [],
     next: { slug: "code-coach" },
   },
@@ -380,7 +379,7 @@ export const projectDetails: ProjectDetail[] = [
     slug: "code-coach",
     number: "PROJECT 10",
     title: "Code Coach",
-    menuSubtitle: "IN PROGRESS",
+    menuSubtitle: "LIVE",
     premise: "Not written up yet.",
     sections: [
       {
@@ -388,7 +387,7 @@ export const projectDetails: ProjectDetail[] = [
         body: "This one is on the list and not yet documented. The writeup lands when there is something true to say about what it costs, what it does and where it broke.",
       },
     ],
-    facts: [{ label: "STATUS", value: "In progress" }],
+    facts: [{ label: "STATUS", value: "Live" }],
     figures: [],
     next: { slug: "b2b-martech-intel" },
   },
