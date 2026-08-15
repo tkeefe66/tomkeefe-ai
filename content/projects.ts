@@ -341,7 +341,7 @@ export const projectDetails: ProjectDetail[] = [
       },
       {
         heading: "WHAT IT DOES",
-        body: "This page is the evidence, not the pitch. The finished project pages link through to what a thing actually costs, what it does today, and where it broke — the parts a résumé leaves out entirely. The rest stay short stubs instead of getting padded to look finished. It opens dark by default, reads the same on a phone as a desk, and gets a stranger from the front door to the record in a click or two. It turns a claim into something anyone can go check.",
+        body: "A project page here follows one pattern: what it does, what it actually costs to run, and — where there's a real one — where it broke. That last part is what a résumé leaves out entirely, and it's the part that actually tells a stranger whether something works. Click through from the homepage and the whole record sits on that one page, nothing folded behind another click. It turns a claim into something anyone can go check for themselves.",
       },
       {
         heading: "WHAT I BUILT",
