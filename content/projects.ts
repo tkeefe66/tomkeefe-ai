@@ -56,8 +56,10 @@ export const projects: ProjectRow[] = [
     slug: "outdoor-telegram-agent",
     state: "live",
     status: "LIVE",
-    line: "Writeup coming.",
-    body: ["Not written up yet."],
+    line: "One Telegram thread, routed to whichever agent should answer.",
+    body: [
+      "The Telegram side of Outdoor Inventory: one authorized thread that routes between the gear, camping and photography agents behind it, long-polled rather than served over a webhook.",
+    ],
   },
   {
     name: "Dynasty Analyzer",
@@ -286,15 +288,34 @@ export const projectDetails: ProjectDetail[] = [
     slug: "outdoor-telegram-agent",
     number: "PROJECT 04",
     title: "Outdoor Telegram Agent",
-    menuSubtitle: "LIVE",
-    premise: "Not written up yet.",
+    menuSubtitle: "MODULE OF OUTDOOR INVENTORY · LIVE",
+    premise:
+      "The Telegram side of Outdoor Inventory: one authorized thread that routes between the gear, camping and photography agents, long-polled rather than served over a webhook.",
     sections: [
       {
-        heading: "THE SHORT VERSION",
-        body: "This one is on the list and not yet documented. The writeup lands when there is something true to say about what it costs, what it does and where it broke.",
+        heading: "THE PROBLEM",
+        body: "Telegram already carried the daily digest and error alerts by the time anyone asked for more — the actual want, on record, was to talk to the agent about the gear itself, from wherever, without opening claude.ai first. That's what started the whole agent phase of this project. But one channel for one agent doesn't stay one channel for long: camping and photography agents came later, and a single Telegram thread had to decide, on every incoming message, which of several agents should actually pick it up.",
+      },
+      {
+        heading: "WHAT IT DOES",
+        body: "One Telegram thread is the whole interface. The same channel that already sends the morning digest and error alerts is the one I talk back to — no separate app, no browser tab, no login screen. I can type a fast command or just ask a plain question and both get treated the same way; whichever agent actually knows the answer — gear, camping, or the newer photography one — gets the message without me choosing a screen for it first, and a photo dropped in with no explanation still lands somewhere sensible. Inside a short window the thread remembers what I was just doing, so a follow-up doesn't have to re-explain itself; wait long enough and it starts clean. It replaces opening claude.ai or a dedicated app every time I want to ask the ledger something, with a message to a thread that's already open.",
+      },
+      {
+        heading: "WHAT I BUILT",
+        body: "The bot process long-polls Telegram's getUpdates endpoint on a 25-second window instead of exposing a webhook, paging through updates by offset and dropping any chat ID that isn't on an authorized allowlist before a message reaches a handler. Incoming text tries slash-command dispatch first, then any multi-step flow already in progress, then falls back to whichever agent owns the chat's current mode — outdoor or photography — a per-chat setting persisted to disk so it survives a bot restart. Camping has no agent behind it the same way; its commands go straight through the dispatcher like every other slash command. Thirty-three distinct slash commands route through that dispatcher in total. Photos and Telegram Documents are handled differently on purpose: a compressed photo with no caption falls to whichever mode is currently set, while a file sent as a Document always routes to photography, because that's the only upload type Telegram doesn't strip EXIF data from. Outbound replies send as Markdown first; if Telegram rejects the formatting, the same text goes out a second time as plain text instead of failing silently. A separate setup script verifies the bot token against Telegram's API, captures a chat ID from a /start message, and writes it into the environment — the one manual step in an otherwise unattended deploy. The bot deploys as its own Railway service, a long-running process rather than a web server, restarted automatically if it ever exits.",
+      },
+      {
+        heading: "WHERE IT BROKE",
+        body: "Early on, replies went out with no parse_mode set at all, so any markdown an agent produced — bold text, formatting — arrived as literal asterisks instead of rendering, a bug that surfaced in acceptance testing rather than being caught before it shipped. The fix set replies to send as Markdown, wrapped in a fallback: if Telegram rejects the formatting as invalid, the same reply goes out a second time as plain text rather than never arriving at all. That fallback is still what runs today whenever a reply contains a markdown character Telegram won't parse.",
       },
     ],
-    facts: [{ label: "STATUS", value: "Live" }],
+    facts: [
+      { label: "ROLE", value: "Built and operated" },
+      { label: "STACK", value: "TypeScript · Telegram long-polling · Railway" },
+      { label: "COMMANDS", value: "33 slash commands" },
+      { label: "DELIVERY", value: "25-second long-poll, no webhook" },
+      { label: "STATUS", value: "Live, personal" },
+    ],
     figures: [],
     next: { slug: "dynasty-analyzer" },
   },
