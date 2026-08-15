@@ -49,7 +49,7 @@ export const projects: ProjectRow[] = [
       "Spending and habits, tracked and then actually interpreted. Inventory reads my receipts to learn what I own; this one reads them to learn what I keep doing. Two systems parsing the same input for different reasons, which is a design I intend to fix and haven't.",
       "The only thing I've built that I open every day without deciding to.",
     ],
-    // No meta row by decision: B1 + B2 deferred (OPEN.md). Do not pad.
+    // No meta row: this card ships without one by decision. Do not pad.
   },
   {
     name: "Outdoor Telegram Agent",
@@ -69,7 +69,7 @@ export const projects: ProjectRow[] = [
     line: "Trade and roster valuation for Sleeper dynasty leagues.",
     body: [
       "Trade evaluation, roster valuation and draft-capital modeling for Sleeper dynasty leagues. Built across one offseason so my league could stop arguing about whether a trade was fair and start losing that argument with numbers.",
-      "Launching in September because that's when the arguing starts.",
+      "In private beta with two leagues, which is enough people to argue with.",
     ],
     meta: [
       "Free, and staying free",
@@ -86,16 +86,17 @@ export const projects: ProjectRow[] = [
     body: [
       "This site. Written, designed and deployed by agents under my direction. The footer isn't a joke.",
     ],
-    // B7 fragments derived from the repo's own history (plan docs + commit
-    // 2c69b08); cost fragment still unfilled — dropped cleanly by MetaRow.
+    // Fragments derived from this repo's own history (plan docs + commit
+    // 2c69b08). The middle slot is null because no cost figure is published;
+    // card meta renders nowhere today, so nothing depends on it being full.
     meta: [
       "three rewrites in its first two weeks",
       null,
       "shipped grays that failed WCAG AA until an audit caught them",
     ],
   },
-  // Four added 2026-08-14 to get the full nine onto the layout. Copy is
-  // deliberately a placeholder — no invented scale, cost or narrative.
+  // Four added 2026-08-14 to get the full nine onto the layout. Each line and
+  // body below is written from the project's own repo, same as the rest.
   {
     name: "Camera Agent",
     slug: "camera-agent",
@@ -153,11 +154,11 @@ export const projectDetails: ProjectDetail[] = [
       },
       {
         heading: "WHAT IT DOES",
-        body: "One email, every morning. Everything that moved overnight in B2B martech, filtered to the topics and the specific companies I care about — plus how the narrative shifted over the week, which is the part no newsletter gives you. It replaced a reading habit I kept failing to maintain, and it does the job a company this size would otherwise have to hire an analyst for.",
+        body: "One email, every weekday morning. Everything that moved overnight in B2B martech, filtered to the topics and the specific companies I care about — plus how the narrative shifts over the week, which is the part no newsletter gives you. A reading habit I kept failing to maintain is now somebody else's job, and that somebody does the work a company this size would otherwise have to hire an analyst for.",
       },
       {
         heading: "WHAT I BUILT",
-        body: "A continuous ingest across news, GTM tech and AI sources that categorizes and tags every article, tracks named companies, and refreshes every twelve minutes. On top of the same corpus sit the things people actually asked for: briefings, trend analysis, an AI analyst, and drafting tools for thought leadership and field enablement. It also tracks how the narrative moves over weeks, not just what happened yesterday.",
+        body: "A continuous ingest across news, GTM tech and AI sources that categorizes and tags every article and tracks named companies. The two feeds run on their own clocks — the RSS sources every 30 minutes, NewsAPI every four hours to stay inside a free tier's daily request cap — with a sweep once a day that picks up whatever came in untagged. On top of the same corpus sit the things people actually asked for: briefings, trend analysis, an AI analyst, and drafting tools for thought leadership and field enablement.",
       },
       {
         heading: "WHERE IT BROKE",
@@ -166,9 +167,9 @@ export const projectDetails: ProjectDetail[] = [
     ],
     facts: [
       { label: "ROLE", value: "Built and operated" },
-      { label: "STACK", value: "Next.js · Claude · RSS" },
+      { label: "STACK", value: "React · Express · Postgres · Claude · RSS" },
       { label: "CORPUS", value: "63,731 articles" },
-      { label: "REFRESH", value: "Every 12 minutes" },
+      { label: "REFRESH", value: "RSS every 30 minutes" },
       { label: "STATUS", value: "Internal" },
     ],
     figures: [
@@ -200,11 +201,11 @@ export const projectDetails: ProjectDetail[] = [
       },
       {
         heading: "WHAT IT DOES",
-        body: "Buying a jacket and logging it are the same act — there's no separate step to forget. It reads the forecast, checks trail conditions on AllTrails, and answers back over Telegram: what to pack for Saturday, what's missing, and what to buy before I find out about it on the trail. It replaces a spreadsheet I never trusted to be current, and it catches a gear gap before the trip does, not after.",
+        body: "The question is what goes in the pack, and the answer comes back already knowing what's owned, what the weather is doing and what the trail is like this week — none of which I go and look up. It reads the forecast, checks trail conditions on AllTrails, and answers back over Telegram: what to pack for Saturday, what's missing, and what to buy before I find out about it on the trail. The spreadsheet I never trusted to be current is gone, and a gear gap turns up before the trip rather than after it.",
       },
       {
         heading: "WHAT I BUILT",
-        body: "An agent ingest that parses receipts and email into a single ledger — over 1,000 items with brand, price, category, domain and type resolved automatically, and a review queue for anything it can't place confidently.",
+        body: "An hourly job searches Gmail for mail from four retailer senders — REI orders, Amazon order confirmations, shipments and returns — skipping anything already carrying its own processed label, so a message is read once and never again. Retailer-specific parsers pull the line items out; a Haiku classifier then fills in domain, type, category, sub-category and brand against a schema that accepts one of eleven domains and nothing else, prompted with the vocabulary already sitting in the ledger so a new pair of boots reuses an existing category instead of inventing a near-duplicate. Dedup keys on order ID, brand, normalized item name, color and size, with the retailer's product ID taking over as the key wherever the URL carries one — the fix for the same item arriving twice under two different names. Return mail flips a row's status rather than deleting it. The system of record is a Google Sheet, backed up tab by tab once a day and pruned after thirty.",
       },
       {
         heading: "THE CAMERA DETOUR",
@@ -217,8 +218,8 @@ export const projectDetails: ProjectDetail[] = [
     ],
     facts: [
       { label: "ROLE", value: "Designed and built" },
-      { label: "STACK", value: "Local-first · agent ingest" },
-      { label: "RECORDS", value: "1,000+ items" },
+      { label: "STACK", value: "Next.js · Google Sheets · Claude · Railway" },
+      { label: "RECORDS", value: "491 items" },
       { label: "NEEDS REVIEW", value: "0" },
       { label: "STATUS", value: "Live, personal" },
     ],
@@ -237,7 +238,6 @@ export const projectDetails: ProjectDetail[] = [
     og: { image: "/og/inventory.png", alt: "Outdoor Inventory Mgmt — Tom Keefe" },
     next: { slug: "life-tracker" },
   },
-  // Stub by decision (B1/B2 deferred) — card body + short intro only (OPEN.md).
   {
     slug: "life-tracker",
     number: "PROJECT 03",
@@ -252,7 +252,7 @@ export const projectDetails: ProjectDetail[] = [
       },
       {
         heading: "WHAT IT DOES",
-        body: "One weekly question, answered without turning the answering into a chore: am I doing the things I said I would. Orders, rides and plans with other people show up on their own, pulled from the email and calendar I already keep — there's no separate step to log them, so nothing gets missed because logging it felt like a hassle. Gym, drinks, anything private stay manual, but manual means one tap, five seconds, from the same screen. A hit week reads as complete rather than celebrated, a miss reads as a fact rather than a scold — no streak, no gold star, no gamified guilt. It stays effortless enough to actually keep using, and in the same glance it answers a second question: not just whether I did the thing, but what the week actually cost.",
+        body: "Once a week, the same question, answered without turning the answering into a chore: am I doing the things I said I would. Orders, rides and plans with other people show up on their own, pulled from the email and calendar I already keep — there's no separate step to log them, so nothing gets missed because logging it felt like a hassle. Gym, drinks, anything private stay manual, but manual means one tap, five seconds, from the same screen. A hit week reads as complete rather than celebrated, a miss reads as a fact rather than a scold — no streak, no gold star, no gamified guilt. It stays effortless enough to actually keep using, and in the same glance it answers a second question: not just whether I did the thing, but what the week actually cost.",
       },
       {
         heading: "WHAT I BUILT",
@@ -300,7 +300,7 @@ export const projectDetails: ProjectDetail[] = [
       },
       {
         heading: "WHAT IT DOES",
-        body: "One Telegram thread is the whole interface. The same channel that already sends the morning digest and error alerts is the one I talk back to — no separate app, no browser tab, no login screen. I can type a fast command or just ask a plain question and both get treated the same way; whichever agent actually knows the answer — gear, camping, or the newer photography one — gets the message without me choosing a screen for it first, and a photo dropped in with no explanation still lands somewhere sensible. Inside a short window the thread remembers what I was just doing, so a follow-up doesn't have to re-explain itself; wait long enough and it starts clean. It replaces opening claude.ai or a dedicated app every time I want to ask the ledger something, with a message to a thread that's already open.",
+        body: "The whole interface is a single Telegram thread. The same channel that already sends the morning digest and error alerts is the one I talk back to — no separate app, no browser tab, no login screen. I can type a fast command or just ask a plain question and both get treated the same way; whichever agent actually knows the answer — gear, camping, or the newer photography one — gets the message without me choosing a screen for it first, and a photo dropped in with no explanation still lands somewhere sensible. Inside a short window the thread remembers what I was just doing, so a follow-up doesn't have to re-explain itself; wait long enough and it starts clean. Asking the ledger something used to mean opening claude.ai or a dedicated app first; now it's a message to a thread that was already open.",
       },
       {
         heading: "WHAT I BUILT",
@@ -335,7 +335,7 @@ export const projectDetails: ProjectDetail[] = [
       },
       {
         heading: "WHAT IT DOES",
-        body: "Enter a Sleeper username, pick a league, and every trade it has ever made comes back graded — Trade Value, today's market swing, next to how each side's return actually produced across the regular season, the playoffs and the Toilet Bowl, with nothing cherry-picked out. Every owner also carries a single letter grade for the whole roster, so a standings argument and an old trade argument get settled by the same page. It replaces the group chat rehashing a deal from memory with a link someone pastes — the argument just ends there.",
+        body: "Enter a Sleeper username, pick a league, and every trade it has ever made comes back graded — Trade Value, today's market swing, next to how each side's return actually produced across the regular season, the playoffs and the Toilet Bowl, with nothing cherry-picked out. Every owner also carries a single letter grade for the whole roster, so a standings argument and an old trade argument get settled by the same page. The group chat used to rehash a deal from memory; now someone pastes a link and the argument just ends there.",
       },
       {
         heading: "WHAT I BUILT",
@@ -356,7 +356,6 @@ export const projectDetails: ProjectDetail[] = [
     figures: [],
     next: { slug: "tomkeefe-ai" },
   },
-  // Stub pending B7 — card body + short intro only.
   {
     slug: "tomkeefe-ai",
     number: "PROJECT 06",
@@ -370,7 +369,7 @@ export const projectDetails: ProjectDetail[] = [
       },
       {
         heading: "WHAT IT DOES",
-        body: "A project page here follows one pattern: what it does, what it actually costs to run, and — where there's a real one — where it broke. That last part is what a résumé leaves out entirely, and it's the part that actually tells a stranger whether something works. Click through from the homepage and the whole record sits on that one page, nothing folded behind another click. It turns a claim into something anyone can go check for themselves.",
+        body: "A project page here follows one pattern: what was broken before the thing existed, what it does now, what's actually underneath it, and where it broke. That last part is what a résumé leaves out entirely, and it's the part that actually tells a stranger whether something works. Click through from the homepage and the whole record sits on that one page, nothing folded behind another click. It turns a claim into something anyone can go check for themselves.",
       },
       {
         heading: "WHAT I BUILT",
@@ -391,8 +390,6 @@ export const projectDetails: ProjectDetail[] = [
     figures: [],
     next: { slug: "camera-agent" },
   },
-  // Placeholder records for the four projects added on 2026-08-14. Each one
-  // says only that it exists — the writeup replaces this wholesale.
   {
     slug: "camera-agent",
     number: "PROJECT 07",
@@ -456,7 +453,7 @@ export const projectDetails: ProjectDetail[] = [
     facts: [
       { label: "ROLE", value: "Built and operated" },
       { label: "STACK", value: "Next.js · TypeScript · Postgres · Anthropic" },
-      { label: "BUILT", value: "164 commits, 38 test files" },
+      { label: "TESTS", value: "39 test files" },
       { label: "PIPELINE", value: "13 stages, new to offer" },
       { label: "STATUS", value: "Live, personal" },
     ],
@@ -477,7 +474,7 @@ export const projectDetails: ProjectDetail[] = [
       },
       {
         heading: "WHAT IT DOES",
-        body: "You invite the relatives you want in, and that's the whole guest list — no public link, and nobody has to remember a separate login just to see it. A living relative's details stay out of view until you say otherwise, and correcting a fact never makes the old version disappear: it sits right next to the new one, so you can see what changed and put it back if the correction was wrong. It replaces the one shared spreadsheet nobody wanted to be the one editing, and it keeps private what a public genealogy site would otherwise publish by default.",
+        body: "You invite the relatives you want in, and that's the whole guest list — no public link, and nobody has to remember a separate login just to see it. A living relative's details stay out of view until you say otherwise, and correcting a fact never makes the old version disappear: it sits right next to the new one, so you can see what changed and put it back if the correction was wrong. Nobody has to be the one who owns the shared spreadsheet anymore, and what a public genealogy site would otherwise publish by default stays inside the family.",
       },
       {
         heading: "WHAT I BUILT",
@@ -491,7 +488,7 @@ export const projectDetails: ProjectDetail[] = [
     facts: [
       { label: "ROLE", value: "Built and operated" },
       { label: "STACK", value: "Next.js · Drizzle · Postgres · S3" },
-      { label: "BUILT", value: "332 commits, 89 test files" },
+      { label: "TESTS", value: "89 test files" },
       { label: "MIGRATIONS", value: "13, applied by hand" },
       { label: "STATUS", value: "Live, personal" },
     ],
@@ -526,7 +523,7 @@ export const projectDetails: ProjectDetail[] = [
     facts: [
       { label: "ROLE", value: "Built and operated" },
       { label: "STACK", value: "Python · FastAPI · SQLAlchemy · Anthropic" },
-      { label: "BUILT", value: "198 commits, 170 test files" },
+      { label: "TESTS", value: "66 test files" },
       { label: "LEVELS", value: "5, newcomer to senior" },
       { label: "STATUS", value: "Live, personal" },
     ],
