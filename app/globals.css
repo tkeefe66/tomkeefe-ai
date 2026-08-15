@@ -33,7 +33,7 @@
   --tint-edge: #d0dae8;
   --acc-deep: #152c4b;
   --acc-soft: #a6bcd8;
-  /* Status dot only — the one non-navy hue, and never used for type. */
+  /* LIVE status (dot + word) — the one non-navy hue. 6.02:1 on --bg. */
   --ok: #12714a;
 
   --font-ui: var(--font-onest), system-ui, sans-serif;

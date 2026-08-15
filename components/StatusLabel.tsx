@@ -34,11 +34,11 @@ export default function StatusLabel({
     onField: "var(--acc-soft)",
   } as const;
   const color =
-    state === "live" ? tones.accent : state === "progress" ? tones.muted : tones[tone];
+    state === "live" ? "var(--ok)" : state === "progress" ? tones.muted : tones[tone];
   return (
     <span className={base} style={{ color }}>
-      {/* LIVE gets a --ok dot, the only non-navy hue on the page; the word
-          itself stays --acc so type keeps one colour (2026-08-14). */}
+      {/* LIVE reads in --ok, dot and word together — the one non-navy hue on
+          the page. Both values clear WCAG AA at 10.5px (2026-08-14). */}
       {state === "live" ? (
         <span
           aria-hidden
