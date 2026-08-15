@@ -189,16 +189,20 @@ export const projectDetails: ProjectDetail[] = [
         body: "Purchase history is scattered across receipts, order confirmations and card statements, none of which agree on what a thing is. Spending questions that should take a second take an afternoon.",
       },
       {
+        heading: "WHAT IT DOES",
+        body: "Buying a jacket and logging it are the same act — there's no separate step to forget. It reads the forecast, checks trail conditions on AllTrails, and answers back over Telegram: what to pack for Saturday, what's missing, and what to buy before I find out about it on the trail. It replaces a spreadsheet I never trusted to be current, and it catches a gear gap before the trip does, not after.",
+      },
+      {
         heading: "WHAT I BUILT",
-        body: "An agent ingest that parses receipts and email into a single ledger — over 1,000 items with brand, price, category, domain and type resolved automatically, and a review queue for anything it can't place confidently. From there it reads the forecast, talks to AllTrails, and answers over Telegram: what to pack for Saturday, what's missing, and what to buy before I find out about it on the trail.",
+        body: "An agent ingest that parses receipts and email into a single ledger — over 1,000 items with brand, price, category, domain and type resolved automatically, and a review queue for anything it can't place confidently.",
       },
       {
         heading: "THE CAMERA DETOUR",
         body: "Then I bought a Sony camera I couldn't operate. The manual assumed I knew what aperture was for; the tutorials assumed I had evenings free. Instead of working through either, I taught the same system to teach me — which is how Field Assistant became a module rather than a project. It already knew my gear, my trails and my weekends from the ledger; now it reads light, conditions, location and timing for a shoot, and folds the answer into the same Telegram thread as the packing list. I still can't recite the exposure triangle. The camera comes home with usable photographs anyway, which was the actual requirement.",
       },
       {
-        heading: "WHY IT MATTERS AT WORK",
-        body: "It is a signal pipeline with a different subject: messy inputs, an enrichment layer, a confidence threshold, and a human review queue. Every problem in it is a problem I've solved in a CRM.",
+        heading: "WHERE IT BROKE",
+        body: "A security audit against the live site found the login check failed open: if the WEB_USER and WEB_PASSWORD environment variables were ever unset, the middleware treated that as no login required instead of a 401 — silently, no log or alert — on every route, including the paid Claude endpoints. The variables were set the whole time the audit ran, so nothing was actually exposed, but the failure mode was the load-bearing one: a redeploy that dropped those two variables would have opened the entire app to anyone who found the URL. The fix replaced the fall-open check with a fail-closed authGate, tested directly instead of only through the live route.",
       },
     ],
     facts: [
