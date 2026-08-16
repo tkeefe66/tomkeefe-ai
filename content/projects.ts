@@ -315,7 +315,7 @@ export const projectDetails: ProjectDetail[] = [
       },
       {
         heading: "WHAT IT DOES",
-        body: "Every project page here answers the same questions: what was broken before the thing existed, what it does now, what's actually underneath it, and where it broke. That last part is what a résumé leaves out entirely, and it's the part that actually tells a stranger whether something works. Click through from the homepage and the whole record sits on that one page, nothing folded behind another click. It turns a claim into something anyone can go check for themselves.",
+        body: "A project page here follows one pattern: the problem, what it does, what was built, and where it broke. That last part is what a résumé leaves out entirely, and it's the part that actually tells a stranger whether something works. Click through from the homepage and the whole record sits on that one page, nothing folded behind another click. It turns a claim into something anyone can go check for themselves.",
       },
       {
         heading: "WHAT I BUILT",
