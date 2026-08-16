@@ -47,10 +47,6 @@ export type ProjectRow = {
   status: string;
   /** The single sentence the homepage card shows. Written to sit alone on one line. */
   line: string;
-  /** 1–3 paragraphs. Long-form summary; the compact card renders `line` instead. */
-  body: string[];
-  /** [scale, cost, what broke]; null = value unavailable, clause omitted (OPEN.md). Absent = no meta row at all. */
-  meta?: (string | null)[];
 };
 
 export type ProjectSection = {

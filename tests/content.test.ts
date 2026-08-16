@@ -13,13 +13,6 @@ function expectNoBrackets(s: string) {
   expect(s).not.toMatch(/[[\]]/);
 }
 
-/** Cards are looked up by slug — card order changes as projects are added. */
-function card(slug: string) {
-  const found = projects.find((p) => p.slug === slug);
-  if (!found) throw new Error(`no project card for slug ${slug}`);
-  return found;
-}
-
 describe("site content", () => {
   it("has the new tagline in hero and meta source", () => {
     expect(site.name).toBe("Tom Keefe");
@@ -100,16 +93,6 @@ describe("project cards", () => {
     for (const p of projects) expect(p.status).toBe("LIVE");
   });
 
-  // Keyed by slug, not index — the list is reordered as projects are added.
-  it("Outdoor Inventory Mgmt is three units (2 paragraphs + meta); Life Tracker alone carries no meta row", () => {
-    expect(card("inventory").body).toHaveLength(2);
-    expect(card("inventory").meta?.filter(Boolean)).toHaveLength(3); // B5 filled: over 1,000 items
-    expect(card("life-tracker").meta).toBeUndefined(); // B1/B2 deferred
-    expect(card("tomkeefe-ai").meta?.filter(Boolean)).toHaveLength(2); // B7: cost fragment unfilled
-    expect(card("b2b-martech-intel").meta?.filter(Boolean)).toHaveLength(3);
-    expect(card("dynasty-analyzer").meta?.filter(Boolean)).toHaveLength(3); // B4 filled
-  });
-
   it("every card carries one sentence short enough to sit on a line", () => {
     for (const p of projects) {
       expect(p.line.length).toBeGreaterThan(0);
@@ -123,8 +106,6 @@ describe("project cards", () => {
       expectNoBrackets(p.name);
       expectNoBrackets(p.status);
       expectNoBrackets(p.line);
-      p.body.forEach(expectNoBrackets);
-      (p.meta ?? []).filter((m): m is string => Boolean(m)).forEach(expectNoBrackets);
     }
   });
 
@@ -154,11 +135,7 @@ describe("project details (Phase 2 alignment)", () => {
     expect(projects.every((p) => p.slug)).toBe(true);
   });
 
-  it("card meta survives on the homepage; detail records no longer carry it", () => {
-    for (const slug of ["b2b-martech-intel", "inventory", "dynasty-analyzer", "tomkeefe-ai"]) {
-      const card = projects.find((p) => p.slug === slug)!;
-      expect(card.meta?.some(Boolean)).toBe(true);
-    }
+  it("detail records carry no meta row", () => {
     // The detail meta row was retired when WHERE IT BROKE became a section
     // (spec 2026-08-15). No detail record may reintroduce it.
     for (const d of projectDetails) {

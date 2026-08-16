@@ -17,14 +17,6 @@ export const projects: ProjectRow[] = [
     state: "live",
     status: "LIVE",
     line: "Market intelligence for a GTM org that doesn't have one.",
-    body: [
-      "A market intelligence function for a GTM org that doesn't have one. It watches B2B martech coverage, filters against the topics and specific companies I care about, and sends one digest email every morning. It also tracks how the narrative moves over weeks, not just what happened yesterday.",
-    ],
-    meta: [
-      "63,731 articles ingested",
-      "under $10/month to run",
-      "took over a month, mostly because v1 also insisted on building slide decks",
-    ],
   },
   {
     name: "Outdoor Inventory Mgmt",
@@ -32,16 +24,6 @@ export const projects: ProjectRow[] = [
     state: "live",
     status: "LIVE",
     line: "Receipts and email become a gear ledger that answers back.",
-    // Intentionally three units where others are two (brief: do not compress).
-    body: [
-      "Started as a way to stop losing track of outdoor gear. It learns what I own by parsing my receipts and email, so buying a jacket is the same act as cataloguing one. From there it reads the forecast, talks to AllTrails, and answers over Telegram: what to pack for Saturday, what's missing, what to buy before I find out about it on the trail.",
-      "Then I bought a camera I couldn't operate. Instead of working through tutorials I taught the same system to teach me, which is how Field Assistant became a module rather than a project: light, conditions, location and timing for a shoot.",
-    ],
-    meta: [
-      "over 1,000 items catalogued",
-      "under $20/month",
-      "began life as a spreadsheet replacement and now has opinions about golden hour",
-    ],
   },
   {
     name: "Life Tracker",
@@ -49,11 +31,6 @@ export const projects: ProjectRow[] = [
     state: "live",
     status: "LIVE",
     line: "Spending and habits, tracked and then actually interpreted.",
-    body: [
-      "Spending and habits, tracked and then actually interpreted. Inventory reads my receipts to learn what I own; this one reads them to learn what I keep doing. Two systems parsing the same input for different reasons, which is a design I intend to fix and haven't.",
-      "The only thing I've built that I open every day without deciding to.",
-    ],
-    // No meta row: this card ships without one by decision. Do not pad.
   },
   {
     name: "Outdoor Telegram Agent",
@@ -61,9 +38,6 @@ export const projects: ProjectRow[] = [
     state: "live",
     status: "LIVE",
     line: "One Telegram thread, routed to whichever agent should answer.",
-    body: [
-      "The Telegram side of Outdoor Inventory: one authorized thread that routes between the gear, camping and photography agents behind it, long-polled rather than served over a webhook.",
-    ],
   },
   {
     name: "Dynasty Analyzer",
@@ -71,15 +45,6 @@ export const projects: ProjectRow[] = [
     state: "live",
     status: "LIVE",
     line: "Trade and roster valuation for Sleeper dynasty leagues.",
-    body: [
-      "Trade evaluation, roster valuation and draft-capital modeling for Sleeper dynasty leagues. Built across one offseason so my league could stop arguing about whether a trade was fair and start losing that argument with numbers.",
-      "In private beta with two leagues, which is enough people to argue with.",
-    ],
-    meta: [
-      "Free, and staying free",
-      "2 leagues in beta, both of them people I know",
-      "built entirely in the offseason, which means it goes live having never been tested under real traffic",
-    ],
   },
   {
     name: "tomkeefe.ai",
@@ -87,29 +52,15 @@ export const projects: ProjectRow[] = [
     state: "live",
     status: "LIVE",
     line: "This site. Written, designed and deployed by agents.",
-    body: [
-      "This site. Written, designed and deployed by agents under my direction. The footer isn't a joke.",
-    ],
-    // Fragments derived from this repo's own history (plan docs + commit
-    // 2c69b08). The middle slot is null because no cost figure is published;
-    // card meta renders nowhere today, so nothing depends on it being full.
-    meta: [
-      "three rewrites in its first two weeks",
-      null,
-      "shipped grays that failed WCAG AA until an audit caught them",
-    ],
   },
-  // Four added 2026-08-14 to get the full nine onto the layout. Each line and
-  // body below is written from the project's own repo, same as the rest.
+  // Four added 2026-08-14 to get the full nine onto the layout. Each line
+  // below is written from the project's own repo, same as the rest.
   {
     name: "Camera Agent",
     slug: "camera-agent",
     state: "live",
     status: "LIVE",
     line: "Expands one lesson at a time, then grades the photo that comes back.",
-    body: [
-      "A photography curriculum built as a skill tree: it hands over one topic at a time instead of a fixed syllabus, then grades the photo an assignment comes back with against that topic's own criteria. The whole thing exports as a single offline file for shooting somewhere with no signal.",
-    ],
   },
   {
     name: "Job Search",
@@ -117,9 +68,6 @@ export const projects: ProjectRow[] = [
     state: "live",
     status: "LIVE",
     line: "Tracks open roles against my own criteria, and keeps every link real.",
-    body: [
-      "A single-user tool that watches company career pages, scores every role against my own criteria, and keeps each link pointed at the real posting instead of a copy that will outlive it.",
-    ],
   },
   {
     name: "Family Tree",
@@ -127,9 +75,6 @@ export const projects: ProjectRow[] = [
     state: "live",
     status: "LIVE",
     line: "A private, invite-only family tree, walled off tenant by tenant.",
-    body: [
-      "A private, multi-tenant family tree that invites the relatives you want in and keeps every other family's tree out of reach — enforced by the database, not just the app.",
-    ],
   },
   {
     name: "Code Coach",
@@ -137,9 +82,6 @@ export const projects: ProjectRow[] = [
     state: "live",
     status: "LIVE",
     line: "Grades my own side projects and tracks what each one costs to run.",
-    body: [
-      "A private dashboard that grades every side project against real engineering work and tracks what each one costs to run, in place of a skill I had to remember to invoke by hand.",
-    ],
   },
 ];
 
