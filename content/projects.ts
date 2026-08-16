@@ -174,7 +174,7 @@ export const projectDetails: ProjectDetail[] = [
         src: "/projects/inventory.png",
         alt: "Item ledger dashboard with active-spend, items-YTD and needs-review tiles above a filtered purchase table and a selected item's detail panel",
         caption:
-          "FIG. 01 — ITEM LEDGER. 109 ACTIVE OF 491 TOTAL RECORDS, $11,564 ACTIVE SPEND, 0 NEEDS REVIEW.",
+          "FIG. 01 — ITEM LEDGER. 109 ACTIVE OF 139 ITEMS IN THIS VIEW, 139 OF 491 TOTAL RECORDS, $11,564 ACTIVE SPEND, 0 NEEDS REVIEW.",
         height: 560,
         wide: true,
         capture: "dark",
