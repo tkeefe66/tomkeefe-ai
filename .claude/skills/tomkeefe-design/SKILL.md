@@ -53,10 +53,16 @@ touch taps emulate mouseenter and would open-then-close on one tap.
   + tech strip, contact band); `--acc` is type-only everywhere else. No
   tinted boxes or gradients except `.fig-fade`.
 - Never hard-code a neutral or accent value — CSS vars only. White-on-navy
-  `rgba(255,255,255,…)` is allowed inside `.band`, nowhere else. An earlier
-  bug hard-coded a plate gradient to `#FFFFFF` and produced a white band on
-  a black page in dark mode; a related bug let `.band a { color: inherit }`
-  beat `.band-btn`'s navy text color on specificity, rendering the EMAIL
+  `rgba(255,255,255,…)` is allowed inside `.band`, nowhere else. The hazard
+  the rule prevents: a plate gradient hard-coded to `#FFFFFF` renders a
+  white band on a black page in dark mode, which is why `.fig-fade` fades to
+  `var(--bg)`. **Note this is a hazard, not an incident here** — no commit in
+  this repo ever fixed such a bug, and `.fig-fade` has used `var(--bg)` since
+  it first appeared in `b5ad8e3`. This line previously described it as a bug
+  this codebase shipped; an agent repeated that as fact on a project page and
+  it had to be pulled. If it happened, it happened in the design prototype.
+  A real, verified bug of the same family: `.band a { color: inherit }` beat
+  `.band-btn`'s navy text color on specificity, rendering the EMAIL
   button white-on-white — fixed with `.band :where(a) { color: inherit }`,
   which drops the rule's specificity to (0,1,0), tying with `.band-btn`,
   `.band-btn-ghost`, `.nav-link` (each a real class selector). They win by
@@ -68,8 +74,16 @@ touch taps emulate mouseenter and would open-then-close on one tap.
   nav dropdown.
 - Body copy 16px / 1.6 line-height / -0.011em tracking.
 - Sections use `.section-h2` + `.section-sub` — no mono section labels.
-- Theme: `data-theme="dark"` on `<html>`, persisted as `tk-theme` in
-  localStorage, OS preference as fallback; 220ms transition on toggle.
+- Theme: `data-theme` is set to `dark` or `light` on `<html>`, persisted as
+  `tk-theme` in localStorage; 220ms transition on toggle. **Dark is the
+  default when nothing is stored — there is no OS-preference fallback.**
+  Commit `0228dfc` (2026-08-14) removed it; `app/layout.tsx`'s inline
+  `themeInit` reads `localStorage.getItem('tk-theme')||'dark'` and the
+  codebase contains no `matchMedia` or `prefers-color-scheme` reference.
+  (Verified against code 2026-08-15. This line previously said "OS
+  preference as fallback" and stayed wrong for eleven days after the
+  behaviour changed, which cost a page a fix round when an agent published
+  the claim.)
 - Footer sign-off: "DIRECTED BY A HUMAN. BUILT WITH AGENTS."
 
 ## Figure plates (screenshots)
