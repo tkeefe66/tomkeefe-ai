@@ -114,7 +114,7 @@ export const projectDetails: ProjectDetail[] = [
     facts: [
       { label: "ROLE", value: "Built and operated" },
       { label: "STACK", value: "React · Express · Postgres · Claude · RSS" },
-      { label: "CORPUS", value: "63,731 articles" },
+      { label: "CORPUS", value: "60,000+ articles" },
       { label: "REFRESH", value: "RSS every 30 minutes" },
       { label: "STATUS", value: "Internal" },
     ],
@@ -165,7 +165,7 @@ export const projectDetails: ProjectDetail[] = [
     facts: [
       { label: "ROLE", value: "Designed and built" },
       { label: "STACK", value: "Next.js · Google Sheets · Claude · Railway" },
-      { label: "RECORDS", value: "491 items" },
+      { label: "RECORDS", value: "450+ items" },
       { label: "NEEDS REVIEW", value: "0" },
       { label: "STATUS", value: "Live, personal" },
     ],
