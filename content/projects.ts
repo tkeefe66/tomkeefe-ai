@@ -246,7 +246,7 @@ export const projectDetails: ProjectDetail[] = [
       },
       {
         heading: "WHAT IT DOES",
-        body: "The whole interface is a single Telegram thread. The same channel that already sends the morning digest and error alerts is the one I talk back to — no separate app, no browser tab, no login screen. I can type a fast command or just ask a plain question and both get treated the same way; whichever agent actually knows the answer — gear, camping, or the newer photography one — gets the message without me choosing a screen for it first, and a photo dropped in with no explanation still lands somewhere sensible. Inside a short window the thread remembers what I was just doing, so a follow-up doesn't have to re-explain itself; wait long enough and it starts clean. Asking the ledger something used to mean opening claude.ai or a dedicated app first; now it's a message to a thread that was already open.",
+        body: "The interface is a Telegram thread and nothing else. The same channel that already sends the morning digest and error alerts is the one I talk back to — no separate app, no browser tab, no login screen. I can type a fast command or just ask a plain question and both get treated the same way; whichever agent actually knows the answer — gear, camping, or the newer photography one — gets the message without me choosing a screen for it first, and a photo dropped in with no explanation still lands somewhere sensible. Inside a short window the thread remembers what I was just doing, so a follow-up doesn't have to re-explain itself; wait long enough and it starts clean. Asking the ledger something is a message to a thread that was already open.",
       },
       {
         heading: "WHAT I BUILT",
@@ -315,7 +315,7 @@ export const projectDetails: ProjectDetail[] = [
       },
       {
         heading: "WHAT IT DOES",
-        body: "A project page here follows one pattern: what was broken before the thing existed, what it does now, what's actually underneath it, and where it broke. That last part is what a résumé leaves out entirely, and it's the part that actually tells a stranger whether something works. Click through from the homepage and the whole record sits on that one page, nothing folded behind another click. It turns a claim into something anyone can go check for themselves.",
+        body: "Every project page here answers the same questions: what was broken before the thing existed, what it does now, what's actually underneath it, and where it broke. That last part is what a résumé leaves out entirely, and it's the part that actually tells a stranger whether something works. Click through from the homepage and the whole record sits on that one page, nothing folded behind another click. It turns a claim into something anyone can go check for themselves.",
       },
       {
         heading: "WHAT I BUILT",
@@ -385,7 +385,7 @@ export const projectDetails: ProjectDetail[] = [
       },
       {
         heading: "WHAT IT DOES",
-        body: "It checks in on the companies I'm tracking on its own, so a new opening shows up without me revisiting the same list of career pages by hand, and it only surfaces a role once it has scored how well that specific listing matches criteria I set — title, location, tooling, pay floor — so I'm not making the same judgment call from scratch every time one appears. It also keeps the link honest: a posting that's actually closed gets marked closed instead of sitting there forever, and one that arrived through a board gets pointed back at the employer's own page instead of a copy that goes stale first. Doing any of that by hand across more than a handful of companies doesn't scale, and a link that still loads is no guarantee the role behind it still exists.",
+        body: "It checks in on the companies I'm tracking on its own, so a new opening shows up without me revisiting the same list of career pages by hand, and it only surfaces a role once it has scored how well that specific listing matches criteria I set — title, location, tooling, pay floor — so I'm not making the same judgment call from scratch every time one appears. It also keeps the link honest: a posting that's actually closed gets marked closed instead of sitting there forever, and one that arrived through a board gets pointed back at the employer's own page instead of a copy that goes stale first.",
       },
       {
         heading: "WHAT I BUILT",
@@ -420,7 +420,7 @@ export const projectDetails: ProjectDetail[] = [
       },
       {
         heading: "WHAT IT DOES",
-        body: "You invite the relatives you want in, and that's the whole guest list — no public link, and nobody has to remember a separate login just to see it. A living relative's details stay out of view until you say otherwise, and correcting a fact never makes the old version disappear: it sits right next to the new one, so you can see what changed and put it back if the correction was wrong. Nobody has to be the one who owns the shared spreadsheet anymore, and what a public genealogy site would otherwise publish by default stays inside the family.",
+        body: "You invite the relatives you want in, and that's the whole guest list — no public link, and nobody has to remember a separate login just to see it. A living relative's details stay out of view until you say otherwise, and correcting a fact never makes the old version disappear: it sits right next to the new one, so you can see what changed and put it back if the correction was wrong. What a public genealogy site would otherwise publish by default stays inside the family. And nobody has to be the one who owns the shared spreadsheet.",
       },
       {
         heading: "WHAT I BUILT",
@@ -455,7 +455,7 @@ export const projectDetails: ProjectDetail[] = [
       },
       {
         heading: "WHAT IT DOES",
-        body: "A private dashboard, reachable from my phone, that answers two questions every morning: what am I actually building, and what does it cost to run. Every project I've shipped rolls up into one graded level, earned by the kind of engineering work that actually landed rather than a box I checked myself. It shows what the next level is still missing, flags a Claude Code feature I haven't picked up yet, and writes a short brief only when something material changed, so it never repeats yesterday's numbers back to me. What each project spends on model calls and what it costs to host both land on one page instead of chasing down each account separately. It replaces a skill I had to remember to run by hand with something that finds me instead.",
+        body: "A private dashboard, reachable from my phone, that answers two questions every morning: what am I actually building, and what does it cost to run. Every project I've shipped rolls up into one graded level, earned by the kind of engineering work that actually landed rather than a box I checked myself. It shows what the next level is still missing, flags a Claude Code feature I haven't picked up yet, and writes a short brief only when something material changed, so it never repeats yesterday's numbers back to me. What each project spends on model calls and what it costs to host both land on one page instead of chasing down each account separately. None of it waits on me remembering to run a skill by hand.",
       },
       {
         heading: "WHAT I BUILT",
