@@ -172,13 +172,14 @@ export const projectDetails: ProjectDetail[] = [
     figures: [
       {
         src: "/projects/inventory.png",
-        alt: "Inventory items table",
-        caption: "FIG. 01 — ITEM LEDGER. 491 RECORDS, AUTO-CATEGORIZED, 0 AWAITING REVIEW.",
-        height: 480,
+        alt: "Item ledger dashboard with active-spend, items-YTD and needs-review tiles above a filtered purchase table and a selected item's detail panel",
+        caption:
+          "FIG. 01 — ITEM LEDGER. 109 ACTIVE OF 491 TOTAL RECORDS, $11,564 ACTIVE SPEND, 0 NEEDS REVIEW.",
+        height: 560,
         wide: true,
         capture: "dark",
-        width: 3302,
-        naturalHeight: 1760,
+        width: 2566,
+        naturalHeight: 1630,
       },
     ],
     og: { image: "/og/inventory.png", alt: "Outdoor Inventory Mgmt — Tom Keefe" },
@@ -264,7 +265,30 @@ export const projectDetails: ProjectDetail[] = [
       { label: "DELIVERY", value: "25-second long-poll, no webhook" },
       { label: "STATUS", value: "Live, personal" },
     ],
-    figures: [],
+    figures: [
+      {
+        src: "/projects/telegram-agent.png",
+        alt: "Telegram thread showing a /plan slash command and the bot's multi-part reply with ranked trail options, a forecast and a gear list",
+        caption:
+          "FIG. 01 — /PLAN COMMAND. A HIKING REQUEST FOR ASPEN ANSWERED WITH RANKED TRAILS, FORECAST AND GEAR PULLED FROM THE OWNED KIT.",
+        height: 980,
+        wide: false,
+        capture: "light",
+        width: 1666,
+        naturalHeight: 1494,
+      },
+      {
+        src: "/projects/telegram-commands.png",
+        alt: "List of Telegram slash commands under a Camping heading, each with its arguments and a one-line description",
+        caption:
+          "FIG. 02 — CAMPING COMMANDS. WATCHLIST, TRIP TRACKING AND REGION LOOKUP, ALL ROUTED THROUGH ONE DISPATCHER.",
+        height: 375,
+        wide: false,
+        capture: "light",
+        width: 934,
+        naturalHeight: 320,
+      },
+    ],
     next: { slug: "dynasty-analyzer" },
   },
   {
