@@ -242,6 +242,8 @@ describe("projects intro copy", () => {
   it("three paragraphs, bracket-free, opens with the framing line", () => {
     expect(projectsIntro).toHaveLength(3);
     projectsIntro.forEach(expectNoBrackets);
-    expect(projectsIntro[0]).toContain("Four tools and this website");
+    expect(projectsIntro[0]).toContain("Ten projects now, not four");
+    // The stub posture is retired — no page on the site is a stub any more.
+    expect(projectsIntro.join(" ")).not.toContain("stubs");
   });
 });

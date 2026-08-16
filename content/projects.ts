@@ -1,9 +1,13 @@
 import type { ProjectDetail, ProjectRow } from "./types";
 
+// One claim below has no source in this repo: that a GTM team at my employer
+// uses MarTech Intel. Every other published fact was traced to a file or
+// command output; this one rests on my own direct confirmation, 2026-08-15.
+// Ask Tom Keefe if it needs re-checking.
 export const projectsIntro: string[] = [
-  "Four tools and this website. Three run in production with a user base of one, which is me, and one of them I open every single day. That's the point rather than the apology: I don't recommend a workflow I haven't already run against my own data for months.",
-  "The fourth goes public in September, at which point I find out whether any of this survives contact with strangers.",
-  "The finished writeups cover the problem, the build, what it costs to run, and the part where it didn't work. The rest are stubs until their numbers exist — I'd rather ship a short page than invent one.",
+  "Ten projects now, not four. Most of them still have a user base of one, which is me, and one of them — Life Tracker — I open every day without deciding to. That's the point rather than the apology: I don't recommend a workflow I haven't already run against my own data, usually for months before anyone else sees it.",
+  "Nothing here is waiting on a launch date anymore. Every project on this page reads live, including the two-league beta and the internal one my employer's GTM team already uses — the risk moved from will-it-launch to will-it-hold-up, and that's a quieter kind of exposure but a real one.",
+  "Every writeup follows the same four sections: the problem, what it does, what I built, and where it broke. That last one used to be the exception; now it's a standing requirement — I'd rather show you the actual failure than write a page with no scar tissue on it, and for ten projects running, that's no longer a promise. It's just what's here.",
 ];
 
 export const projects: ProjectRow[] = [
