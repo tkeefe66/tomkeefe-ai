@@ -323,7 +323,30 @@ export const projectDetails: ProjectDetail[] = [
       { label: "LEAGUES", value: "2, private beta" },
       { label: "STATUS", value: "Live, private beta" },
     ],
-    figures: [],
+    figures: [
+      {
+        src: "/projects/dynasty-franchise-grade.png",
+        alt: "Franchise Rating card for the Sleeper roster Mikey, showing an A+ grade and a weighted breakdown into Results (50%), Skill (30%) and Outlook (20%) pillars, each with sub-metrics and point contributions off a 1,500 base",
+        caption:
+          "FIG. 01 — FRANCHISE RATING. A+ GRADE FOR MIKEY, WEIGHTED RESULTS 50%, SKILL 30%, OUTLOOK 20% OFF A 1,500-POINT BASE.",
+        height: 1260,
+        wide: false,
+        capture: "light",
+        width: 1428,
+        naturalHeight: 1936,
+      },
+      {
+        src: "/projects/dynasty-trade-eval.png",
+        alt: "Trade grade card for Mikey's side of a dynasty trade, listing each received asset — including a flipped second-round pick traced forward through two more trades — with value and points totals, ending in a total realized value of 15,487 and a PREVAILED verdict",
+        caption:
+          "FIG. 02 — TRADE GRADE. MIKEY'S SIDE OF A TRADE, EACH RECEIVED ASSET TRACED FORWARD — INCLUDING A FLIPPED PICK — TO WHAT IT ACTUALLY PRODUCED, TOTALING 15,487 REALIZED VALUE.",
+        height: 800,
+        wide: true,
+        capture: "light",
+        width: 2368,
+        naturalHeight: 1674,
+      },
+    ],
     next: { slug: "tomkeefe-ai" },
   },
   {
@@ -392,7 +415,30 @@ export const projectDetails: ProjectDetail[] = [
       { label: "OFFLINE EXPORT", value: "One HTML file, zero network, zero cost" },
       { label: "STATUS", value: "Live, personal" },
     ],
-    figures: [],
+    figures: [
+      {
+        src: "/projects/camera-skill-tree.png",
+        alt: "Skill tree view for the photography curriculum, showing 0 of 59 topics completed, an in-progress Exposure Triangle assignment, and two branches — Operating Camera and Seeing — broken into foundation-through-craft tiers with locked, available, in-progress and completed states per topic",
+        caption:
+          "FIG. 01 — SKILL TREE. 0 OF 59 TOPICS COMPLETE, EACH BRANCH TIERED FOUNDATION THROUGH CRAFT WITH A LOCKED, AVAILABLE, IN-PROGRESS OR COMPLETED STATE PER TOPIC.",
+        height: 760,
+        wide: true,
+        capture: "dark",
+        width: 2468,
+        naturalHeight: 1306,
+      },
+      {
+        src: "/projects/camera-topic-detail.png",
+        alt: "Camera Orientation topic page showing an Available status, Read Theory and Start Assignment buttons, a theory preview listing five core a6700 controls, and an assignment preview asking for one photo with its settings captioned",
+        caption:
+          "FIG. 02 — TOPIC DETAIL. CAMERA ORIENTATION'S THEORY PREVIEW COVERS FIVE CORE CONTROLS; THE ASSIGNMENT ASKS FOR ONE PHOTO TAKEN IN MANUAL MODE, CAPTIONED WITH ITS SETTINGS.",
+        height: 1000,
+        wide: false,
+        capture: "dark",
+        width: 1858,
+        naturalHeight: 1698,
+      },
+    ],
     next: { slug: "job-search" },
   },
   {
@@ -497,7 +543,41 @@ export const projectDetails: ProjectDetail[] = [
       { label: "LEVELS", value: "5, newcomer to senior" },
       { label: "STATUS", value: "Live, personal" },
     ],
-    figures: [],
+    figures: [
+      {
+        src: "/projects/code-coach-overview.png",
+        alt: "Code Coach overview card reading Operating at Junior Engineer with an 87 percent progress bar to Mid-Level Engineer, and a bulleted list of three skills still needed — deploy-docker, error-handling and deploy-infra — each tagged with its best-fit project",
+        caption:
+          "FIG. 01 — LEVEL. OPERATING AT JUNIOR ENGINEER, 87% TO MID-LEVEL, GATED ON DEPLOY-DOCKER, ERROR-HANDLING AND DEPLOY-INFRA.",
+        height: 330,
+        wide: false,
+        capture: "light",
+        width: 2256,
+        naturalHeight: 650,
+      },
+      {
+        src: "/projects/code-coach-activity.png",
+        alt: "Code Coach activity panel with commits-this-week, streak and sessions-this-week stat tiles, a 12-week commits-per-week bar chart peaking near 700, a by-weekday commit breakdown, and a by-repo commit count list led by public-dynasty",
+        caption:
+          "FIG. 02 — ACTIVITY. 683 COMMITS THIS WEEK ON A 14-DAY STREAK, PLOTTED BY WEEK, WEEKDAY AND REPO OVER 12 WEEKS.",
+        height: 1050,
+        wide: true,
+        capture: "light",
+        width: 2346,
+        naturalHeight: 1502,
+      },
+      {
+        src: "/projects/code-coach-cost.png",
+        alt: "Code Coach cost panel showing $30.22 total spend over a trailing 30 days split between Railway and the Anthropic API, plus a by-app table listing Railway, API and total cost for nine projects led by GTM Job Search at $11.83",
+        caption:
+          "FIG. 03 — COST. $30.22 BILLED OVER A TRAILING 30 DAYS, SPLIT RAILWAY VS ANTHROPIC API AND BROKEN OUT PER APP.",
+        height: 880,
+        wide: true,
+        capture: "light",
+        width: 2260,
+        naturalHeight: 964,
+      },
+    ],
     next: { slug: "b2b-martech-intel" },
   },
 ];
