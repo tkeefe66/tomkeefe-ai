@@ -10,9 +10,6 @@ export default function ProjectPage({ slug }: { slug: string }) {
 
   return (
     <>
-      <a href="#top" className="skip-link">
-        Skip to content
-      </a>
       <Nav />
       <header id="top" className="band">
         <div className="container-page mono flex items-center justify-between gap-5 py-[22px] text-[11px] tracking-[0.08em]">
