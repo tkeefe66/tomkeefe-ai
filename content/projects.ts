@@ -380,7 +380,19 @@ export const projectDetails: ProjectDetail[] = [
       { label: "THEME", value: "Dark by default, no OS-preference fallback" },
       { label: "STATUS", value: "Live" },
     ],
-    figures: [],
+    figures: [
+      {
+        src: "/projects/tomkeefe-ai-page.png",
+        alt: "Screenshot of a project page on this site: a navy header band with site nav, a breadcrumb back link and project number, then the project title and premise, followed by a two-column layout with THE PROBLEM and WHAT IT DOES section headings and body copy on the left and a facts sidebar of labeled rows on the right",
+        caption:
+          "FIG. 01 — PROJECT PAGE. HEADER BAND ABOVE THE PROBLEM AND WHAT IT DOES SECTIONS, FACTS SIDEBAR RUNNING ALONGSIDE.",
+        height: 430,
+        wide: false,
+        capture: "dark",
+        width: 3000,
+        naturalHeight: 2000,
+      },
+    ],
     next: { slug: "camera-agent" },
   },
   {
