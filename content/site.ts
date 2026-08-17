@@ -3,12 +3,12 @@ import type { SiteContent } from "./types";
 export const site: SiteContent = {
   name: "Tom Keefe",
   domain: "tomkeefe.ai",
-  tagline: "I build products that I need",
+  tagline: "Building Products that I need",
   // Ledger is the shipped masthead; Column is the approved backup. Flip to
   // "column" to compare — do not delete either variant.
   mastheadVariant: "ledger",
   masthead: {
-    lead: "I build products that I need",
+    lead: "Building Products that I need",
     ledger: [
       { label: "ROLE", value: "Director, GTM Experts at Demandbase" },
       // Newline is intentional — the ledger value renders `pre-line` so the

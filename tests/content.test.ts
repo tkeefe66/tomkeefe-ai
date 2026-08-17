@@ -16,7 +16,7 @@ function expectNoBrackets(s: string) {
 describe("site content", () => {
   it("has the new tagline in hero and meta source", () => {
     expect(site.name).toBe("Tom Keefe");
-    expect(site.tagline).toContain("I build products that I need");
+    expect(site.tagline).toContain("Building Products that I need");
     // The masthead lead and the <title>/meta tagline are one string by
     // design — changing one without the other splits the site's own claim.
     expect(site.masthead.lead).toBe(site.tagline);
