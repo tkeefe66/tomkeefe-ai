@@ -218,6 +218,39 @@
     color: #ffffff;
   }
 
+  /* — buttons on page background (project-page CTAs) — */
+  .btn-primary,
+  .btn-secondary {
+    display: inline-block;
+    padding: 10px 16px;
+    border-radius: 3px;
+    font-family: var(--font-mono-ui);
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    transition: background 150ms, color 150ms, border-color 150ms;
+  }
+  .btn-primary {
+    background: var(--acc);
+    color: var(--acc-ink);
+    border: 1px solid var(--acc);
+    font-weight: 500;
+  }
+  .btn-primary:hover {
+    background: transparent;
+    color: var(--acc);
+  }
+  .btn-secondary {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--hair);
+  }
+  .btn-secondary:hover {
+    background: var(--tint);
+    border-color: var(--tint-edge);
+    color: var(--acc);
+  }
+
   /* — nav — */
   .nav-link {
     display: inline-block;

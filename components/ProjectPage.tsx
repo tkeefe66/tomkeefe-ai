@@ -60,13 +60,23 @@ export default function ProjectPage({ slug }: { slug: string }) {
               </div>
             ))}
           </div>
-          <div style={{ borderTop: "1px solid var(--ink)" }}>
-            {project.facts.map((f) => (
-              <div key={f.label} className="fact-row">
-                <span style={{ color: "var(--muted)" }}>{f.label}</span>
-                <span>{f.value}</span>
-              </div>
-            ))}
+          <div>
+            <div style={{ borderTop: "1px solid var(--ink)" }}>
+              {project.facts.map((f) => (
+                <div key={f.label} className="fact-row">
+                  <span style={{ color: "var(--muted)" }}>{f.label}</span>
+                  <span>{f.value}</span>
+                </div>
+              ))}
+            </div>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <a href={project.links.live} className="btn-primary">
+                Live app →
+              </a>
+              <a href={project.links.repo} className="btn-secondary">
+                GitHub repo →
+              </a>
+            </div>
           </div>
         </div>
         {/* The note always pairs with the LAST figure, side by side; any figure

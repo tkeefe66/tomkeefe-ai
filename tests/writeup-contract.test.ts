@@ -26,13 +26,13 @@ type Rule = {
   check: (d: ProjectDetail) => string | null;
 };
 
-const HEADINGS = ["THE PROBLEM", "WHAT IT DOES", "WHAT I BUILT", "WHERE IT BROKE"];
+const HEADINGS = ["THE PROBLEM", "WHAT IT DOES", "WHAT I BUILT"];
 const CORE_FACTS = ["ROLE", "STACK", "STATUS"];
 
 const RULES: Rule[] = [
   {
-    id: "four-sections",
-    why: "Every page answers why it exists, what it's like to have, how it works, and what went wrong.",
+    id: "three-sections",
+    why: "Every page answers why it exists, what it's like to have, and how it works. No WHERE IT BROKE — retired site-wide 2026-08-24.",
     check: (d) => {
       const got = d.sections.map((s) => s.heading);
       const missing = HEADINGS.filter((h) => !got.includes(h));
@@ -40,8 +40,14 @@ const RULES: Rule[] = [
     },
   },
   {
+    id: "no-where-it-broke",
+    why: "The failure-postmortem section was retired site-wide; no record may reintroduce it.",
+    check: (d) =>
+      d.sections.some((s) => s.heading === "WHERE IT BROKE") ? "still carries a WHERE IT BROKE section" : null,
+  },
+  {
     id: "heading-order",
-    why: "Problem, then payoff, then mechanism, then failure — a reader loses the thread in any other order.",
+    why: "Problem, then payoff, then mechanism — a reader loses the thread in any other order.",
     check: (d) => {
       const idx = HEADINGS.map((h) => d.sections.findIndex((s) => s.heading === h)).filter((i) => i >= 0);
       const sorted = [...idx].sort((a, b) => a - b);
@@ -66,6 +72,11 @@ const RULES: Rule[] = [
     id: "one-figure",
     why: "A page with no figure reads as a stub regardless of how good the copy is.",
     check: (d) => (d.figures.length >= 1 ? null : "no figure"),
+  },
+  {
+    id: "cta-links",
+    why: "Every project page ships a live-app and a repo CTA under the facts rail, even before the real URLs are wired up.",
+    check: (d) => (d.links?.live && d.links?.repo ? null : "missing links.live or links.repo"),
   },
   {
     id: "premise-length",
