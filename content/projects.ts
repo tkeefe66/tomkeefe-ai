@@ -1,13 +1,8 @@
 import type { ProjectDetail, ProjectRow } from "./types";
 
-// One claim below has no source in this repo: that a GTM team at my employer
-// uses MarTech Intel. Every other published fact was traced to a file or
-// command output; this one rests on my own direct confirmation, 2026-08-15.
-// Ask Tom Keefe if it needs re-checking.
 export const projectsIntro: string[] = [
-  "Ten projects now, not four. Most of them still have a user base of one, which is me, and one of them — Life Tracker — I open every day without deciding to. That's the point rather than the apology: I don't recommend a workflow I haven't already run against my own data, usually for months before anyone else sees it.",
-  "Nothing here is waiting on a launch date anymore. Every project on this page reads live, including the two-league beta and the internal one my employer's GTM team already uses — the risk moved from will-it-launch to will-it-hold-up, and that's a quieter kind of exposure but a real one.",
-  "Every writeup follows the same three sections: the problem, what it does, and what I built. No roadmap slide dressed up as a case study.",
+  "Ten projects and no coding experience. Most of them still have a user base of one, which is me, and one of them, Life Tracker, I use every day without lifting a finger. That's the point rather than the apology: I don't recommend a workflow I haven't already run against my own data, usually for months before anyone else sees it.",
+  "Nothing here is waiting on a launch date. Every project on this page is live, dive into each one to either use the application or download the repo to recreate to be your own. My favorites are the Family Tree and Dynasty Analyzer applications.",
 ];
 
 export const projects: ProjectRow[] = [

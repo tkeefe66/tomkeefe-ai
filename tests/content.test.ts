@@ -2,7 +2,6 @@ import { describe, it, expect } from "vitest";
 import fs from "node:fs";
 import path from "node:path";
 import { site } from "@/content/site";
-import { range } from "@/content/range";
 import { principles } from "@/content/principles";
 import { agents } from "@/content/agents";
 import { projects, projectDetails, projectsIntro, getProjectDetail } from "@/content/projects";
@@ -37,17 +36,6 @@ describe("site content", () => {
     // Changelog values unfilled → footer is the © line alone (OPEN.md).
     // "DIRECTED BY A HUMAN. BUILT WITH AGENTS." moved to a section heading.
     expect(site.footer.right).toBeUndefined();
-  });
-});
-
-describe("range (Boardroom)", () => {
-  it("keeps the headline, drops the subhead and the altitude ladder", () => {
-    expect(range.headline).toBe("Boardroom to production query.");
-    expect(range.paragraphs).toHaveLength(2);
-    expect(range.paragraphs[0]).toContain("enrichment job stopped writing on a Tuesday");
-    expect(range.paragraphs[1]).toContain("Customer Zero by instinct");
-    expect("altitudes" in range).toBe(false);
-    expect("subhead" in range).toBe(false);
   });
 });
 
@@ -210,10 +198,11 @@ describe("project details (Phase 2 alignment)", () => {
 });
 
 describe("projects intro copy", () => {
-  it("three paragraphs, bracket-free, opens with the framing line", () => {
-    expect(projectsIntro).toHaveLength(3);
+  it("two paragraphs, bracket-free, opens with the framing line", () => {
+    expect(projectsIntro).toHaveLength(2);
     projectsIntro.forEach(expectNoBrackets);
-    expect(projectsIntro[0]).toContain("Ten projects now, not four");
+    expect(projectsIntro[0]).toContain("Ten projects and no coding experience");
+    expect(projectsIntro[1]).toContain("Family Tree and Dynasty Analyzer");
     // The stub posture is retired — no page on the site is a stub any more.
     expect(projectsIntro.join(" ")).not.toContain("stubs");
   });

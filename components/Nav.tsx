@@ -55,9 +55,6 @@ export default function Nav() {
         </div>
         <div className="flex items-center gap-1">
           <div id="site-nav-links" className="nav-links" data-open={panelOpen ? "true" : "false"}>
-            <Link href="/#range" className="nav-link" onClick={closeAll}>
-              Overview
-            </Link>
             {/* Hover-open only for real mice — touch taps emulate mouseenter,
                 which would open-then-toggle-closed on the same tap. */}
             <div
