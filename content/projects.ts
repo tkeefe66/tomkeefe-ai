@@ -7,7 +7,7 @@ import type { ProjectDetail, ProjectRow } from "./types";
 export const projectsIntro: string[] = [
   "Ten projects now, not four. Most of them still have a user base of one, which is me, and one of them — Life Tracker — I open every day without deciding to. That's the point rather than the apology: I don't recommend a workflow I haven't already run against my own data, usually for months before anyone else sees it.",
   "Nothing here is waiting on a launch date anymore. Every project on this page reads live, including the two-league beta and the internal one my employer's GTM team already uses — the risk moved from will-it-launch to will-it-hold-up, and that's a quieter kind of exposure but a real one.",
-  "Every writeup follows the same four sections: the problem, what it does, what I built, and where it broke. That last one used to be the exception; now it's a standing requirement — I'd rather show you the actual failure than write a page with no scar tissue on it, and for ten projects running, that's no longer a promise. It's just what's here.",
+  "Every writeup follows the same three sections: the problem, what it does, and what I built. No roadmap slide dressed up as a case study.",
 ];
 
 export const projects: ProjectRow[] = [

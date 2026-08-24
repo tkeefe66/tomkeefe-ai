@@ -40,7 +40,7 @@ export const site: SiteContent = {
   ],
   contactHeadline: "Let's talk.",
   contactLine:
-    "I answer email. Especially about GTM systems, agent architecture, or why your enrichment pipeline is quietly lying to you.",
+    "Most of what's on this page started as a problem I was annoyed about. Happy to talk through any of it, or yours.",
   footer: { left: "© 2026 Tom Keefe" },
   notFound: {
     headline: "404",

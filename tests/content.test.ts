@@ -5,7 +5,6 @@ import { site } from "@/content/site";
 import { range } from "@/content/range";
 import { principles } from "@/content/principles";
 import { agents } from "@/content/agents";
-import { wrong } from "@/content/wrong";
 import { projects, projectDetails, projectsIntro, getProjectDetail } from "@/content/projects";
 
 /** Rule 1 of the rewrite brief: a literal bracket in copy is a defect. */
@@ -33,7 +32,7 @@ describe("site content", () => {
     expect(site.techStrip).toHaveLength(18);
     expect(site.links.map((l) => l.label)).toEqual(["EMAIL", "LINKEDIN", "GITHUB"]);
     expect(site.contactHeadline).toBe("Let's talk.");
-    expect(site.contactLine).toContain("I answer email");
+    expect(site.contactLine).toContain("problem I was annoyed about");
     expect(site.footer.left).toBe("© 2026 Tom Keefe");
     // Changelog values unfilled → footer is the © line alone (OPEN.md).
     // "DIRECTED BY A HUMAN. BUILT WITH AGENTS." moved to a section heading.
@@ -58,25 +57,18 @@ describe("new prose sections", () => {
     expect(agents.paragraphs).toHaveLength(4);
     expect(agents.paragraphs[2]).toContain("Silence isn't a valid answer");
   });
-
-  it("wrong section: two final paragraphs, B6 resolved inline", () => {
-    expect(wrong.heading).toBe("How I get things wrong.");
-    expect(wrong.paragraphs).toHaveLength(2);
-    expect(wrong.paragraphs[0]).toContain("the better part of a month");
-    for (const p of wrong.paragraphs) expectNoBrackets(p);
-  });
 });
 
 describe("opinions", () => {
-  it("ships six, annotations on 03 and 04 only", () => {
-    expect(principles).toHaveLength(6);
+  it("ships five, every one annotated", () => {
+    expect(principles).toHaveLength(5);
     expect(principles.map((p) => Boolean(p.annotation))).toEqual([
-      false, false, true, true, false, false,
+      true, true, true, true, true,
     ]);
-    expect(principles[2].annotation).toContain("packing the same bag wrong");
-    expect(principles[3].annotation).toContain("The month was the cheap part.");
-    expect(principles[5].text).toBe(
-      "The feature you're most excited about is usually the one to cut.",
+    expect(principles[0].annotation).toContain("data architecture problem");
+    expect(principles[2].annotation).toContain("Camera Agent");
+    expect(principles[4].text).toBe(
+      "I didn't learn to code and then start using AI. I learned by building with it, asking it to explain what it was doing and why it broke, until the pattern stuck. Ten shipped projects, zero computer science background.",
     );
   });
 });

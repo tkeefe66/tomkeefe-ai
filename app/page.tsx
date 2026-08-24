@@ -4,7 +4,6 @@ import TechStrip from "@/components/TechStrip";
 import Range from "@/components/Range";
 import ProjectsList from "@/components/ProjectsList";
 import AgentsSection from "@/components/AgentsSection";
-import WrongSection from "@/components/WrongSection";
 import Principles from "@/components/Principles";
 import ContactBand from "@/components/ContactBand";
 
@@ -18,7 +17,6 @@ export default function Home() {
         <ProjectsList />
         <AgentsSection />
         <Range />
-        <WrongSection />
         <Principles />
       </main>
       <ContactBand />
