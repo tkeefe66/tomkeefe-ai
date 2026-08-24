@@ -6,6 +6,7 @@ import { site } from "@/content/site";
 import type { SiteLink } from "@/content/types";
 import { projectDetails } from "@/content/projects";
 import ThemeToggle from "@/components/ThemeToggle";
+import ExternalLink from "@/components/ExternalLink";
 
 function requireEmailLink(): SiteLink {
   const found = site.links.find((l) => l.label === "EMAIL");
@@ -125,13 +126,13 @@ export default function Nav() {
               Contact
             </Link>
           </div>
-          <a
+          <ExternalLink
             href={email.href}
             className="mono ml-2 rounded-[3px] bg-white px-3.5 py-2 text-[11px] font-medium tracking-[0.08em]"
             style={{ color: "var(--acc-deep)" }}
           >
             Email
-          </a>
+          </ExternalLink>
           <button
             type="button"
             className="nav-toggle nav-link ml-1 cursor-pointer bg-transparent"

@@ -1,13 +1,14 @@
 import { site } from "@/content/site";
 import MastheadFacts from "@/components/MastheadFacts";
+import ExternalLink from "@/components/ExternalLink";
 
 function Buttons({ pad }: { pad: string }) {
   return (
     <div className={`flex flex-wrap gap-2 ${pad}`}>
       {site.links.map((l, i) => (
-        <a key={l.label} href={l.href} className={i === 0 ? "band-btn" : "band-btn-ghost"}>
+        <ExternalLink key={l.label} href={l.href} className={i === 0 ? "band-btn" : "band-btn-ghost"}>
           {l.label}
-        </a>
+        </ExternalLink>
       ))}
     </div>
   );
@@ -54,9 +55,9 @@ function Column() {
           </div>
           <div className="mono mt-5 flex flex-col gap-[7px] text-[11px] tracking-[0.06em]">
             {site.links.map((l) => (
-              <a key={l.label} href={l.href} className="text-white/82 hover:text-white">
+              <ExternalLink key={l.label} href={l.href} className="text-white/82 hover:text-white">
                 {l.label} →
-              </a>
+              </ExternalLink>
             ))}
           </div>
         </div>

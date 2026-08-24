@@ -1,4 +1,5 @@
 import { site } from "@/content/site";
+import ExternalLink from "@/components/ExternalLink";
 
 /* The invitation is a short heading with the long sentence demoted to body
    copy beneath it — at display size that sentence ran five lines across the
@@ -15,13 +16,13 @@ export default function ContactBand() {
         </p>
         <div className="mt-6 flex flex-wrap gap-2">
           {site.links.map((l, i) => (
-            <a
+            <ExternalLink
               key={l.label}
               href={l.href}
               className={i === 0 ? "band-btn px-[18px] py-[11px]" : "band-btn-ghost px-[18px] py-[11px]"}
             >
               {l.label}
-            </a>
+            </ExternalLink>
           ))}
         </div>
         <footer className="mono mt-12 flex flex-wrap justify-between gap-5 border-t border-white/18 pt-[18px] text-[10.5px] tracking-[0.06em] text-white/55 max-[560px]:flex-col max-[560px]:items-start max-[560px]:gap-2.5">

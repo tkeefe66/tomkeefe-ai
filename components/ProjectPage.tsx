@@ -2,6 +2,7 @@ import Link from "next/link";
 import Nav from "@/components/Nav";
 import ContactBand from "@/components/ContactBand";
 import FigurePlate from "@/components/FigurePlate";
+import ExternalLink from "@/components/ExternalLink";
 import { getProjectDetail } from "@/content/projects";
 
 export default function ProjectPage({ slug }: { slug: string }) {
@@ -70,12 +71,12 @@ export default function ProjectPage({ slug }: { slug: string }) {
               ))}
             </div>
             <div className="mt-6 flex flex-wrap gap-3">
-              <a href={project.links.live} className="btn-primary">
+              <ExternalLink href={project.links.live} className="btn-primary">
                 Live app →
-              </a>
-              <a href={project.links.repo} className="btn-secondary">
+              </ExternalLink>
+              <ExternalLink href={project.links.repo} className="btn-secondary">
                 GitHub repo →
-              </a>
+              </ExternalLink>
             </div>
           </div>
         </div>
