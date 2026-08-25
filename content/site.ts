@@ -28,7 +28,7 @@ export const site: SiteContent = {
   techStrip: [
     "Claude Code", "Anthropic API", "Python", "FastAPI", "TypeScript", "Next.js",
     "React", "Postgres", "Docker", "Railway", "Vercel", "Google Cloud",
-    "AllTrails", "Telegram", "SimpleFin", "Cloudflare", "Porkbun", "Wispr Flow",
+    "AllTrails", "Telegram", "SimpleFin", "Cloudflare", "Porkbun", "Whispr API",
   ],
   links: [
     { label: "EMAIL", href: "mailto:tkeefe66@gmail.com" },
