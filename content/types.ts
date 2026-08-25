@@ -78,8 +78,9 @@ export type ProjectDetail = {
   sections: ProjectSection[];
   facts: LedgerRow[];
   figures: ProjectFigure[];
-  /** CTA pair rendered under the facts sidebar. Placeholder "#" hrefs until wired up. */
-  links: { live: string; repo: string };
+  /** CTA pair rendered under the facts sidebar. Placeholder "#" hrefs until wired up.
+   *  live is absent for internal-only projects with no public demo. */
+  links: { live?: string; repo: string };
   /** Optional paragraph set beside the page's last figure (Life Tracker). */
   digestNote?: string;
   /** Renders the LAUNCHING SEPT 2026 capsule in the page header (Dynasty). */

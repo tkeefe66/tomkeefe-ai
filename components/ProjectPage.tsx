@@ -71,9 +71,11 @@ export default function ProjectPage({ slug }: { slug: string }) {
               ))}
             </div>
             <div className="mt-6 flex flex-wrap gap-3">
-              <ExternalLink href={project.links.live} className="btn-primary">
-                Live app →
-              </ExternalLink>
+              {project.links.live && (
+                <ExternalLink href={project.links.live} className="btn-primary">
+                  Live app →
+                </ExternalLink>
+              )}
               <ExternalLink href={project.links.repo} className="btn-secondary">
                 GitHub repo →
               </ExternalLink>

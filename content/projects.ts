@@ -109,7 +109,7 @@ export const projectDetails: ProjectDetail[] = [
       { label: "REFRESH", value: "RSS every 30 minutes" },
       { label: "STATUS", value: "Internal" },
     ],
-    links: { live: "#", repo: "#" },
+    links: { repo: "https://github.com/tkeefe66/b2b-ai-news-source" },
     figures: [
       {
         src: "/projects/martech-intel.png",
@@ -157,7 +157,7 @@ export const projectDetails: ProjectDetail[] = [
       { label: "NEEDS REVIEW", value: "0" },
       { label: "STATUS", value: "Live, personal" },
     ],
-    links: { live: "#", repo: "#" },
+    links: { repo: "https://github.com/tkeefe66/purchase-inventory" },
     figures: [
       {
         src: "/projects/inventory.png",
@@ -247,7 +247,7 @@ export const projectDetails: ProjectDetail[] = [
       { label: "DELIVERY", value: "25-second long-poll, no webhook" },
       { label: "STATUS", value: "Live, personal" },
     ],
-    links: { live: "#", repo: "#" },
+    links: { repo: "https://github.com/tkeefe66/purchase-inventory" },
     figures: [
       {
         src: "/projects/telegram-agent.png",
@@ -302,7 +302,7 @@ export const projectDetails: ProjectDetail[] = [
       { label: "LEAGUES", value: "2, private beta" },
       { label: "STATUS", value: "Live, private beta" },
     ],
-    links: { live: "#", repo: "#" },
+    links: { live: "https://dynasty.tomkeefe.ai/", repo: "https://github.com/tkeefe66/public-dynasty-app" },
     figures: [
       {
         src: "/projects/dynasty-franchise-grade.png",
