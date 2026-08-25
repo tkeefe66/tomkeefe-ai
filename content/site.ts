@@ -23,15 +23,12 @@ export const site: SiteContent = {
       facts: ["DIRECTOR", "GTM EXPERTS", "DEMANDBASE", "13 YEARS IN GTM"],
     },
   },
-  // Build-stack half confirmed 2026-08-15 by scanning all 9 repos in ~/Code Apps
-  // (manifests + infra files, then grep-verified). GTM half is Tom's day job.
+  // Build-stack confirmed 2026-08-15 by scanning all 9 repos in ~/Code Apps
+  // (manifests + infra files, then grep-verified).
   techStrip: [
-    // GTM systems
-    "Salesforce", "Marketo", "Demandbase", "HubSpot", "Outreach", "Snowflake",
-    "SQL", "dbt",
-    // Build stack
     "Claude Code", "Anthropic API", "Python", "FastAPI", "TypeScript", "Next.js",
-    "React", "Postgres", "Docker", "Railway",
+    "React", "Postgres", "Docker", "Railway", "Vercel", "Google Cloud",
+    "AllTrails", "Telegram", "SimpleFin", "Cloudflare", "Porkbun",
   ],
   links: [
     { label: "EMAIL", href: "mailto:tkeefe66@gmail.com" },
