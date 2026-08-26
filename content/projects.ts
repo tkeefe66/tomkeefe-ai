@@ -356,7 +356,7 @@ export const projectDetails: ProjectDetail[] = [
       { label: "THEME", value: "Dark by default, no OS-preference fallback" },
       { label: "STATUS", value: "Live" },
     ],
-    links: { live: "#", repo: "#" },
+    links: { live: "#", repo: "https://github.com/tkeefe66/tomkeefe-ai" },
     figures: [
       {
         src: "/projects/tomkeefe-ai-page.png",
@@ -455,7 +455,7 @@ export const projectDetails: ProjectDetail[] = [
       { label: "PIPELINE", value: "13 stages, new to offer" },
       { label: "STATUS", value: "Live, personal" },
     ],
-    links: { live: "#", repo: "#" },
+    links: { live: "https://tomkeefe.ai/projects/job-search", repo: "https://github.com/tkeefe66/gtm-job-search" },
     figures: [],
     next: { slug: "family-tree" },
   },
@@ -519,7 +519,7 @@ export const projectDetails: ProjectDetail[] = [
       { label: "LEVELS", value: "5, newcomer to senior" },
       { label: "STATUS", value: "Live, personal" },
     ],
-    links: { live: "#", repo: "#" },
+    links: { repo: "https://github.com/tkeefe66/app-builder-coach" },
     figures: [
       {
         src: "/projects/code-coach-overview.png",
