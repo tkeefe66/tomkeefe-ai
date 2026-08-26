@@ -487,7 +487,7 @@ export const projectDetails: ProjectDetail[] = [
       { label: "MIGRATIONS", value: "13, applied by hand" },
       { label: "STATUS", value: "Live, personal" },
     ],
-    links: { live: "#", repo: "#" },
+    links: { live: "https://family-tree.tomkeefe.ai/", repo: "https://github.com/tkeefe66/family-tree-public" },
     figures: [],
     next: { slug: "code-coach" },
   },
